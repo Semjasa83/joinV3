@@ -1,0 +1,76 @@
+@import '../../../../assets/scss/variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  min-width: fit-content;
+  width: 12rem;
+  height: 100%;
+  background: $surface-dark-color;
+  // background-image: linear-gradient(
+  //     150deg,
+  //     hsl(219deg 98% 52%) 0%,
+  //     hsl(223deg 96% 60%) 20%,
+  //     hsl(223deg 94% 64%) 36%,
+  //     hsl(223deg 91% 67%) 49%,
+  //     hsl(222deg 88% 69%) 60%,
+  //     hsl(221deg 85% 71%) 70%,
+  //     hsl(220deg 81% 73%) 79%,
+  //     hsl(218deg 77% 75%) 87%,
+  //     hsl(216deg 72% 76%) 94%,
+  //     hsl(213deg 67% 78%) 100%
+  // );
+}
+
+.logo-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 3rem auto;
+  img {
+    max-width: fit-content;
+    max-height: fit-content;
+  }
+}
+
+a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  font-size: 1rem;
+  padding-left: 15%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: auto;
+  background-color: transparent;
+  color: $surface-dark-contrast-color;
+  text-decoration: none;
+  &:hover {
+    background-color: $highlight-dark-color;
+  }
+  .navigation-route-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color: $surface-dark-contrast-color;
+    .material-symbols-outlined {
+      padding-right: 0.5rem;
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 40
+    }
+    .navigation-route-name {
+      font-size: 1rem;
+      font-weight: 300;
+    }
+  }
+}
+
+.isActive {
+  background-color: $highlight-dark-color;
+}

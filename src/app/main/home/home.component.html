@@ -1,0 +1,11 @@
+<div class="sidebar-toggle-wrapper">
+    @if(sidebarToggle){<app-sidenav></app-sidenav>}
+    <button class="sidebar-toggle" (click)="toggleSidebar()">-></button>
+</div>
+
+<div class="home-content-wrapper">
+    <app-header></app-header>
+    <!-- <app-content></app-content> -->
+    <router-outlet></router-outlet>
+
+</div>

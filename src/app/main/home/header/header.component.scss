@@ -1,0 +1,41 @@
+@import '../../../../assets/scss/variables';
+:host {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 6rem;
+  background-color: $surface-color;
+  color: $surface-contrast-color;
+}
+
+.header-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0 1rem;
+}
+
+.header-right {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+}
+
+.user-frame {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  border: 3px solid $surface-contrast-color;
+  .user-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: $primary-color;
+  }
+}
