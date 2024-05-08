@@ -4,7 +4,7 @@
 
 @for (route of routesData; track routesData; let i = $index ) {
     <ng-container>
-        @if(i > 0 && (routesData.length - 2)) {
+        @if(i > 1) {
         <a class="navigation-option" [routerLink]="route.path" routerLinkActive="isActive" ariaCurrentWhenActive="page">
             <div class="navigation-route-wrapper">
                 <span class="material-symbols-outlined">{{ route.data.icon }}</span>
