@@ -1,8 +1,9 @@
-import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { lastValueFrom, Observable, throwError } from 'rxjs';
 import { Contact } from '../interfaces/contact';
+import { HttpClient } from '@angular/common/http'; // Import the HttpClient module
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,18 +15,11 @@ export class ContactsService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private httpClient: HttpClient, private httpClientModule: HttpClientModule) { }
+  constructor(private http: HttpClient) { } // Inject the HttpClient module
 
-
-  // getAllContacts(): Observable<Contact[]> {
-    async getAllContacts(): Promise<void> {
-    await console.log(this.API_URL + 'contacts');
-    
-    //return this.httpClient.get<Contact[]>(this.API_URL + 'contacts').pipe(catchError(this.errorHandler));
+  getContacts() {
+    return lastValueFrom(this.http.get<Contact[]>(this.API_URL + 'contacts'));
   }
-  // getContacts(): Observable<Contact[]> {
-  //   return this.http.get<Contact[]>(this.API_URL);
-  // }
 
   // getContact(id: string): Observable<Contact> {
   //   return this.http.get<Contact>(this.API_URL + id);

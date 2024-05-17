@@ -15,14 +15,10 @@ import { ContactsService } from '../../../../services/contacts.service';
 })
 export class ContactsComponent {
 
-  constructor(private contactsService: ContactsService) { }
+  constructor(public contactsService: ContactsService) { }
 
-  public ngOnInit() {
-    console.log('ngOnInit called');
-    this.contactsService.getAllContacts().then(contacts => {
-        console.log(contacts);
-    }).catch(error => {
-        console.error(error);
-    });
+  public async ngOnInit() {
+    console.log(this.contactsService.getContacts());
+    
 }
 }
