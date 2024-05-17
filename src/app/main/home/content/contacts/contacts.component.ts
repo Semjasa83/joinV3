@@ -13,12 +13,15 @@ import { ContactsService } from '../../../../services/contacts.service';
   templateUrl: './contacts.component.html',
   styleUrl: './contacts.component.scss'
 })
+
 export class ContactsComponent {
 
   constructor(public contactsService: ContactsService) { }
 
   public async ngOnInit() {
-    console.log(this.contactsService.getContacts());
+
+    let contacts = await this.contactsService.getContacts();
+    console.log(contacts);
     
 }
 }
