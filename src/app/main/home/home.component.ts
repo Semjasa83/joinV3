@@ -4,6 +4,7 @@ import { HeaderComponent } from "./header/header.component";
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -13,7 +14,7 @@ import { RouterOutlet } from '@angular/router';
     NgIf,
     NgClass,
     NgFor,
-    RouterOutlet
+    RouterOutlet,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
@@ -21,11 +22,6 @@ import { RouterOutlet } from '@angular/router';
 
 export class HomeComponent {
   public sidebarToggle: boolean = true;
-
-  public heroes = [
-    'Windstorm',
-    'blub',
-  ]
 
   constructor() { };
 

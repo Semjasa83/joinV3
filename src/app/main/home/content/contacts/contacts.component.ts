@@ -8,7 +8,7 @@ import { ContactsService } from '../../../../services/contacts.service';
 
   ],
   providers: [
-    ContactsService
+    ContactsService,
   ],
   templateUrl: './contacts.component.html',
   styleUrl: './contacts.component.scss'
@@ -17,9 +17,12 @@ export class ContactsComponent {
 
   constructor(private contactsService: ContactsService) { }
 
-  ngOnInit() {
-    this.contactsService.getContacts().subscribe(contacts => {
-      console.log(contacts);
+  public ngOnInit() {
+    console.log('ngOnInit called');
+    this.contactsService.getAllContacts().then(contacts => {
+        console.log(contacts);
+    }).catch(error => {
+        console.error(error);
     });
-  }
+}
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit,  } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from "@angular/router";
 import { routes } from '../../../app.routes';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-sidenav',
@@ -11,7 +11,8 @@ import { NgFor } from '@angular/common';
     imports: [
         RouterLink,
         RouterLinkActive,
-        NgFor
+        NgFor,
+        NgIf
     ]
 })
 export class SidenavComponent implements OnInit{
@@ -22,8 +23,11 @@ export class SidenavComponent implements OnInit{
     }
 
     public ngOnInit(): void {
+
+        
         if (routes[1].children) {
             this.routesData = routes[1].children;
         }
+        console.log(this.routesData);
     }
 }
