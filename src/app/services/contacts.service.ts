@@ -1,49 +1,37 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { lastValueFrom, Observable, throwError } from 'rxjs';
 import { Contact } from '../interfaces/contact';
 import { HttpClient } from '@angular/common/http'; // Import the HttpClient module
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactsService {
-  private API_URL = 'http://localhost:3000/api/';
+  private API_URL = 'http://localhost:3000/api/';  
 
-  httpOptions = { 
+  httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   constructor(private http: HttpClient) { } // Inject the HttpClient module
 
-  getContacts() {
-    return lastValueFrom(this.http.get<Contact[]>(this.API_URL + 'contacts'));
-  }
+  public getAllContacts() {
+    return this.http.get<Contact[]>(this.API_URL + 'contacts');
+  };
 
-  // getContact(id: string): Observable<Contact> {
-  //   return this.http.get<Contact>(this.API_URL + id);
-  // }
+  public getContact(id: number) {
+    return this.http.get<Contact[]>(this.API_URL + `contacts/:${id}`);
+  };
 
-  // createContact(contact: Contact): Observable<Contact> {
-  //   return this.http.post<Contact>(this.API_URL, contact);
-  // }
+  public updateContact(id: number, contact: Contact) {
+    return this.http.put<Contact[]>(this.API_URL + `contacts/:${id}`, contact, this.httpOptions );
+  };
 
-  // updateContact(id: string, contact: Contact): Observable<Contact> {
-  //   return this.http.put<Contact>(this.API_URL + id, contact);
-  // }
+  public deleteContact(id: number) {
+    return this.http.delete<Contact[]>(this.API_URL + `contacts/:${id}`);
+  };
 
-  // deleteContact(id: string): Observable<void> {
-  //   return this.http.delete<void>(this.API_URL + id);
-  // }
-
-  errorHandler(error:any) {
-    let errorMessage = '';
-    if(error.error instanceof ErrorEvent) {
-      errorMessage = error.error.message;
-    } else {
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    return throwError(errorMessage);
- }
+  public addContact(contact: Contact) {
+    return this.http.post<Contact[]>(this.API_URL + 'contacts', contact, this.httpOptions );
+  };
 }

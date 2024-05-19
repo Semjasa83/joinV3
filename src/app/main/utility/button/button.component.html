@@ -1,0 +1,4 @@
+<div class="btn-wrapper" [ngClass]="[bgrColor, txtColor]" (click)="onClick()">
+    <span class="btn-text">{{text}}</span>
+    <span *ngIf="icon" class="material-symbols-outlined btn-icon">{{icon}}</span>
+</div>
