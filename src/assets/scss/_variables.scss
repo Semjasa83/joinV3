@@ -24,4 +24,70 @@
     $highlight-dark-color: #081931;
 
 
-
+    .primary-color {
+        background-color: $primary-color;
+      }
+      
+      .primary-contrast-color {
+        color: $primary-contrast-color;
+      }
+      
+      .secondary-color {
+        background-color: $secondary-color;
+      }
+      
+      .secondary-contrast-color {
+        color: $secondary-contrast-color;
+      }
+      
+      .surface-color {
+        background-color: $surface-color;
+      }
+      
+      .surface-contrast-color {
+        color: $surface-contrast-color;
+      }
+      
+      .surface-dark-color {
+        background-color: $surface-dark-color;
+      }
+      
+      .surface-dark-contrast-color {
+        color: $surface-dark-contrast-color;
+      }
+      
+      .background-color {
+        background-color: $background-color;
+      }
+      
+      .background-contrast-color {
+        color: $background-contrast-color;
+      }
+      
+      .success-color {
+        background-color: $success-color;
+      }
+      
+      .success-contrast-color {
+        color: $success-contrast-color;
+      }
+      
+      .error-color {
+        background-color: $error-color;
+      }
+      
+      .error-contrast-color {
+        color: $error-contrast-color;
+      }
+      
+      .warning-color {
+        background-color: $warning-color;
+      }
+      
+      .warning-contrast-color {
+        color: $warning-contrast-color;
+      }
+      
+      .highlight-dark-color {
+        background-color: $highlight-dark-color;
+      }

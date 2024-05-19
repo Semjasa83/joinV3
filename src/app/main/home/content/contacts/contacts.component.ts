@@ -1,26 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from "../../../../services/api/api.service";
-import { Observable } from "rxjs";
+import { Component } from '@angular/core';
+import { ContactsService } from '../../../../services/contacts.service';
+import { Contact } from "../../../../interfaces/contact";
+import { Observable, Subscription } from 'rxjs';
+import { ButtonComponent } from '../../../utility/button/button.component';
 
 
 @Component({
   selector: 'app-contacts',
   standalone: true,
   imports: [
+
+    ButtonComponent
+  ],
+  providers: [
+    ContactsService,
+
   ],
   templateUrl: './contacts.component.html',
   styleUrl: './contacts.component.scss'
 })
-export class ContactsComponent implements OnInit{
 
-  private message$: Observable<any> | undefined;
+export class ContactsComponent {
 
-  constructor(private apiService: ApiService) {
+
+  public contacts: Contact[] = [];
+
+  constructor(public contactsService: ContactsService) { }
+
+  public async ngOnInit() {
+    this.showContactList();
   }
 
-  ngOnInit(): void {
-
-  };
-
-
+  showContactList() {
+    this.contacts = [];
+    this.contactsService.getAllContacts().subscribe(data => {
+        console.log(data);
+        this.contacts = data;
+      });
+  }
 }
