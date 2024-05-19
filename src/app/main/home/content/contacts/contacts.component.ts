@@ -9,16 +9,19 @@ import { ButtonComponent } from '../../../utility/button/button.component';
   selector: 'app-contacts',
   standalone: true,
   imports: [
+
     ButtonComponent
   ],
   providers: [
     ContactsService,
+
   ],
   templateUrl: './contacts.component.html',
   styleUrl: './contacts.component.scss'
 })
 
 export class ContactsComponent {
+
 
   public contacts: Contact[] = [];
 
