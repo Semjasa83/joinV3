@@ -1,0 +1,39 @@
+{
+    "Login": {
+        "Login": {
+            "username": "Username",
+            "password": "Password",
+            "login": "Login",
+            "forgotPassword": "Forgot Password",
+            "register": "Register"
+        },
+        "ForgotPassword": {
+            "forgotPassword": "Forgot Password",
+            "email": "Email",
+            "send": "Send"
+        },
+        "Register": {
+            "register": "Register",
+            "username": "Username",
+            "email": "Email",
+            "password": "Password",
+            "confirmPassword": "Confirm Password"
+        }
+    },
+	"Home": {
+        "Dashboard" : {
+
+        },
+        "AddTask": {
+
+        },
+        "Board": {
+
+        },
+        "Contacts": {
+
+        }
+
+
+	}
+}

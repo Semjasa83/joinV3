@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 import { ContactsService } from '../../../../services/contacts.service';
 import { Contact } from "../../../../interfaces/contact";
-import { Observable, Subscription } from 'rxjs';
 import { ButtonComponent } from '../../../utility/button/button.component';
-
+import { TranslateModule} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-contacts',
   standalone: true,
   imports: [
-
+    TranslateModule,
     ButtonComponent
   ],
   providers: [
