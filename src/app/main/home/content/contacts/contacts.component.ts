@@ -26,15 +26,29 @@ export class ContactsComponent {
 
   constructor(public contactsService: ContactsService) { }
 
-  public async ngOnInit() {
-    this.showContactList();
+  public ngOnInit() {
+    this.getContactList();
+
   }
 
-  showContactList() {
+  public async getContactList() {
     this.contacts = [];
     this.contactsService.getAllContacts().subscribe(data => {
         console.log(data);
-        this.contacts = data;
+        // this.contacts = data;
+        this.sortedContacts(data);
       });
   }
+
+  public async sortedContacts(data: any) {
+    const arr = Object.keys(data);
+    let key = arr[0];
+    this.contacts = data[key];
+    this.contacts?.sort((a, b) => { 
+      return a.lastName.localeCompare(b.lastName);
+    });
+    console.log(this.contacts);
+  };
+
+
 }

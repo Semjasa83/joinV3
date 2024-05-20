@@ -1,7 +1,7 @@
 {
     "Login": {
         "Login": {
-            "username": "Username-EN",
+            "username": "Username",
             "password": "Password",
             "login": "Login",
             "forgotPassword": "Forgot Password",
@@ -20,20 +20,18 @@
             "confirmPassword": "Confirm Password"
         }
     },
-	"Home": {
-        "Dashboard" : {
-
+    "Home": {
+        "Routes": {
+            "dashboard": "Dashboard",
+            "addTask": "Add Task",
+            "board": "Board",
+            "contacts": "Contacts"
         },
-        "AddTask": {
-
-        },
-        "Board": {
-
-        },
+        "Dashboard": {},
+        "AddTask": {},
+        "Board": {},
         "Contacts": {
-
+            "AddContact": "Add new contact"
         }
-
-
-	}
+    }
 }

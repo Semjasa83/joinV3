@@ -21,6 +21,12 @@
         }
     },
 	"Home": {
+        "Routes": {
+            "dashboard": "Übersicht",
+            "addTask": "neue Aufgabe",
+            "board": "Aufgabenbrett",
+            "contacts": "Kontakte"
+        },
         "Dashboard" : {
 
         },

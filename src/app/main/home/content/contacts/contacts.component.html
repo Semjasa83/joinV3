@@ -3,7 +3,7 @@
     <section class="contact-list-wrapper">
         <div class="add-contact-btn">
             <app-button 
-            [text]="'Add new contact'" 
+            [text]="'Home.Contacts.AddContact' | translate" 
             [bgrColor]="'surface-dark-color'" 
             [txtColor]="'surface-dark-contrast-color'" 
             [icon]="'person_add'">
@@ -11,7 +11,12 @@
         </div>
 
         <div class="contact-list">
-            {{'Login.Login.username' | translate}}
+            @for(contact of contacts; track contacts) {
+                <span>{{ contact.firstName }}</span>
+                <span>{{ contact.lastName }}</span>
+                <span>{{ contact.email }}</span>
+                
+            }
         </div>
 
 
