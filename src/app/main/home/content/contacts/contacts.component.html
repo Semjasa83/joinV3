@@ -10,7 +10,7 @@
             </app-button>
         </div>
 
-        <div class="contacts-list">
+        <!-- <div class="contacts-list">
             @for(contact of contacts; track contacts) {
                 <div class="contact-list-detail">
                     <div class="contact-shorttag">
@@ -20,16 +20,28 @@
                         <span class="contact-name">{{ contact.firstName }} {{ contact.lastName }}</span>
                         <span class="contact-email">{{ contact.email }}</span>
                     </div>
-
                 </div>
-
-                
             }
+        </div> -->
+
+        <div class="contacts-list" #contactList>
+            @for(letter of groupLetters; track groupLetters; let i = $index) {
+                <div class="group-letter">{{ letter }}</div>
+
+                <div *ngFor="let contact of groupArray[i]; index as i">
+                    {{contact.firstName}}{{contact.lastName}}
+                </div>
+            }
+
+            
+
         </div>
 
 
     </section>
 
 
-    <section class="contact-detail-wrapper"></section>
+    <section class="contact-detail-wrapper">
+        <router-outlet></router-outlet>
+    </section>
 </div>
