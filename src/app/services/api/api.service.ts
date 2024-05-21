@@ -10,27 +10,27 @@ export class ApiService {
   private apiContactsUrl = 'http://localhost:3000/api/contacts';
 
   constructor( private http: HttpClient) {
-    this.getAllContacts()
+    //this.getAllContacts()
   }
 
-  getAllContacts(): Observable<any> {
-    console.log(this.apiContactsUrl);
-    return this.http.get(this.apiContactsUrl);
-  }
+  // getAllContacts(): Observable<any> {
+  //   console.log(this.apiContactsUrl);
+  //   return this.http.get(this.apiContactsUrl);
+  // }
 
-  getContactsById(id: number): Observable<any> {
-    return this.http.get(this.apiContactsUrl + `/${id}`);
-  }
+  // getContactsById(id: number): Observable<any> {
+  //   return this.http.get(this.apiContactsUrl + `/${id}`);
+  // }
 
-  createContacts(contact: any): Observable<any> {
-    return this.http.post(this.apiContactsUrl, contact);
-  }
+  // createContacts(contact: any): Observable<any> {
+  //   return this.http.post(this.apiContactsUrl, contact);
+  // }
 
-  updateContacts(id: number, contact: any): Observable<any> {
-    return this.http.put(this.apiContactsUrl + `/${id}`, contact);
-  }
+  // updateContacts(id: number, contact: any): Observable<any> {
+  //   return this.http.put(this.apiContactsUrl + `/${id}`, contact);
+  // }
 
-  deleteContacts(id: number): Observable<any> {
-    return this.http.delete(this.apiContactsUrl + `/${id}`);
-  }
+  // deleteContacts(id: number): Observable<any> {
+  //   return this.http.delete(this.apiContactsUrl + `/${id}`);
+  // }
 }

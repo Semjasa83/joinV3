@@ -10,11 +10,19 @@
             </app-button>
         </div>
 
-        <div class="contact-list">
+        <div class="contacts-list">
             @for(contact of contacts; track contacts) {
-                <span>{{ contact.firstName }}</span>
-                <span>{{ contact.lastName }}</span>
-                <span>{{ contact.email }}</span>
+                <div class="contact-list-detail">
+                    <div class="contact-shorttag">
+                        {{ contact.firstName.charAt(0).toUpperCase()}}{{contact.lastName.charAt(0).toUpperCase()}}
+                    </div>
+                    <div class="contact-info">
+                        <span class="contact-name">{{ contact.firstName }} {{ contact.lastName }}</span>
+                        <span class="contact-email">{{ contact.email }}</span>
+                    </div>
+
+                </div>
+
                 
             }
         </div>
