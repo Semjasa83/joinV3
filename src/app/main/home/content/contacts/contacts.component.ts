@@ -4,7 +4,7 @@ import { Contact } from "../../../../interfaces/contact";
 import { ButtonComponent } from '../../../utility/button/button.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterOutlet } from '@angular/router';
-import { JsonPipe, NgFor} from '@angular/common';
+import { NgFor, NgStyle} from '@angular/common';
 
 @Component({
   selector: 'app-contacts',
@@ -14,7 +14,7 @@ import { JsonPipe, NgFor} from '@angular/common';
     ButtonComponent,
     RouterOutlet,
     NgFor,
-    JsonPipe,
+    NgStyle
   ],
   providers: [
     ContactsService,
@@ -67,14 +67,13 @@ export class ContactsComponent {
       }
       this.groupContacts[letter].push(contact);
     });
-    this.test();
+    this.renderGroupedContacts();
   };
 
 
-  public async test() {
+  public async renderGroupedContacts() {
     const arr = Object.entries(this.groupContacts);
     arr.forEach((group) => {
-
       this.groupLetters.push(group[0]);
       for (let i = 0; i < group[1].length; i++) {
         const c = group[1][i];
@@ -84,9 +83,10 @@ export class ContactsComponent {
       this.groupedContactsArray = [];
     }
     );
+  }
 
-    console.log(this.groupArray);
-
-
+  public randomColorPicker() {
+    let varColor = Math.floor(Math.random() * 360);
+    return `hsl(${varColor}, 75%, 75%)`;
   }
 }

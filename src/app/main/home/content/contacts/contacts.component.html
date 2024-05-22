@@ -23,11 +23,12 @@
 
         <div class="contacts-list">
             @for(letter of groupLetters; track groupLetters; let i = $index) {
-            <div class="group-letter">{{ letter }}</div>
-            <hr style="width: 80%;">
+                <div class="index-wrapper">
+                    <div class="index-letter">{{ letter }}</div>
+                </div>
             <ng-container *ngFor="let contact of groupArray[i]; index as i">
                 <div class="contact-list-detail">
-                    <div class="contact-shorttag">
+                    <div class="contact-shorttag" [ngStyle]="{'background-color': randomColorPicker()}">
                         {{ contact.firstName.charAt(0).toUpperCase()}}{{contact.lastName.charAt(0).toUpperCase()}}
                     </div>
                     <div class="contact-info">

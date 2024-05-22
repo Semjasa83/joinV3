@@ -5,6 +5,7 @@ import { ContactsComponent } from './main/home/content/contacts/contacts.compone
 import { AddTaskComponent } from './main/home/content/add-task/add-task.component';
 import { BoardComponent } from './main/home/content/board/board.component';
 import { ContactDetailComponent } from './main/home/content/contacts/contact-detail/contact-detail.component';
+import { ContactLandingComponent } from './main/home/content/contacts/contact-landing/contact-landing.component';
 
 
 export const routes: Routes = [
@@ -17,7 +18,9 @@ export const routes: Routes = [
       { path: 'board', component: BoardComponent, data: { name: 'Board', icon: 'calendar_view_week' } },
       { path: 'contacts', component: ContactsComponent, data: { name: 'Contacts', icon: 'perm_contact_calendar' },
           children: [
-            { path: 'contact-detail/:id', component: ContactDetailComponent }
+            { path: '', redirectTo: 'detail', pathMatch: 'full' },
+            { path: 'detail', component: ContactLandingComponent },
+            { path: 'detail/:id', component: ContactDetailComponent }
           ]
           
         },

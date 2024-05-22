@@ -42,6 +42,24 @@
     width: 100%;
 }
 
+.index-wrapper {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    border-bottom: 1px solid $light-transparent-color;
+    .index-letter {
+        padding: 1rem;
+        font-size: 1.25rem;
+    }
+}
+
+
+.separation-line {
+    height: 2px;
+    width: 80%;
+    opacity: 0.5;
+}
+
 .contact-list-detail {
     align-items: center;
     display: flex;
@@ -86,6 +104,8 @@
         }
     }
 }
+
+
 
 /** Contact Detail Section */
 .contact-detail-wrapper {
