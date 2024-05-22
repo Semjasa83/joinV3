@@ -1,13 +1,13 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Contact } from '../interfaces/contact';
+import { Contact } from '../../interfaces/contact';
 import { HttpClient } from '@angular/common/http'; // Import the HttpClient module
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactsService {
-  private API_URL = 'http://localhost:3000/api/';  
+  private API_URL = 'http://localhost:3000/api/';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -24,7 +24,7 @@ export class ContactsService {
   };
 
   public updateContact(id: number, contact: Contact) {
-    return this.http.put<Contact[]>(this.API_URL + `contacts/:${id}`, contact, this.httpOptions );
+    return this.http.put<Contact[]>(this.API_URL + `contacts/:${id}`, contact, this.httpOptions);
   };
 
   public deleteContact(id: number) {
@@ -32,6 +32,6 @@ export class ContactsService {
   };
 
   public addContact(contact: Contact) {
-    return this.http.post<Contact[]>(this.API_URL + 'contacts', contact, this.httpOptions );
+    return this.http.post<Contact[]>(this.API_URL + 'contacts', contact, this.httpOptions);
   };
 }

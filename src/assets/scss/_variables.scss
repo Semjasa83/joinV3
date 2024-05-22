@@ -1,5 +1,5 @@
 
-    $primary-color: #28abe2;
+    $primary-color: #007CEE;
     $primary-contrast-color: #ffffff;
     $secondary-color: #28abe2;
     $secondary-contrast-color: #ffffff;
@@ -22,9 +22,10 @@
     $warning-contrast-color: #000000;
 
     $highlight-dark-color: #081931;
+    $light-transparent-color: #33333355;
 
 
-    .primary-color {
+      .primary-color {
         background-color: $primary-color;
       }
       
@@ -90,4 +91,8 @@
       
       .highlight-dark-color {
         background-color: $highlight-dark-color;
+      }
+
+      .light-transparent-color {
+        color: $light-transparent-color;
       }

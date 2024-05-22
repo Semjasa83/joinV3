@@ -23,11 +23,8 @@ export class SidenavComponent implements OnInit{
     }
 
     public ngOnInit(): void {
-
-        
         if (routes[1].children) {
             this.routesData = routes[1].children;
         }
-        console.log(this.routesData);
     }
 }

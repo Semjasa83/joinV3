@@ -2,21 +2,49 @@
 
     <section class="contact-list-wrapper">
         <div class="add-contact-btn">
-            <app-button 
-            [text]="'Add new contact'" 
-            [bgrColor]="'surface-dark-color'" 
-            [txtColor]="'surface-dark-contrast-color'" 
-            [icon]="'person_add'">
+            <app-button [text]="'Home.Contacts.AddContact' | translate" [bgrColor]="'surface-dark-color'"
+                [txtColor]="'surface-dark-contrast-color'" [icon]="'person_add'">
             </app-button>
         </div>
 
-        <div class="contact-list">
-            
+        <!-- <div class="contacts-list">
+            @for(contact of contacts; track contacts) {
+                <div class="contact-list-detail">
+                    <div class="contact-shorttag">
+                        {{ contact.firstName.charAt(0).toUpperCase()}}{{contact.lastName.charAt(0).toUpperCase()}}
+                    </div>
+                    <div class="contact-info">
+                        <span class="contact-name">{{ contact.firstName }} {{ contact.lastName }}</span>
+                        <span class="contact-email">{{ contact.email }}</span>
+                    </div>
+                </div>
+            }
+        </div> -->
+
+        <div class="contacts-list">
+            @for(letter of groupLetters; track groupLetters; let i = $index) {
+                <div class="index-wrapper">
+                    <div class="index-letter">{{ letter }}</div>
+                </div>
+            <ng-container *ngFor="let contact of groupArray[i]; index as i">
+                <div class="contact-list-detail">
+                    <div class="contact-shorttag" [ngStyle]="{'background-color': randomColorPicker()}">
+                        {{ contact.firstName.charAt(0).toUpperCase()}}{{contact.lastName.charAt(0).toUpperCase()}}
+                    </div>
+                    <div class="contact-info">
+                        <span class="contact-name">{{ contact.firstName }} {{ contact.lastName }}</span>
+                        <span class="contact-email">{{ contact.email }}</span>
+                    </div>
+                </div>
+            </ng-container>
+            }
         </div>
 
 
     </section>
 
 
-    <section class="contact-detail-wrapper"></section>
+    <section class="contact-detail-wrapper">
+        <router-outlet></router-outlet>
+    </section>
 </div>
