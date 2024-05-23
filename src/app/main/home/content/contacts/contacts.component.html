@@ -7,20 +7,6 @@
             </app-button>
         </div>
 
-        <!-- <div class="contacts-list">
-            @for(contact of contacts; track contacts) {
-                <div class="contact-list-detail">
-                    <div class="contact-shorttag">
-                        {{ contact.firstName.charAt(0).toUpperCase()}}{{contact.lastName.charAt(0).toUpperCase()}}
-                    </div>
-                    <div class="contact-info">
-                        <span class="contact-name">{{ contact.firstName }} {{ contact.lastName }}</span>
-                        <span class="contact-email">{{ contact.email }}</span>
-                    </div>
-                </div>
-            }
-        </div> -->
-
         <div class="contacts-list">
             @for(letter of groupLetters; track groupLetters; let i = $index) {
                 <div class="index-wrapper">

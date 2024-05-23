@@ -1,0 +1,35 @@
+@import "../../../../../../assets/scss/variables.scss";
+
+:host {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
+.landing-contact-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 3rem;
+    margin-top: 5rem;
+    height: fit-content;
+
+    .landing-headline {
+        height: fit-content;
+        font-size: 3rem;
+        font-weight: 700;
+        color: $background-contrast-color;
+        padding-right: 1.5rem;
+        border-right: 3px solid $secondary-color;
+    }
+
+    .landing-subheadline {
+        height: fit-content;
+        font-size: 1.25rem;
+        font-weight: 300;
+        color: $background-contrast-color;
+        padding-left: 1.5rem;
+    }
+} 

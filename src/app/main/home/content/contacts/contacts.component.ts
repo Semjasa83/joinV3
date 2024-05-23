@@ -37,7 +37,6 @@ export class ContactsComponent {
 
   public ngOnInit() {
     this.getContactList();
-
   };
 
   public async getContactList(): Promise<void> {
@@ -54,7 +53,7 @@ export class ContactsComponent {
     this.contacts?.sort((a, b) => {
       return a.lastName.localeCompare(b.lastName);
     })
-    this.getGroupedContacts();
+    await this.getGroupedContacts();
   };
 
 
@@ -67,7 +66,7 @@ export class ContactsComponent {
       }
       this.groupContacts[letter].push(contact);
     });
-    this.renderGroupedContacts();
+    await this.renderGroupedContacts();
   };
 
 
@@ -86,7 +85,11 @@ export class ContactsComponent {
   }
 
   public randomColorPicker() {
-    let varColor = Math.floor(Math.random() * 360);
+    let varColor = Math.floor(Math.random() * 359);
     return `hsl(${varColor}, 75%, 75%)`;
+  }
+
+  trackByFn(index: number, item: Contact) {
+    return item.id; // or a unique field from your Contact model
   }
 }

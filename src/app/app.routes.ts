@@ -10,20 +10,20 @@ import { ContactLandingComponent } from './main/home/content/contacts/contact-la
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent,
+  {
+    path: 'home', component: HomeComponent,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent, data: { name: 'Dashboard', icon: 'space_dashboard' } },
       { path: 'addtask', component: AddTaskComponent, data: { name: 'Add Task', icon: 'edit_square' } },
       { path: 'board', component: BoardComponent, data: { name: 'Board', icon: 'calendar_view_week' } },
-      { path: 'contacts', component: ContactsComponent, data: { name: 'Contacts', icon: 'perm_contact_calendar' },
+      { path: 'contacts', component: ContactsComponent, data: { name: 'Contacts', icon: 'perm_contact_calendar'},
           children: [
-            { path: '', redirectTo: 'detail', pathMatch: 'full' },
-            { path: 'detail', component: ContactLandingComponent },
-            { path: 'detail/:id', component: ContactDetailComponent }
+            { path: '', component: ContactLandingComponent },
+            { path: 'contacts/:id', component: ContactDetailComponent }
           ]
-          
         },
+      
       // { path: '**', component: DashboardComponent },
     ],
   },
