@@ -16,7 +16,7 @@ import { NgFor, NgStyle} from '@angular/common';
     RouterLink,
     RouterLinkActive,
     NgFor,
-    NgStyle
+    NgStyle,
   ],
   providers: [
     ContactsService,
@@ -42,7 +42,7 @@ export class ContactsComponent {
   };
 
   public ngOnAfterContentInit() {
-    
+
   }
 
   public async getContactList(): Promise<void> {
@@ -61,7 +61,6 @@ export class ContactsComponent {
     })
     await this.getGroupedContacts();
   };
-
 
   public async getGroupedContacts(): Promise<void> {
     this.groupContacts = {};
@@ -90,9 +89,9 @@ export class ContactsComponent {
     );
   }
 
-  public openContactDetails(contact: Contact) { 
+  public openContactDetails(contact: Contact) {
     console.log(contact);
-    
+
   }
 
 
