@@ -13,8 +13,8 @@
                     <div class="index-letter">{{ letter }}</div>
                 </div>
             <ng-container *ngFor="let contact of groupArray[i]; index as i">
-                <div class="contact-list-detail">
-                    <div class="contact-shorttag" [ngStyle]="{'background-color': randomColorPicker()}">
+                <div class="contact-list-detail" [routerLink]="[contact._id]" routerLinkActive="isActive">
+                    <div class="contact-shorttag" [ngStyle]="{'background-color': contact.color}">
                         {{ contact.firstName.charAt(0).toUpperCase()}}{{contact.lastName.charAt(0).toUpperCase()}}
                     </div>
                     <div class="contact-info">
@@ -25,8 +25,6 @@
             </ng-container>
             }
         </div>
-
-
     </section>
 
 

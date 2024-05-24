@@ -12,7 +12,8 @@ export function createTranslateLoader(http: HttpClient) {
 }
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), 
+  providers: [
+    provideRouter(routes), 
     provideHttpClient(withFetch()),
     TranslateService,
     importProvidersFrom(

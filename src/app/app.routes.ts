@@ -20,7 +20,7 @@ export const routes: Routes = [
       { path: 'contacts', component: ContactsComponent, data: { name: 'Contacts', icon: 'perm_contact_calendar'},
           children: [
             { path: '', component: ContactLandingComponent },
-            { path: 'contacts/:id', component: ContactDetailComponent }
+            { path: ':id', component: ContactDetailComponent }
           ]
         },
       

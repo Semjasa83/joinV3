@@ -75,11 +75,13 @@
             .contact-name {
                 color: $surface-dark-contrast-color;
             }
+            .contact-email {
+                color: $secondary-color;
+            }
         }
     }
     .contact-shorttag {
         align-items: center;
-        background-color: green;
         border: 2px solid $surface-color;
         border-radius: 100%;
         display: flex;
@@ -101,6 +103,21 @@
         .contact-email {
             color: $primary-color;
             font-size: 0.9rem;
+        }
+    }
+}
+
+.isActive {
+    background-color: $surface-dark-color;
+    border-radius: 0.625rem;
+    cursor: pointer;
+
+    .contact-info {
+        .contact-name {
+            color: $surface-dark-contrast-color;
+        }
+        .contact-email {
+            color: $secondary-color;
         }
     }
 }
