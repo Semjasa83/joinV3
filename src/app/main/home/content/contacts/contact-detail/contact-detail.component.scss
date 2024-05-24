@@ -1,8 +1,47 @@
-@import '../../../../../../assets/scss/variables.scss';
+@import "../../../../../../assets/scss/variables.scss";
 
 :host {
-  width: 100%;
   height: 100%;
   padding-left: 3rem;
   padding-top: 3rem;
+  width: 100%;
+}
+
+.contact-header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+
+  .contact-shorttag {
+    align-items: center;
+    border: 2px solid $surface-color;
+    border-radius: 100%;
+    display: flex;
+    font-size: 2.5rem;
+    height: 6rem;
+    justify-content: center;
+    margin: 1rem;
+    width: 6rem;
+  }
+
+  .contact-header-info {
+    display: flex;
+    flex-direction: column;
+
+    .contact-option {
+      display: flex;
+      flex-direction: row;
+
+      .contact-option-wrapper {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
 }

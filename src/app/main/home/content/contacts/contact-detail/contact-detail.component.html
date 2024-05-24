@@ -1,18 +1,30 @@
-<div>
-  <div class="shorttag">
-    {{ contactData.firstName.charAt(0).toUpperCase() }}{{ contactData.lastName.charAt(0).toUpperCase() }}
-  </div>
-  <div>
+<div class="contact-header">
+    <div class="contact-shorttag" [ngStyle]="{'background-color': contactData.color}">
+      {{ contactData.firstName.charAt(0).toUpperCase() }}{{ contactData.lastName.charAt(0).toUpperCase() }}
+    </div>
+
+  <div class="contact-header-info">
     <div class="name">
       {{ contactData.firstName }}{{ contactData.lastName }}
     </div>
-    <div>
-      <div>
+    <div class="contact-option">
+      <div class="contact-option-wrapper">
         <span class="material-symbols-outlined">border_color</span>
+        <span>Edit</span>
       </div>
-      <div>
+      <div class="contact-option-wrapper">
         <span class="material-symbols-outlined">delete</span>
+        <span>Delete</span>
       </div>
     </div>
   </div>
 </div>
+
+<div class="contact-info">
+  <span>Contact Information</span>
+  <span>Email</span>
+  <span>{{contactData.email}}</span>
+  <span>Phone</span>
+  <span>{{contactData.phone}}</span>
+</div>
+

@@ -14,6 +14,7 @@ import {
 
 Contact
 } from "../../../../../interfaces/contact";
+import { NgStyle } from '@angular/common';
 
 interface ContactResponse {
   contact: Contact;
@@ -22,7 +23,9 @@ interface ContactResponse {
 
   selector: 'app-contact-detail',
   standalone: true,
-  imports: [],
+  imports: [
+    NgStyle
+  ],
   templateUrl: './contact-detail.component.html',
   styleUrl: './contact-detail.component.scss'
 })
