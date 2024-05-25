@@ -3,7 +3,7 @@ import { ContactsService } from '../../../../services/contacts/contacts.service'
 import { Contact } from "../../../../interfaces/contact";
 import { ButtonComponent } from '../../../utility/button/button.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NgFor, NgStyle} from '@angular/common';
 
 @Component({
@@ -13,8 +13,10 @@ import { NgFor, NgStyle} from '@angular/common';
     TranslateModule,
     ButtonComponent,
     RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
     NgFor,
-    NgStyle
+    NgStyle,
   ],
   providers: [
     ContactsService,
@@ -37,8 +39,11 @@ export class ContactsComponent {
 
   public ngOnInit() {
     this.getContactList();
-
   };
+
+  public ngOnAfterContentInit() {
+
+  }
 
   public async getContactList(): Promise<void> {
     this.contacts = [];
@@ -54,9 +59,8 @@ export class ContactsComponent {
     this.contacts?.sort((a, b) => {
       return a.lastName.localeCompare(b.lastName);
     })
-    this.getGroupedContacts();
+    await this.getGroupedContacts();
   };
-
 
   public async getGroupedContacts(): Promise<void> {
     this.groupContacts = {};
@@ -67,7 +71,7 @@ export class ContactsComponent {
       }
       this.groupContacts[letter].push(contact);
     });
-    this.renderGroupedContacts();
+    await this.renderGroupedContacts();
   };
 
 
@@ -85,8 +89,17 @@ export class ContactsComponent {
     );
   }
 
+  public openContactDetails(contact: Contact) {
+    console.log(contact);
+
+  }
+
+
+
+
+  //auslagern create contact!!!!
   public randomColorPicker() {
-    let varColor = Math.floor(Math.random() * 360);
+    let varColor = Math.floor(Math.random() * 359);
     return `hsl(${varColor}, 75%, 75%)`;
   }
 }

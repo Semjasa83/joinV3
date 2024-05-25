@@ -1,50 +1,38 @@
 <div class="contacts-content-wrapper">
 
-    <section class="contact-list-wrapper">
-        <div class="add-contact-btn">
-            <app-button [text]="'Home.Contacts.AddContact' | translate" [bgrColor]="'surface-dark-color'"
-                [txtColor]="'surface-dark-contrast-color'" [icon]="'person_add'">
-            </app-button>
+  <section class="contact-list-wrapper">
+    <div class="add-contact-btn">
+      <app-button [bgrColor]="'surface-dark-color'" [icon]="'person_add'"
+                  [text]="'Home.Contacts.AddContact' | translate" [txtColor]="'surface-dark-contrast-color'">
+      </app-button>
+    </div>
+
+    <div class="contacts-list">
+      @for (letter of groupLetters; track groupLetters; let i = $index) {
+        <div class="index-wrapper">
+          <div class="index-letter">{{ letter }}</div>
         </div>
-
-        <!-- <div class="contacts-list">
-            @for(contact of contacts; track contacts) {
-                <div class="contact-list-detail">
-                    <div class="contact-shorttag">
-                        {{ contact.firstName.charAt(0).toUpperCase()}}{{contact.lastName.charAt(0).toUpperCase()}}
-                    </div>
-                    <div class="contact-info">
-                        <span class="contact-name">{{ contact.firstName }} {{ contact.lastName }}</span>
-                        <span class="contact-email">{{ contact.email }}</span>
-                    </div>
-                </div>
-            }
-        </div> -->
-
-        <div class="contacts-list">
-            @for(letter of groupLetters; track groupLetters; let i = $index) {
-                <div class="index-wrapper">
-                    <div class="index-letter">{{ letter }}</div>
-                </div>
-            <ng-container *ngFor="let contact of groupArray[i]; index as i">
-                <div class="contact-list-detail">
-                    <div class="contact-shorttag" [ngStyle]="{'background-color': randomColorPicker()}">
-                        {{ contact.firstName.charAt(0).toUpperCase()}}{{contact.lastName.charAt(0).toUpperCase()}}
-                    </div>
-                    <div class="contact-info">
-                        <span class="contact-name">{{ contact.firstName }} {{ contact.lastName }}</span>
-                        <span class="contact-email">{{ contact.email }}</span>
-                    </div>
-                </div>
-            </ng-container>
-            }
-        </div>
+        <ng-container *ngFor="let contact of groupArray[i]; index as i">
+          <div class="contact-list-detail" [routerLink]="[contact._id]" routerLinkActive="isActive">
+            <div class="contact-shorttag" [ngStyle]="{'background-color': contact.color}">
+              {{ contact.firstName.charAt(0).toUpperCase() }}{{ contact.lastName.charAt(0).toUpperCase() }}
+            </div>
+            <div class="contact-info">
+              <span class="contact-name">{{ contact.firstName }} {{ contact.lastName }}</span>
+              <span class="contact-email">{{ contact.email }}</span>
+            </div>
+          </div>
+        </ng-container>
+      }
+    </div>
+  </section>
 
 
-    </section>
-
-
-    <section class="contact-detail-wrapper">
-        <router-outlet></router-outlet>
-    </section>
+  <section class="detail-wrapper">
+    <div class="detail-headline-wrapper">
+      <span class="detail-headline">Contacts</span>
+      <span class="detail-subheadline">Better with a team</span>
+    </div>
+    <router-outlet></router-outlet>
+  </section>
 </div>

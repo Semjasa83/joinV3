@@ -2,19 +2,6 @@
     <img src="../../../../assets/pictures/Capa_dark.svg">
 </div>
 
-<!-- @for (route of routesData; track routesData; let i = $index ) {
-    <ng-container>
-        @if(i > 1) {
-        <a class="navigation-option" [routerLink]="route.path" routerLinkActive="isActive" ariaCurrentWhenActive="page">
-            <div class="navigation-route-wrapper">
-                <span class="material-symbols-outlined">{{ route.data.icon }}</span>
-                <span class="navigation-route-name">{{ route.data.name }}</span>
-            </div>
-        </a>
-        }
-    </ng-container>
-} -->
-
 <ng-container *ngFor="let route of routesData; index as i">
     <ng-container *ngIf="i > 0">
         <a class="navigation-option" [routerLink]="route.path" routerLinkActive="isActive" ariaCurrentWhenActive="page">

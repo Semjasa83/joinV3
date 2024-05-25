@@ -20,15 +20,15 @@ export class ContactsService {
   };
 
   public getContact(id: number) {
-    return this.http.get<Contact[]>(this.API_URL + `contacts/:${id}`);
+    return this.http.get<Contact[]>(this.API_URL + `contacts/${id}`);
   };
 
   public updateContact(id: number, contact: Contact) {
-    return this.http.put<Contact[]>(this.API_URL + `contacts/:${id}`, contact, this.httpOptions);
+    return this.http.put<Contact[]>(this.API_URL + `contacts/${id}`, contact, this.httpOptions);
   };
 
   public deleteContact(id: number) {
-    return this.http.delete<Contact[]>(this.API_URL + `contacts/:${id}`);
+    return this.http.delete<Contact[]>(this.API_URL + `contacts/${id}`);
   };
 
   public addContact(contact: Contact) {

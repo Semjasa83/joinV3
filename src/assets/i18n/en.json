@@ -1,37 +1,49 @@
 {
+  "Login": {
     "Login": {
-        "Login": {
-            "username": "Username",
-            "password": "Password",
-            "login": "Login",
-            "forgotPassword": "Forgot Password",
-            "register": "Register"
-        },
-        "ForgotPassword": {
-            "forgotPassword": "Forgot Password",
-            "email": "Email",
-            "send": "Send"
-        },
-        "Register": {
-            "register": "Register",
-            "username": "Username",
-            "email": "Email",
-            "password": "Password",
-            "confirmPassword": "Confirm Password"
-        }
+      "username": "Username",
+      "password": "Password",
+      "login": "Login",
+      "forgotPassword": "Forgot Password",
+      "register": "Register"
     },
-    "Home": {
-        "Routes": {
-            "dashboard": "Dashboard",
-            "addTask": "Add Task",
-            "board": "Board",
-            "contacts": "Contacts"
-        },
-        "Dashboard": {},
-        "AddTask": {},
-        "Board": {},
-        "Contacts": {
-            "AddContact": "Add new contact"
-        }
+    "ForgotPassword": {
+      "forgotPassword": "Forgot Password",
+      "email": "Email",
+      "send": "Send"
+    },
+    "Register": {
+      "register": "Register",
+      "username": "Username",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password"
     }
+  },
+  "Home": {
+    "Routes": {
+      "dashboard": "Dashboard",
+      "addTask": "Add Task",
+      "board": "Board",
+      "contacts": "Contacts"
+    },
+    "Dashboard": {},
+    "AddTask": {},
+    "Board": {},
+    "Contacts": {
+      "AddContact": "Add new contact"
+    },
+    "ContactDetail": {
+      "EditBtn": "Edit",
+      "DeleteBtn": "Delete",
+      "ContactInformation": "Contact Information",
+      "Email": "Email",
+      "Phone": "Phone"
+    },
+    "ContactEdit": {
+      "EditContact": "Edit contact",
+      "Save": "Save",
+      "Delete": "Delete"
+    }
+  }
 }

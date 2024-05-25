@@ -1,0 +1,78 @@
+@import "../../../../../../assets/scss/variables.scss";
+
+:host {
+  height: 100%;
+  padding-left: 3rem;
+  padding-top: 3rem;
+  width: 100%;
+}
+
+.contact-header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+
+  .contact-shorttag {
+    align-items: center;
+    border: 2px solid $surface-color;
+    border-radius: 100%;
+    color: $surface-color;
+    display: flex;
+    font-size: 2.5rem;
+    height: 6rem;
+    justify-content: center;
+    margin: 1rem;
+    width: 6rem;
+  }
+
+  .contact-header-info {
+    color: $background-contrast-color;
+    display: flex;
+    flex-direction: column;
+
+    .contact-name {
+      font-size: 2rem;
+      color: $background-contrast-color;
+      margin-bottom: 1rem;
+    }
+
+    .contact-option {
+      display: flex;
+      flex-direction: row;
+      :first-child {
+        margin-right: 1rem;
+      }
+
+      .contact-option-wrapper {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+
+
+        .icon {
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+}
+
+.contact-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  .contact-info {
+    font-size: 1.25rem;
+    color: $background-contrast-color;
+    margin: 1rem 0;
+  }
+  .contact-info-header {
+    font-weight: bold;
+    color: $background-contrast-color;
+    margin: 1rem 0;
+  }
+  .contact-email-data {
+    color: $primary-color
+  }
+
+
+}
