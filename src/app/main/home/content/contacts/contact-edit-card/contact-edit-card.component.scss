@@ -1,0 +1,71 @@
+@import "../../../../../../assets/scss/variables.scss";
+
+:host {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: fit-content;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba($surface-contrast-color, 0.1);
+}
+
+.left-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  background-color: $surface-dark-color;
+  border-radius: 1rem 0 0 1rem;
+  .left-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem;
+    width: 100%;
+    height: 100%;
+    .logo {
+      height: 4rem;
+      margin-bottom: 2rem;
+    }
+    .title {
+      color: $surface-color;
+      font-size: 3rem;
+      font-weight: 600;
+    }
+    .deko-line {
+      margin-top: 1rem;
+      border-top: 3px solid $secondary-color;
+      width: 4.5rem;
+    }
+  }
+}
+
+.right-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .contact-shorttag {
+    align-items: center;
+    border: 2px solid $surface-color;
+    border-radius: 100%;
+    color: $surface-color;
+    display: flex;
+    font-size: 2.5rem;
+    height: 6rem;
+    justify-content: center;
+    margin: 1rem;
+    width: 6rem;
+  }
+  .form-wrapper {
+    display: flex;
+    flex-direction: column;
+    .input-field {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      border: 1px solid $light-transparent-color;
+      border-radius: 0.5rem;
+      height: 2.5rem;
+    }
+  }
+}

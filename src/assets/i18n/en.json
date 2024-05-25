@@ -39,6 +39,11 @@
       "ContactInformation": "Contact Information",
       "Email": "Email",
       "Phone": "Phone"
+    },
+    "ContactEdit": {
+      "EditContact": "Edit contact",
+      "Save": "Save",
+      "Delete": "Delete"
     }
   }
 }

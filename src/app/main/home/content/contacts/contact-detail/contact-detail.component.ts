@@ -4,6 +4,7 @@ import {ContactsService} from "../../../../../services/contacts/contacts.service
 import {Contact} from "../../../../../interfaces/contact";
 import {NgStyle} from '@angular/common';
 import {TranslateModule} from "@ngx-translate/core";
+import {ContactEditCardComponent} from "../contact-edit-card/contact-edit-card.component";
 
 interface ContactResponse {
   contact: Contact;
@@ -14,7 +15,8 @@ interface ContactResponse {
   standalone: true,
   imports: [
     NgStyle,
-    TranslateModule
+    TranslateModule,
+    ContactEditCardComponent
   ],
   templateUrl: './contact-detail.component.html',
   styleUrl: './contact-detail.component.scss'
