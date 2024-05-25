@@ -1,20 +1,9 @@
-import {
-
-Component
-} from '@angular/core';
-import {
-
-ActivatedRoute
-} from "@angular/router";
-import {
-
-ContactsService
-} from "../../../../../services/contacts/contacts.service";
-import {
-
-Contact
-} from "../../../../../interfaces/contact";
-import { NgStyle } from '@angular/common';
+import {Component} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {ContactsService} from "../../../../../services/contacts/contacts.service";
+import {Contact} from "../../../../../interfaces/contact";
+import {NgStyle} from '@angular/common';
+import {TranslateModule} from "@ngx-translate/core";
 
 interface ContactResponse {
   contact: Contact;
@@ -24,7 +13,8 @@ interface ContactResponse {
   selector: 'app-contact-detail',
   standalone: true,
   imports: [
-    NgStyle
+    NgStyle,
+    TranslateModule
   ],
   templateUrl: './contact-detail.component.html',
   styleUrl: './contact-detail.component.scss'
@@ -41,7 +31,7 @@ constructor(private route: ActivatedRoute, private contactsService: ContactsServ
     this.getContact();
   }
 
-  public async getContact() {    
+  public async getContact() {
     this.route.params.subscribe(params => {
       this.contactsService.getContact(params['id']).subscribe((data: any) => {
 

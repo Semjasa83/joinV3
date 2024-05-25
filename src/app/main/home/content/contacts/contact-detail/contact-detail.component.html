@@ -1,30 +1,30 @@
 <div class="contact-header">
-    <div class="contact-shorttag" [ngStyle]="{'background-color': contactData.color}">
-      {{ contactData.firstName.charAt(0).toUpperCase() }}{{ contactData.lastName.charAt(0).toUpperCase() }}
-    </div>
+  <div [ngStyle]="{'background-color': contactData.color}" class="contact-shorttag">
+    {{ contactData.firstName.charAt(0).toUpperCase() }}{{ contactData.lastName.charAt(0).toUpperCase() }}
+  </div>
 
   <div class="contact-header-info">
-    <div class="name">
+    <div class="contact-name">
       {{ contactData.firstName }}{{ contactData.lastName }}
     </div>
     <div class="contact-option">
       <div class="contact-option-wrapper">
-        <span class="material-symbols-outlined">border_color</span>
-        <span>Edit</span>
+        <span class="material-symbols-outlined icon">edit</span>
+        <span>{{ 'Home.ContactDetail.EditBtn' | translate }}</span>
       </div>
       <div class="contact-option-wrapper">
-        <span class="material-symbols-outlined">delete</span>
-        <span>Delete</span>
+        <span class="material-symbols-outlined icon">delete</span>
+        <span>{{ 'Home.ContactDetail.DeleteBtn' | translate }}</span>
       </div>
     </div>
   </div>
 </div>
 
-<div class="contact-info">
-  <span>Contact Information</span>
-  <span>Email</span>
-  <span>{{contactData.email}}</span>
-  <span>Phone</span>
-  <span>{{contactData.phone}}</span>
+<div class="contact-info-wrapper">
+  <span class="contact-info">{{ 'Home.ContactDetail.ContactInformation' | translate }}</span>
+  <span class="contact-info-header">{{ 'Home.ContactDetail.Email' | translate }}</span>
+  <span class="contact-email-data">{{ contactData.email }}</span>
+  <span class="contact-info-header">{{ 'Home.ContactDetail.Phone' | translate }}</span>
+  <span class="contact-phone-data">{{ contactData.phone }}</span>
 </div>
 
