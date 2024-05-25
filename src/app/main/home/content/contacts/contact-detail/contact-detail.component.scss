@@ -1,9 +1,9 @@
 @import "../../../../../../assets/scss/variables.scss";
 
 :host {
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  padding-left: 3rem;
-  padding-top: 3rem;
   width: 100%;
 }
 
@@ -11,6 +11,7 @@
   align-items: center;
   display: flex;
   flex-direction: row;
+  margin-top: 1rem;
 
   .contact-shorttag {
     align-items: center;
@@ -60,6 +61,7 @@
 .contact-info-wrapper {
   display: flex;
   flex-direction: column;
+
   .contact-info {
     font-size: 1.25rem;
     color: $background-contrast-color;
@@ -73,6 +75,4 @@
   .contact-email-data {
     color: $primary-color
   }
-
-
 }

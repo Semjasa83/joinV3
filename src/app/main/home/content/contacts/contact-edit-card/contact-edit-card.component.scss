@@ -3,9 +3,10 @@
 :host {
   display: flex;
   flex-direction: row;
-  width: 80%;
+  width: 100%;
   height: fit-content;
-  background-color: white;
+  min-width: fit-content;
+  background-color: $surface-color;
   border-radius: 1rem;
   box-shadow: 0 0 10px rgba($surface-contrast-color, 0.1);
 }
@@ -13,29 +14,32 @@
 .left-wrapper {
   display: flex;
   flex-direction: column;
-  width: fit-content;
+  min-width: fit-content;
   background-color: $surface-dark-color;
   border-radius: 1rem 0 0 1rem;
+  white-space: nowrap;
+  padding: 2rem;
+
   .left-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 2rem;
     width: 100%;
     height: 100%;
+
     .logo {
-      height: 4rem;
+      height: 3rem;
       margin-bottom: 2rem;
     }
     .title {
       color: $surface-color;
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: 600;
     }
     .deko-line {
       margin-top: 1rem;
       border-top: 3px solid $secondary-color;
-      width: 4.5rem;
+      width: 4rem;
     }
   }
 }
@@ -44,28 +48,69 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  .contact-shorttag {
-    align-items: center;
-    border: 2px solid $surface-color;
-    border-radius: 100%;
-    color: $surface-color;
-    display: flex;
-    font-size: 2.5rem;
-    height: 6rem;
-    justify-content: center;
-    margin: 1rem;
-    width: 6rem;
+  width: 100%;
+  background-color: $surface-color;
+  border-radius: 0 1rem 1rem 0;
+  padding: 1rem 0;
+  position: relative;
+
+  .shorttag-wrapper {
+    margin: 3rem;
+
+    .contact-shorttag {
+      align-items: center;
+      border: 2px solid $surface-color;
+      border-radius: 100%;
+      color: $surface-color;
+      display: inline-flex;
+      font-size: 2.5rem;
+      min-height: 5rem;
+      justify-content: center;
+      min-width: 5rem;
+    }
   }
+
+  .close-icon {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+  }
+
+  .material-symbols-outlined {
+    font-variation-settings:
+      "FILL" 0,
+      "wght" 300,
+      "GRAD" -25,
+      "opsz" 20;
+  }
+
   .form-wrapper {
     display: flex;
     flex-direction: column;
-    .input-field {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      border: 1px solid $light-transparent-color;
-      border-radius: 0.5rem;
-      height: 2.5rem;
+    width: 100%;
+    margin-right: 2rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+
+    .input-wrapper {
+      position: relative;
+      margin-bottom: 1rem;
+
+      .input-field {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 2rem;
+        width: 100%;
+        border: none;
+        border: 1px solid $light-transparent-color;
+        border-radius: 0.5rem;
+      }
+      .icon {
+        position: absolute;
+        right: 0.25rem;
+        top: 0.25rem;
+      }
     }
   }
 }

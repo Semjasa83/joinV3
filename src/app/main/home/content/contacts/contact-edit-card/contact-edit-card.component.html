@@ -1,21 +1,43 @@
-<div class="left-wrapper">
-  <div class="left-content">
-    <img class="logo" src="../../../../../../assets/pictures/Capa_dark.svg">
-    <span class="title">{{'Home.ContactEdit.EditContact' | translate}}</span>
-    <div class="deko-line"></div>
-  </div>
-</div>
 
-<div class="right-wrapper">
-  <div [ngStyle]="{'background-color': 'red'}" class="contact-shorttag">
-    AE
+  <div class="left-wrapper">
+    <div class="left-content">
+      <img class="logo" src="../../../../../../assets/pictures/Capa_dark.svg">
+      <span class="title">{{'Home.ContactEdit.EditContact' | translate}}</span>
+      <div class="deko-line"></div>
+    </div>
   </div>
-  <div class="form-wrapper">
-    <div class="input-field">
-      <input>
-      <span class="material-symbols-outlined">person</span>
+  
+  <div class="right-wrapper">
+    <div class="shorttag-wrapper">
+      <div [ngStyle]="{'background-color': 'red'}" class="contact-shorttag">
+        AE
+      </div>
     </div>
 
+    <div class="form-wrapper">
+      <div class="input-wrapper">
+        <input class="input-field">
+        <span class="material-symbols-outlined icon">person</span>
+      </div>
+      <div class="input-wrapper">
+        <input class="input-field">
+        <span class="material-symbols-outlined icon">person</span>
+      </div>
+      <div class="input-wrapper">
+        <input class="input-field">
+        <span class="material-symbols-outlined icon">mail</span>
+      </div>
+      <div class="input-wrapper">
+        <input class="input-field">
+        <span class="material-symbols-outlined icon">call</span>
+      </div>
 
+      <div class="button-wrapper">
+        <button>DELETE</button>
+        <button>SAVE</button>
+      </div>
+    </div>
+
+    <span class="material-symbols-outlined close-icon">close</span>
   </div>
-</div>
+
