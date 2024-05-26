@@ -1,43 +1,57 @@
+<div class="left-wrapper">
+  <div class="left-content">
+    <img class="logo" src="../../../../../../assets/pictures/Capa_dark.svg" />
+    <span class="title">{{ "Home.ContactEdit.EditContact" | translate }}</span>
+    <div class="deko-line"></div>
+  </div>
+</div>
 
-  <div class="left-wrapper">
-    <div class="left-content">
-      <img class="logo" src="../../../../../../assets/pictures/Capa_dark.svg">
-      <span class="title">{{'Home.ContactEdit.EditContact' | translate}}</span>
-      <div class="deko-line"></div>
+<div class="right-wrapper">
+  <div class="shorttag-wrapper">
+    <div [ngStyle]="{ 'background-color': 'red' }" class="contact-shorttag">
+      AE
     </div>
   </div>
-  
-  <div class="right-wrapper">
-    <div class="shorttag-wrapper">
-      <div [ngStyle]="{'background-color': 'red'}" class="contact-shorttag">
-        AE
-      </div>
+
+  <div class="form-wrapper">
+    <div class="input-wrapper">
+      <input class="input-field" />
+      <span class="material-symbols-outlined icon">person</span>
+    </div>
+    <div class="input-wrapper">
+      <input class="input-field" />
+      <span class="material-symbols-outlined icon">person</span>
+    </div>
+    <div class="input-wrapper">
+      <input class="input-field" />
+      <span class="material-symbols-outlined icon">mail</span>
+    </div>
+    <div class="input-wrapper">
+      <input class="input-field" />
+      <span class="material-symbols-outlined icon">call</span>
     </div>
 
-    <div class="form-wrapper">
-      <div class="input-wrapper">
-        <input class="input-field">
-        <span class="material-symbols-outlined icon">person</span>
+    <div class="button-wrapper">
+      <div class="btn-size">
+        <app-button
+        [bgrColor]="'error-color'"
+        [icon]="'delete'"
+        [text]="'Home.ContactEdit.Delete' | translate"
+        [txtColor]="'error-contrast-color'"
+      ></app-button>
       </div>
-      <div class="input-wrapper">
-        <input class="input-field">
-        <span class="material-symbols-outlined icon">person</span>
-      </div>
-      <div class="input-wrapper">
-        <input class="input-field">
-        <span class="material-symbols-outlined icon">mail</span>
-      </div>
-      <div class="input-wrapper">
-        <input class="input-field">
-        <span class="material-symbols-outlined icon">call</span>
+      <div class="btn-size ml">
+        <app-button
+        [bgrColor]="'surface-dark-color'"
+        [icon]="'check'"
+        [text]="'Home.ContactEdit.Save' | translate"
+        [txtColor]="'surface-dark-contrast-color'"
+      ></app-button>
       </div>
 
-      <div class="button-wrapper">
-        <button>DELETE</button>
-        <button>SAVE</button>
-      </div>
+
     </div>
-
-    <span class="material-symbols-outlined close-icon">close</span>
   </div>
 
+  <span class="material-symbols-outlined close-icon">close</span>
+</div>

@@ -1,4 +1,4 @@
-@import '../../../../assets/scss/variables.scss';
+@import "../../../../assets/scss/variables.scss";
 
 :host {
     align-items: center;
@@ -11,11 +11,11 @@
 
 .btn-wrapper {
     align-items: center;
-    border-radius: .625rem;
+    border-radius: 0.625rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 0.5rem;
+    padding: 0.5rem 0.75rem;
     width: 100%;
 }
 
@@ -24,5 +24,10 @@
 }
 
 .btn-icon {
-    margin: 0 0.5rem;
+    margin-left: 0.5rem;
+    font-variation-settings:
+        "FILL" 0,
+        "wght" 300,
+        "GRAD" -25,
+        "opsz" 20;
 }
