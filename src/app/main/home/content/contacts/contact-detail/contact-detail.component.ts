@@ -30,15 +30,15 @@ constructor(private route: ActivatedRoute, private contactsService: ContactsServ
 
   ngOnInit() {
 
-    this.getContact();
+    // this.getContact();
   }
 
-  public async getContact() {
-    this.route.params.subscribe(params => {
-      this.contactsService.getContact(params['id']).subscribe((data: any) => {
+  // public async getContact() {
+  //   this.route.params.subscribe(params => {
+  //     this.contactsService.getContact(params['id']).subscribe((data: any) => {
 
-        this.contactData = data.contact;
-      });
-    });
-       }
+  //       this.contactData = data.contact;
+  //     });
+  //   });
+  //      }
 }
