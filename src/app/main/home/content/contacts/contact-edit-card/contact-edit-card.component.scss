@@ -52,10 +52,11 @@
   flex-direction: row;
   padding: 1rem 0;
   position: relative;
+  min-width: 12rem;
   width: 100%;
 
   .shorttag-wrapper {
-    margin: 3rem;
+    margin: 2rem;
 
     .contact-shorttag {
       align-items: center;
@@ -106,6 +107,7 @@
         flex-direction: row;
         height: 2rem;
         width: 100%;
+        min-width: 10rem;
       }
       .icon {
         position: absolute;
@@ -120,8 +122,10 @@
   display: flex;
   flex-direction: row;
   margin-top: 1rem;
+  width: 80%;
   .btn-size {
     min-width: 7rem;
+    width: 100%;
   }
   .ml {
     margin-left: 1rem;

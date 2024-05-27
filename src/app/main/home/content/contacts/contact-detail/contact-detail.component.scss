@@ -48,8 +48,10 @@
         align-items: center;
         display: flex;
         flex-direction: row;
-
-
+        &:hover{
+          cursor: pointer;
+          color: $secondary-color;
+        }
         .icon {
           margin-right: 0.5rem;
         }

@@ -29,7 +29,6 @@ export class ContactDetailComponent {
   }
 
   ngOnInit() {
-
     this.getContact();
   }
 
@@ -39,5 +38,26 @@ export class ContactDetailComponent {
         this.contactData = data.contact;
       });
     });
+  }
+
+  public editContact(contactData: any) {
+    console.log(
+      this.route.params.subscribe(params => {
+        this.contactsService.getContact(contactData.id).subscribe((data: any) => {
+          console.log(data.contact);
+          
+        });
+      })
+    );
+     
+    
+  }
+
+  public async deleteContact(id: string) {
+    //this.contactsService.deleteContact(id);
+    console.log('tsfile',this.contactsService.deleteContact(id).subscribe((data: any) => {
+      console.log(data);
+    }));
+    
   }
 }

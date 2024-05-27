@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http'; // Import the HttpClient modu
   providedIn: 'root'
 })
 export class ContactsService {
+
   private API_URL = 'http://localhost:3000/api/';
 
   httpOptions = {
@@ -19,16 +20,16 @@ export class ContactsService {
     return this.http.get<Contact[]>(this.API_URL + 'contacts');
   };
 
-  public getContact(id: number) {
+  public getContact(id: string) {
     return this.http.get<Contact[]>(this.API_URL + `contacts/${id}`);
   };
 
-  public updateContact(id: number, contact: Contact) {
+  public updateContact(id: string, contact: Contact) {
     return this.http.put<Contact[]>(this.API_URL + `contacts/${id}`, contact, this.httpOptions);
   };
 
-  public deleteContact(id: number) {
-    return this.http.delete<Contact[]>(this.API_URL + `contacts/${id}`);
+  public deleteContact(id: string) {
+    return this.http.delete<any>(this.API_URL + `contacts/${id}`);
   };
 
   public addContact(contact: Contact) {
