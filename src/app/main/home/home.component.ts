@@ -25,9 +25,6 @@ export class HomeComponent {
 
   constructor() { };
 
-  public toggleSidebar() {
-    this.sidebarToggle = !this.sidebarToggle
-    console.log('toggle');
-    
-  };
+  public toggleSidebar() {this.sidebarToggle = !this.sidebarToggle };
+
 }

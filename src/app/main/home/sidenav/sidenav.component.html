@@ -6,7 +6,7 @@
     <ng-container *ngIf="i > 0">
         <a class="navigation-option" [routerLink]="route.path" routerLinkActive="isActive" ariaCurrentWhenActive="page">
             <div class="navigation-route-wrapper">
-                <span class="material-symbols-outlined">{{ route.data.icon }}</span>
+                <img class="navigation-icon" src="../../../../assets/icons/{{ route.data.icon }}" alt="{{ route.data.icon }}">
                 <span class="navigation-route-name">{{ route.data.name }}</span>
             </div>
         </a>

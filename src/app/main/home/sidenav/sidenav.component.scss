@@ -43,7 +43,6 @@ a {
   padding-left: 15%;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  padding-right: auto;
   background-color: transparent;
   color: $surface-dark-contrast-color;
   text-decoration: none;
@@ -56,13 +55,10 @@ a {
     align-items: center;
     justify-content: flex-start;
     color: $surface-dark-contrast-color;
-    .material-symbols-outlined {
+
+    .navigation-icon{
       padding-right: 0.5rem;
-        font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 40
+      opacity: 70%;
     }
     .navigation-route-name {
       font-size: 1rem;

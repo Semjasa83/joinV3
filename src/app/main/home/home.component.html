@@ -1,6 +1,10 @@
 <div class="sidebar-toggle-wrapper">
     @if(sidebarToggle){<app-sidenav></app-sidenav>}
-    <button class="sidebar-toggle" (click)="toggleSidebar()">-></button>
+    <button class="sidebar-toggle-button"
+            [ngClass]="{ 'sidebar-toggle-open' : sidebarToggle, 'sidebar-toggle-close' : !sidebarToggle }"
+            (click)="toggleSidebar()" id="navbarToggleButton">
+      <img class="navigation-icon" src="../../../../assets/icons/arrow.svg" alt="arrow.svg">
+    </button>
 </div>
 
 <div class="home-content-wrapper">

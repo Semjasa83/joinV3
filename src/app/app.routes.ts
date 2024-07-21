@@ -12,13 +12,13 @@ export const routes: Routes = [
     path: 'home', component: HomeComponent,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: DashboardComponent, data: { name: 'Dashboard', icon: 'space_dashboard' } },
-      { path: 'addtask', component: AddTaskComponent, data: { name: 'Add Task', icon: 'edit_square' } },
-      { path: 'board', component: BoardComponent, data: { name: 'Board', icon: 'calendar_view_week' } },
-      { path: 'contacts', component: ContactsComponent, data: { name: 'Contacts', icon: 'perm_contact_calendar'},
-          children: [
-            { path: ':id', component: ContactDetailComponent }
-            ]
+      { path: 'dashboard', component: DashboardComponent, data: { name: 'Dashboard', icon: 'space_dashboard.svg' } },
+      { path: 'addtask', component: AddTaskComponent, data: { name: 'Add Task', icon: 'edit_square.svg' } },
+      { path: 'board', component: BoardComponent, data: { name: 'Board', icon: 'calendar_view_week.svg' } },
+      { path: 'contacts', component: ContactsComponent, data: { name: 'Contacts', icon: 'perm_contact_calendar.svg'},
+          // children: [
+          //   { path: ':id', component: ContactDetailComponent }
+          //   ]
         },
       // { path: '**', component: DashboardComponent },
     ],
