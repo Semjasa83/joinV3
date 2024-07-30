@@ -2,8 +2,11 @@
 
   <section class="contact-list-wrapper">
     <div class="add-contact-btn">
-      <app-button [bgrColor]="'surface-dark-color'" [icon]="'person_add'"
-                  [text]="'Home.Contacts.AddContact' | translate" [txtColor]="'surface-dark-contrast-color'">
+      <app-button [bgrColor]="'surface-dark-color'"
+                  [icon]="'person_add'"
+                  [text]="'Home.Contacts.AddContact' | translate"
+                  [txtColor]="'surface-dark-contrast-color'"
+                  (click)="showAddContact = true">
       </app-button>
     </div>
 
@@ -27,7 +30,6 @@
     </div>
   </section>
 
-
   <section class="detail-wrapper">
     <div class="detail-headline-wrapper">
       <span class="detail-headline">Contacts</span>
@@ -35,3 +37,7 @@
     </div>
   </section>
 </div>
+
+<ng-container *ngIf="showAddContact">
+  <app-add-contact (closeDialogEvent)="showAddContact = false"></app-add-contact>
+</ng-container>

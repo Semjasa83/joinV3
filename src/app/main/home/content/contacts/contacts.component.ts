@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
-import { ContactsService } from '../../../../services/contacts/contacts.service';
-import { Contact } from "../../../../interfaces/contact";
-import { ButtonComponent } from '../../../utility/button/button.component';
-import { TranslateModule } from '@ngx-translate/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { NgFor, NgStyle} from '@angular/common';
+import {Component} from '@angular/core';
+import {ContactsService} from '../../../../services/contacts/contacts.service';
+import {Contact} from "../../../../interfaces/contact";
+import {ButtonComponent} from '../../../utility/button/button.component';
+import {TranslateModule} from '@ngx-translate/core';
+import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {NgFor, NgIf, NgStyle} from '@angular/common';
+import {AddContactComponent} from "./add-contact/add-contact.component";
 
 @Component({
   selector: 'app-contacts',
@@ -17,15 +18,16 @@ import { NgFor, NgStyle} from '@angular/common';
     RouterLinkActive,
     NgFor,
     NgStyle,
+    NgIf,
+    AddContactComponent
   ],
   providers: [
     ContactsService,
-    { provide: 'Object', useValue: Object }
+    {provide: 'Object', useValue: Object}
   ],
   templateUrl: './contacts.component.html',
   styleUrl: './contacts.component.scss'
 })
-
 
 export class ContactsComponent {
 
@@ -34,35 +36,30 @@ export class ContactsComponent {
   public groupLetters: string[] = [];
   public groupedContactsArray: Contact[] = [];
   public groupArray: any[] = [];
+  public showAddContact: boolean = false;
 
-  constructor(public contactsService: ContactsService) { }
-
-  public ngOnInit() {
+  constructor(public contactsService: ContactsService) {
     this.getContactList();
-  };
-
-  public ngOnAfterContentInit() {
-
   }
 
-  public async getContactList(): Promise<void> {
+  private async getContactList(): Promise<void> {
     this.contacts = [];
     this.contactsService.getAllContacts().subscribe(data => {
       this.sortContacts(data);
     });
   };
 
-  public async sortContacts(data: any): Promise<void> {
+  private async sortContacts(data: any): Promise<void> {
     const arr = Object.keys(data);
     const key = arr[0];
     this.contacts = data[key];
     this.contacts?.sort((a, b) => {
       return a.lastName.localeCompare(b.lastName);
-    })
+    });
     await this.getGroupedContacts();
   };
 
-  public async getGroupedContacts(): Promise<void> {
+  private async getGroupedContacts(): Promise<void> {
     this.groupContacts = {};
     this.contacts.forEach((contact) => {
       const letter = contact.lastName.charAt(0).toUpperCase();
@@ -75,7 +72,7 @@ export class ContactsComponent {
   };
 
 
-  public async renderGroupedContacts() {
+  private async renderGroupedContacts() {
     const arr = Object.entries(this.groupContacts);
     arr.forEach((group) => {
       this.groupLetters.push(group[0]);
@@ -85,17 +82,12 @@ export class ContactsComponent {
       }
       this.groupArray.push(this.groupedContactsArray);
       this.groupedContactsArray = [];
-    }
-    );
+    });
   }
 
   public openContactDetails(contact: Contact) {
-    console.log(contact);
-
+    console.log(contact)
   }
-
-
-
 
   //auslagern create contact!!!!
   public randomColorPicker() {
