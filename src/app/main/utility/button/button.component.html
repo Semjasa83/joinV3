@@ -1,6 +1,7 @@
 <div class="btn-wrapper" [ngClass]="[bgrColor, txtColor]" (click)="onClick()">
     <span class="btn-text">{{text}}</span>
-  <img class="navigation-icon" src="../../../../assets/icons/{{icon}}.svg" alt="{{ icon }}.svg">
-
+  @if(icon){
+    <img class="navigation-icon" src="../../../../assets/icons/{{icon}}.svg" alt="{{ icon }}.svg">
+  }
 </div>
 

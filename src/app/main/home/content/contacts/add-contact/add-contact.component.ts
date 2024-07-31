@@ -1,9 +1,14 @@
 import {Component, EventEmitter, Output} from '@angular/core';
+import {TranslateModule} from "@ngx-translate/core";
+import {ButtonComponent} from "../../../../utility/button/button.component";
 
 @Component({
   selector: 'app-add-contact',
   standalone: true,
-  imports: [],
+  imports: [
+    TranslateModule,
+    ButtonComponent
+  ],
   templateUrl: './add-contact.component.html',
   styleUrl: './add-contact.component.scss'
 })

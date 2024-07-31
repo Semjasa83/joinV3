@@ -44,6 +44,16 @@
       "EditContact": "Edit contact",
       "Save": "Save",
       "Delete": "Delete"
+    },
+    "ContactAdd": {
+      "AddContact": "Add contact",
+      "SubHeadline": "Tasks are better with a team!",
+      "CreateContact": "Create contact",
+      "FirstName": "Firstname",
+      "LastName": "Lastname",
+      "Phone": "Phone",
+      "Mobile": "Mobile",
+      "Email": "Email"
     }
   }
 }

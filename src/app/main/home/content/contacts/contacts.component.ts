@@ -36,7 +36,7 @@ export class ContactsComponent {
   public groupLetters: string[] = [];
   public groupedContactsArray: Contact[] = [];
   public groupArray: any[] = [];
-  public showAddContact: boolean = false;
+  public showAddContact: boolean = true;
 
   constructor(public contactsService: ContactsService) {
     this.getContactList();
