@@ -26,15 +26,23 @@
   .sidebar-btn {
     position: absolute;
     display: flex;
-    // justify-content: center;
     align-items: center;
     bottom: 4rem;
     width: 100%;
     .sidebar-toggle-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: unset;
+      height: 3rem;
+      width: 3rem;
+      border-radius: 50%;
+      margin-left: 3rem;
       .navigation-icon {
         transform: rotate(-180deg);
       }
     }
+
     &:hover {
       .sidebar-toggle-open {
         transition: all 0.5s ease-in-out;
@@ -44,34 +52,44 @@
           transition: 0.5s ease-in-out;
         }
       }
+
+      .sidebar-toggle-close{
+        .navigation-icon {
+          transform: rotate(0deg);
+          transition: 0.5s ease-in-out;
+        }
+      } 
     }
     &:not(:hover){
       .sidebar-toggle-open {
         transition: all 0.75s ease-in-out;
+        .navigation-icon {
+          transform: rotate(-180deg);
+          transition: 0.5s ease-in-out;
+        }
+      }
+
+      .sidebar-toggle-close {
+        .navigation-icon {
+          transform: rotate(-90deg);
+          transition: 0.5s ease-in-out;
+        }
+      }
+    }
+
+    &:not(.sidebar-btn-open) {
+      left: 0;
+      width: 6rem !important;
+    }
+
+    &:has(.sidebar-btn-open) {
+      width: 100% !important;
+      .sidebar-toggle-button {
+        transform: none;
       }
     }
   }
-  .sidebar-btn-closed {
-    position: absolute;
-    align-items: center;
-    bottom: 4rem;
-    width: 11rem;
-    left: 0;
-    .sidebar-toggle-close {
-      margin-left: 2rem;
-    }
-  }
-}
 
-.sidebar-toggle-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: unset;
-  height: 3rem;
-  width: 3rem;
-  border-radius: 50%;
-  margin-left: 3rem;
 }
 
 .sidebar-toggle-open {
@@ -80,12 +98,7 @@
 
 .sidebar-toggle-close {
   border: 1px solid $surface-dark-color;
-  background-color: $surface-dark-color;
-  margin-left: 0;
-  .navigation-icon {
-    transform: rotate(-180deg);
-    transition: all 0.25s ease-in-out;
-  }
+  background-color: $surface-dark-color !important;
 }
 
 app-header {
