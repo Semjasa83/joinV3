@@ -1,11 +1,12 @@
 import {Component} from '@angular/core';
 import {ContactsService} from '../../../../services/contacts/contacts.service';
 import {Contact} from "../../../../interfaces/contact";
-import {ButtonComponent} from '../../../utility/button/button.component';
+
 import {TranslateModule} from '@ngx-translate/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {NgFor, NgIf, NgStyle} from '@angular/common';
 import {AddContactComponent} from "./add-contact/add-contact.component";
+import { ButtonComponent } from '../../../utility/button/button.component';
 
 @Component({
   selector: 'app-contacts',

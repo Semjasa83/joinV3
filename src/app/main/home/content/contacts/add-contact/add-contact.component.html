@@ -16,32 +16,36 @@
     </div>
 
     <div class="dialog-content">
-      <form class="content-wrapper">
+      <form class="content-wrapper" [formGroup]="addContactForm">
         <div class="input-wrapper">
-          <input placeholder="{{'Home.ContactAdd.FirstName' | translate}}">
+          <input placeholder="{{'Home.ContactAdd.FirstName' | translate}}" type="text" formControlName="firstName">
           <span class="material-symbols-outlined icon">person</span>
         </div>
         <div class="input-wrapper">
-          <input placeholder="{{'Home.ContactAdd.LastName' | translate}}">
+          <input placeholder="{{'Home.ContactAdd.LastName' | translate}}" type="text" formControlName="lastName">
           <span class="material-symbols-outlined icon">person</span>
         </div>
         <div class="input-wrapper">
-          <input placeholder="{{'Home.ContactAdd.Phone' | translate}}">
+          <input placeholder="{{'Home.ContactAdd.Phone' | translate}}" type="number" formControlName="phone">
           <span class="material-symbols-outlined icon">call</span>
         </div>
-        <div class="input-wrapper">
+        <!-- <div class="input-wrapper">
           <input placeholder="{{'Home.ContactAdd.Mobile' | translate}}">
           <span class="material-symbols-outlined icon">phone_iphone</span>
-        </div>
+        </div> -->
         <div class="input-wrapper">
-          <input placeholder="{{'Home.ContactAdd.Email' | translate}}">
+          <input placeholder="{{'Home.ContactAdd.Email' | translate}}" type="email" formControlName="email">
           <span class="material-symbols-outlined icon">mail</span>
         </div>
         <div class="btn-wrapper">
-          <app-button [bgrColor]="'surface-dark-color'"
+          <!-- <app-button [bgrColor]="'surface-dark-color'"
                       [text]="'Home.ContactAdd.CreateContact' | translate"
-                      [txtColor]="'surface-dark-contrast-color'">
-          </app-button>
+                      [txtColor]="'surface-dark-contrast-color'"
+                      (ngSubmit)="createContact()">
+          </app-button> -->
+          <button class="sendButton" type="submit" [disabled]="!addContactForm.valid" (click)="createContact()">
+            {{ 'Home.ContactAdd.CreateContact' | translate }}
+          </button>
         </div>
       </form>
     </div>
