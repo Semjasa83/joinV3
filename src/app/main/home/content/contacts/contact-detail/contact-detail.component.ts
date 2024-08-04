@@ -1,10 +1,10 @@
-import {Component} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {ContactsService} from "../../../../../services/contacts/contacts.service";
-import {Contact} from "../../../../../interfaces/contact";
-import {NgStyle} from '@angular/common';
-import {TranslateModule} from "@ngx-translate/core";
-import {ContactEditCardComponent} from "../contact-edit-card/contact-edit-card.component";
+import { Component } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
+import { ContactsService } from "../../../../../services/contacts/contacts.service";
+import { Contact } from "../../../../../interfaces/contact";
+import { NgStyle } from '@angular/common';
+import { TranslateModule } from "@ngx-translate/core";
+import { ContactEditCardComponent } from "../contact-edit-card/contact-edit-card.component";
 
 interface ContactResponse {
   contact: Contact;
@@ -25,8 +25,8 @@ interface ContactResponse {
 export class ContactDetailComponent {
   public contactData: Contact = new Contact();
 
-constructor(private route: ActivatedRoute, private contactsService: ContactsService) {
-}
+  constructor(private route: ActivatedRoute, private contactsService: ContactsService) {
+  }
 
   ngOnInit() {
 
@@ -36,9 +36,8 @@ constructor(private route: ActivatedRoute, private contactsService: ContactsServ
   public async getContact() {
     this.route.params.subscribe(params => {
       this.contactsService.getContact(params['id']).subscribe((data: any) => {
-
         this.contactData = data.contact;
       });
     });
-       }
+  }
 }

@@ -55,7 +55,7 @@ export class ContactsComponent {
     const key = arr[0];
     this.contacts = data[key];
     this.contacts?.sort((a, b) => {
-      return a.lastName.localeCompare(b.lastName);
+        return (a.lastName ?? '').localeCompare(b.lastName ?? '');
     });
     await this.getGroupedContacts();
   };
@@ -63,12 +63,13 @@ export class ContactsComponent {
   private async getGroupedContacts(): Promise<void> {
     this.groupContacts = {};
     this.contacts.forEach((contact) => {
-      const letter = contact.lastName.charAt(0).toUpperCase();
-      if (!this.groupContacts[letter]) {
-        this.groupContacts[letter] = [];
-      }
-      this.groupContacts[letter].push(contact);
-    });
+      if (contact.lastName) {
+        const letter = contact.lastName.charAt(0).toUpperCase();
+        if (!this.groupContacts[letter]) {
+          this.groupContacts[letter] = [];
+        }
+        this.groupContacts[letter].push(contact);
+      }    });
     await this.renderGroupedContacts();
   };
 
@@ -90,9 +91,4 @@ export class ContactsComponent {
     console.log(contact)
   }
 
-  //auslagern create contact!!!!
-  public randomColorPicker() {
-    let varColor = Math.floor(Math.random() * 359);
-    return `hsl(${varColor}, 75%, 75%)`;
-  }
 }

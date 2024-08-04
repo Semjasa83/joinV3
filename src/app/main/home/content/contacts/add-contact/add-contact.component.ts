@@ -38,13 +38,23 @@ export class AddContactComponent {
     this.closeDialogEvent.emit();
   }
 
-  public createContact() {
+  public addContact() {
+    this.addNullValue();
+    
 
-    let phone = this.addContactForm.get('phone')?.value;
-    let completePhone = '0' + phone;
-    this.addContactForm.patchValue({ phone: completePhone });
 
     console.log(this.addContactForm.value);
     this.addContactForm.reset(this.addContactForm.value);
+  }
+
+  private addNullValue() {
+    let phone = this.addContactForm.get('phone')?.value;
+    let completePhone = '0' + phone;
+    this.addContactForm.patchValue({ phone: completePhone });
+  }
+
+  private randomColorPicker() {
+    let varColor = Math.floor(Math.random() * 359);
+    return `hsl(${varColor}, 75%, 75%)`;
   }
 }

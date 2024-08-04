@@ -43,7 +43,7 @@
                       [txtColor]="'surface-dark-contrast-color'"
                       (ngSubmit)="createContact()">
           </app-button> -->
-          <button class="sendButton" type="submit" [disabled]="!addContactForm.valid" (click)="createContact()">
+          <button class="sendButton" type="submit" [disabled]="!addContactForm.valid" (click)="addContact()">
             {{ 'Home.ContactAdd.CreateContact' | translate }}
           </button>
         </div>

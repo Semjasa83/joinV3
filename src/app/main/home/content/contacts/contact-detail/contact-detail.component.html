@@ -1,6 +1,6 @@
 <div class="contact-header">
   <div [ngStyle]="{'background-color': contactData.color}" class="contact-shorttag">
-    {{ contactData.firstName.charAt(0).toUpperCase() }}{{ contactData.lastName.charAt(0).toUpperCase() }}
+    {{ contactData.firstName?.charAt(0)?.toUpperCase() }}{{ contactData.lastName?.charAt(0)?.toUpperCase() }}
   </div>
 
   <div class="contact-header-info">
