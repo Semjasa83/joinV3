@@ -3,6 +3,7 @@ import { TranslateModule } from "@ngx-translate/core";
 import { ContactsService } from '../../../../../services/contacts/contacts.service';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators, } from '@angular/forms';
 import { ButtonComponent } from '../../../../utility/button/button.component';
+import { Contact } from '../../../../../interfaces/contact';
 
 @Component({
   selector: 'app-add-contact',
@@ -24,7 +25,7 @@ export class AddContactComponent {
   addContactForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
-    phone: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
+    phone: new FormControl( null ),
     email: new FormControl('', [Validators.required, Validators.email])
   });
 
@@ -38,19 +39,25 @@ export class AddContactComponent {
     this.closeDialogEvent.emit();
   }
 
-  public addContact() {
-    this.addNullValue();
-    
-
-
-    console.log(this.addContactForm.value);
+  public async addContact() {
+    const newContact: Contact = {
+      firstName: this.addContactForm.get('firstName')!.value,
+      lastName: this.addContactForm.get('lastName')!.value,
+      email: this.addContactForm.get('email')!.value,
+      phone: this.addContactForm.get('phone')!.value,
+      address: {
+        street: '',
+        streetnumber: null,
+        city: '',
+        zip: null,
+        country: ''
+      },
+      color: this.randomColorPicker(),
+    };
+    console.log(newContact);
+    this.contactService.addContact(newContact);
     this.addContactForm.reset(this.addContactForm.value);
-  }
-
-  private addNullValue() {
-    let phone = this.addContactForm.get('phone')?.value;
-    let completePhone = '0' + phone;
-    this.addContactForm.patchValue({ phone: completePhone });
+    this.closeDialog();
   }
 
   private randomColorPicker() {

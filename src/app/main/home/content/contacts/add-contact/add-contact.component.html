@@ -16,7 +16,7 @@
     </div>
 
     <div class="dialog-content">
-      <form class="content-wrapper" [formGroup]="addContactForm">
+      <form class="content-wrapper" [formGroup]="addContactForm" (ngSubmit)="addContact()">
         <div class="input-wrapper">
           <input placeholder="{{'Home.ContactAdd.FirstName' | translate}}" type="text" formControlName="firstName">
           <span class="material-symbols-outlined icon">person</span>
@@ -43,7 +43,7 @@
                       [txtColor]="'surface-dark-contrast-color'"
                       (ngSubmit)="createContact()">
           </app-button> -->
-          <button class="sendButton" type="submit" [disabled]="!addContactForm.valid" (click)="addContact()">
+          <button class="sendButton" type="submit" [disabled]="!addContactForm.valid">
             {{ 'Home.ContactAdd.CreateContact' | translate }}
           </button>
         </div>

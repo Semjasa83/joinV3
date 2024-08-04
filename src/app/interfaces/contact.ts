@@ -3,30 +3,28 @@ export class Contact {
     firstName: string | null;
     lastName: string | null;
     email: string | null;
-    phone: number;
+    phone: number | null;
     address: {
         street: string | null;
-        streetnumber: string | null;
+        streetnumber: number | null;
         city: string | null;
-        zip: number;
+        zip: number | null;
         country: string | null;
     };
-    id: string;
     color: string;
 
     constructor (obj?: any) {
         this.firstName = obj ? obj.firstName : '';
         this.lastName = obj ? obj.lastName : '';
         this.email = obj ? obj.email : '';
-        this.phone = obj ? obj.phone : '';
+        this.phone = obj ? obj.phone : null;
         this.address = obj ? obj.address : {
             street: '',
-            streetnumber: '',
+            streetnumber: null,
             city: '',
-            zip: '',
+            zip: null,
             country: ''
         };
-        this.id = obj ? obj.id : '';
         this.color = obj ? obj.color : '';
     }
 
