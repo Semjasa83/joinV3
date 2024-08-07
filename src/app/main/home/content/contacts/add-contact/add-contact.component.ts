@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { TranslateModule } from "@ngx-translate/core";
 import { ContactsService } from '../../../../../services/contacts/contacts.service';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators, } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators, } from '@angular/forms';
 import { ButtonComponent } from '../../../../utility/button/button.component';
-// import { Contact } from '../../../../../interfaces/contact';
 import {lastValueFrom} from "rxjs";
 import {Contact} from "../../../../../interfaces/contact.interface";
+import {NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-add-contact',
@@ -14,6 +14,7 @@ import {Contact} from "../../../../../interfaces/contact.interface";
     TranslateModule,
     ButtonComponent,
     ReactiveFormsModule,
+    NgOptimizedImage,
   ],
   templateUrl: './add-contact.component.html',
   styleUrl: './add-contact.component.scss'

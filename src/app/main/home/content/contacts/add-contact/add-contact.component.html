@@ -1,21 +1,19 @@
 <div class="dialog-contact" (click)="closeDialog()">
-  <div class="add-contact-wrapper" (click)="stopPropagation($event)">
+  <div class="add-contact-wrapper">
     <span class="material-symbols-outlined close-icon" (click)="closeDialog()">close</span>
 
-    <div class="dialog-header">
-
+    <div class="dialog-header" (click)="stopPropagation($event)">
       <div class="dialog-wrapper">
         <span class="headline">{{ "Home.ContactAdd.AddContact" | translate }}</span>
         <span class="sub-headline">{{ "Home.ContactAdd.SubHeadline" | translate }}</span>
         <div class="header-line"></div>
         <div class="circle">
-          <img class="navigation-icon" src="../../../../assets/icons/person.svg" alt="person">
+          <img class="navigation-icon" ngSrc="./././assets/icons/person.svg" alt="person" width="6rem" height="6rem">
         </div>
       </div>
-
     </div>
 
-    <div class="dialog-content">
+    <div class="dialog-content" (click)="stopPropagation($event)">
       <form class="content-wrapper" [formGroup]="addContactForm" (ngSubmit)="addContact()">
         <div class="input-wrapper">
           <input placeholder="{{'Home.ContactAdd.FirstName' | translate}}" type="text" formControlName="firstName">
@@ -29,20 +27,11 @@
           <input placeholder="{{'Home.ContactAdd.Phone' | translate}}" type="number" formControlName="phone">
           <span class="material-symbols-outlined icon">call</span>
         </div>
-        <!-- <div class="input-wrapper">
-          <input placeholder="{{'Home.ContactAdd.Mobile' | translate}}">
-          <span class="material-symbols-outlined icon">phone_iphone</span>
-        </div> -->
         <div class="input-wrapper">
           <input placeholder="{{'Home.ContactAdd.Email' | translate}}" type="email" formControlName="email">
           <span class="material-symbols-outlined icon">mail</span>
         </div>
         <div class="btn-wrapper">
-          <!-- <app-button [bgrColor]="'surface-dark-color'"
-                      [text]="'Home.ContactAdd.CreateContact' | translate"
-                      [txtColor]="'surface-dark-contrast-color'"
-                      (ngSubmit)="createContact()">
-          </app-button> -->
           <button class="sendButton" type="submit" [disabled]="!addContactForm.valid">
             {{ 'Home.ContactAdd.CreateContact' | translate }}
           </button>
