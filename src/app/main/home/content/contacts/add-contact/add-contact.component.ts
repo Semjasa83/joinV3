@@ -5,7 +5,6 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators, } from '@angul
 import { ButtonComponent } from '../../../../utility/button/button.component';
 import {lastValueFrom} from "rxjs";
 import {Contact} from "../../../../../interfaces/contact.interface";
-import {NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-add-contact',
@@ -14,7 +13,6 @@ import {NgOptimizedImage} from "@angular/common";
     TranslateModule,
     ButtonComponent,
     ReactiveFormsModule,
-    NgOptimizedImage,
   ],
   templateUrl: './add-contact.component.html',
   styleUrl: './add-contact.component.scss'
