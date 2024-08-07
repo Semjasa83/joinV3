@@ -4,7 +4,7 @@ import { DashboardComponent } from './main/home/content/dashboard/dashboard.comp
 import { ContactsComponent } from './main/home/content/contacts/contacts.component';
 import { AddTaskComponent } from './main/home/content/add-task/add-task.component';
 import { BoardComponent } from './main/home/content/board/board.component';
-import { ContactDetailComponent } from './main/home/content/contacts/contact-detail/contact-detail.component';
+// import { ContactDetailComponent } from './main/home/content/contacts/contact-detail/contact-detail.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },

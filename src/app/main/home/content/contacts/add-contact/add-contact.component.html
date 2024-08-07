@@ -1,9 +1,9 @@
-<div class="dialog-add-contact" (click)="closeDialog()">
+<div class="dialog-contact" (click)="closeDialog()">
   <div class="add-contact-wrapper" (click)="stopPropagation($event)">
-
+    <span class="material-symbols-outlined close-icon" (click)="closeDialog()">close</span>
 
     <div class="dialog-header">
-      <span class="material-symbols-outlined close-icon" (click)="closeDialog()">close</span>
+
       <div class="dialog-wrapper">
         <span class="headline">{{ "Home.ContactAdd.AddContact" | translate }}</span>
         <span class="sub-headline">{{ "Home.ContactAdd.SubHeadline" | translate }}</span>

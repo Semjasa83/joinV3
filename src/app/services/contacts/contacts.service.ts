@@ -1,7 +1,8 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Contact } from '../../interfaces/contact';
-import { HttpClient } from '@angular/common/http'; // Import the HttpClient module
+// import { Contact } from '../../interfaces/contact';
+import { HttpClient } from '@angular/common/http';
+import {Contact} from "../../interfaces/contact.interface"; // Import the HttpClient module
 
 @Injectable({
   providedIn: 'root'

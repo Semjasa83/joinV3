@@ -7,7 +7,7 @@
   height: 100%;
   width: 100%;
   backdrop-filter: blur(2px);
-  background-color: #00000020;
+  background-color: #28abe250;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -16,7 +16,7 @@
   z-index: 10;
 }
 
-.dialog-add-contact {
+.dialog-contact {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,21 +29,24 @@
     align-items: center;
     flex-direction: column;
     height: 90%;
+    max-height: 50rem;
     width: 90%;
     z-index: 20;
     border-radius: 1rem;
+    position: relative;
   }
 }
 
 .dialog-header {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 70%;
+  height: 40%;
   width: 100%;
   background-color: $surface-dark-color;
   border-radius: 1rem 1rem 0 0;
-  position: relative;
+
 
   .dialog-wrapper {
     display: flex;
@@ -79,10 +82,10 @@
       width: 6rem;
       height: 6rem;
       border: 2px solid $surface-color;
-      bottom: -3rem;
+      top: 80%;
       border-radius: 50%;
-      left: 50%;
-      transform: translateX(-50%);
+      right: 50%;
+      transform: translateX(50%);
       z-index: 20;
     }
   }
@@ -92,17 +95,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 60%;
   width: 100%;
   background-color: $background-color;
   border-radius: 0 0 1rem 1rem;
 
   .content-wrapper {
     display: flex;
-    //justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 20%;
+    margin-top: 10%;
     height: 80%;
     width: 90%;
 
@@ -145,10 +148,11 @@
   right: 2rem;
   top: 2rem;
   z-index: 25;
+  color: $surface-dark-contrast-color;
+  padding: 0.5rem;
 }
 
 .material-symbols-outlined {
-  color: $surface-dark-color;
   font-variation-settings:
     'FILL' 0,
     'wght' 300,
@@ -167,8 +171,41 @@
   border-radius: .625rem;
   padding: 0.5rem;
   font-weight: 700;
-  
+
   &:hover {
     cursor: pointer;
   }
 }
+
+@media (min-width: 1024px) {
+  .add-contact-wrapper {
+    flex-direction: row !important;
+    width: 75% !important;
+
+    .close-icon {
+      color: $surface-dark-color;
+      top: 10rem;
+    }
+  }
+
+  .dialog-header {
+    height: 70%;
+    width: 40%;
+    border-radius: 1rem 0 0 1rem;
+
+    .circle {
+      top: 40% !important;
+      right: 0 !important;
+
+    }
+  }
+
+  .dialog-content {
+    height: 70%;
+    width: 60%;
+    border-radius: 0 1rem 1rem 0;
+  }
+}
+
+
+

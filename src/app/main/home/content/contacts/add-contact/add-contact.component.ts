@@ -3,7 +3,9 @@ import { TranslateModule } from "@ngx-translate/core";
 import { ContactsService } from '../../../../../services/contacts/contacts.service';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators, } from '@angular/forms';
 import { ButtonComponent } from '../../../../utility/button/button.component';
-import { Contact } from '../../../../../interfaces/contact';
+// import { Contact } from '../../../../../interfaces/contact';
+import {lastValueFrom} from "rxjs";
+import {Contact} from "../../../../../interfaces/contact.interface";
 
 @Component({
   selector: 'app-add-contact',
@@ -21,6 +23,7 @@ import { Contact } from '../../../../../interfaces/contact';
 export class AddContactComponent {
 
   @Output() closeDialogEvent = new EventEmitter<void>();
+  @Output() refreshContacts = new EventEmitter<void>();
 
   addContactForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
@@ -47,17 +50,21 @@ export class AddContactComponent {
       phone: this.addContactForm.get('phone')!.value,
       address: {
         street: '',
-        streetnumber: null,
+        streetNumber: null,
         city: '',
         zip: null,
         country: ''
       },
       color: this.randomColorPicker(),
     };
-    console.log(newContact);
-    this.contactService.addContact(newContact);
-    this.addContactForm.reset(this.addContactForm.value);
-    this.closeDialog();
+    try {
+      await lastValueFrom(this.contactService.addContact(newContact));
+      this.addContactForm.reset(this.addContactForm.value);
+      this.refreshContacts.emit();
+      this.closeDialog();
+    } catch (error) {
+      console.error('Error adding contact:', error);
+    }
   }
 
   private randomColorPicker() {

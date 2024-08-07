@@ -39,5 +39,5 @@
 </div>
 
 <ng-container *ngIf="showAddContact">
-  <app-add-contact (closeDialogEvent)="showAddContact = false"></app-add-contact>
+  <app-add-contact (closeDialogEvent)="showAddContact = false" (refreshContacts)="handleRefreshCotnacts()"></app-add-contact>
 </ng-container>

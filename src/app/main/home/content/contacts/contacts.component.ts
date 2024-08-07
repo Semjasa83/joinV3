@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {ContactsService} from '../../../../services/contacts/contacts.service';
-import {Contact} from "../../../../interfaces/contact";
 
 import {TranslateModule} from '@ngx-translate/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {NgFor, NgIf, NgStyle} from '@angular/common';
 import {AddContactComponent} from "./add-contact/add-contact.component";
 import { ButtonComponent } from '../../../utility/button/button.component';
+import {Contact} from "../../../../interfaces/contact.interface";
 
 @Component({
   selector: 'app-contacts',
@@ -45,6 +45,8 @@ export class ContactsComponent {
 
   private async getContactList(): Promise<void> {
     this.contacts = [];
+    this.groupLetters = [];
+    this.groupArray = [];
     this.contactsService.getAllContacts().subscribe(data => {
       this.sortContacts(data);
     });
@@ -89,6 +91,10 @@ export class ContactsComponent {
 
   public openContactDetails(contact: Contact) {
     console.log(contact)
+  }
+
+  public handleRefreshCotnacts() {
+    this.getContactList();
   }
 
 }
