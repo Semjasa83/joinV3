@@ -1,12 +1,13 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ContactsService} from '../../../../services/contacts/contacts.service';
 
 import {TranslateModule} from '@ngx-translate/core';
-import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {NgFor, NgIf, NgStyle} from '@angular/common';
 import {AddContactComponent} from "./add-contact/add-contact.component";
 import { ButtonComponent } from '../../../utility/button/button.component';
 import {Contact} from "../../../../interfaces/contact.interface";
+import { ContactDetailComponent } from "./contact-detail/contact-detail.component";
 
 @Component({
   selector: 'app-contacts',
@@ -20,8 +21,9 @@ import {Contact} from "../../../../interfaces/contact.interface";
     NgFor,
     NgStyle,
     NgIf,
-    AddContactComponent
-  ],
+    AddContactComponent,
+    ContactDetailComponent
+],
   providers: [
     ContactsService,
     {provide: 'Object', useValue: Object}
@@ -39,7 +41,9 @@ export class ContactsComponent {
   public groupArray: any[] = [];
   public showAddContact: boolean = false;
 
-  constructor(public contactsService: ContactsService) {
+  @Input() public contact: Contact = {} as Contact;
+
+  constructor(public contactsService: ContactsService, private router: Router) {
     this.getContactList();
   }
 
@@ -89,11 +93,7 @@ export class ContactsComponent {
     });
   }
 
-  public openContactDetails(contact: Contact) {
-    console.log(contact)
-  }
-
-  public handleRefreshCotnacts() {
+  public handleRefreshContacts() {
     this.getContactList();
   }
 

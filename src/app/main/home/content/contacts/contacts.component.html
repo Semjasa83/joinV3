@@ -2,30 +2,28 @@
 
   <section class="contact-list-wrapper">
     <div class="add-contact-btn">
-      <app-button [bgrColor]="'surface-dark-color'"
-                  [icon]="'person_add'"
-                  [text]="'Home.Contacts.AddContact' | translate"
-                  [txtColor]="'surface-dark-contrast-color'"
-                  (click)="showAddContact = true">
+      <app-button [bgrColor]="'surface-dark-color'" [icon]="'person_add'"
+        [text]="'Home.Contacts.AddContact' | translate" [txtColor]="'surface-dark-contrast-color'"
+        (click)="showAddContact = true">
       </app-button>
     </div>
 
     <div class="contacts-list">
       @for (letter of groupLetters; track groupLetters; let i = $index) {
-        <div class="index-wrapper">
-          <div class="index-letter">{{ letter }}</div>
-        </div>
-        <ng-container *ngFor="let contact of groupArray[i]; index as i">
-          <div class="contact-list-detail" [routerLink]="[contact._id]" routerLinkActive="isActive">
-            <div class="contact-shorttag" [ngStyle]="{'background-color': contact.color}">
-              {{ contact.firstName.charAt(0).toUpperCase() }}{{ contact.lastName.charAt(0).toUpperCase() }}
-            </div>
-            <div class="contact-info">
-              <span class="contact-name">{{ contact.firstName }} {{ contact.lastName }}</span>
-              <span class="contact-email">{{ contact.email }}</span>
-            </div>
+      <div class="index-wrapper">
+        <div class="index-letter">{{ letter }}</div>
+      </div>
+      <ng-container *ngFor="let contact of groupArray[i]; index as i">
+        <div class="contact-list-detail" [routerLink]="[contact._id]" routerLinkActive="isActive">
+          <div class="contact-shorttag" [ngStyle]="{'background-color': contact.color}">
+            {{ contact.firstName.charAt(0).toUpperCase() }}{{ contact.lastName.charAt(0).toUpperCase() }}
           </div>
-        </ng-container>
+          <div class="contact-info">
+            <span class="contact-name">{{ contact.firstName }} {{ contact.lastName }}</span>
+            <span class="contact-email">{{ contact.email }}</span>
+          </div>
+        </div>
+      </ng-container>
       }
     </div>
   </section>
@@ -35,9 +33,13 @@
       <span class="detail-headline">Contacts</span>
       <span class="detail-subheadline">Better with a team</span>
     </div>
+    <ng-container *ngIf="contact">
+      <router-outlet></router-outlet>
+    </ng-container>
   </section>
 </div>
 
 <ng-container *ngIf="showAddContact">
-  <app-add-contact (closeDialogEvent)="showAddContact = false" (refreshContacts)="handleRefreshCotnacts()"></app-add-contact>
+  <app-add-contact (closeDialogEvent)="showAddContact = false"
+    (refreshContacts)="handleRefreshContacts()"></app-add-contact>
 </ng-container>

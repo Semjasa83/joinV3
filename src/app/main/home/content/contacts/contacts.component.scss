@@ -47,19 +47,13 @@
   align-items: center;
   width: 80%;
   border-bottom: 1px solid $light-transparent-color;
+  margin-bottom: 0.5rem;
 
   .index-letter {
     color: $surface-contrast-color;
     padding: 1rem;
     font-size: 1.25rem;
   }
-}
-
-.separation-line {
-  color: $surface-contrast-color;
-  height: 2px;
-  width: 80%;
-  opacity: 0.5;
 }
 
 .contact-list-detail {
@@ -164,4 +158,3 @@
     padding-left: 1.5rem;
   }
 }
-

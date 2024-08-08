@@ -55,6 +55,7 @@ export class AddContactComponent {
         country: ''
       },
       color: this.randomColorPicker(),
+      _id: ''
     };
     try {
       await lastValueFrom(this.contactService.addContact(newContact));
