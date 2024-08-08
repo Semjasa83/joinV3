@@ -1,15 +1,16 @@
 <div class="sidebar-toggle-wrapper">
     @if(sidebarToggle){<app-sidenav></app-sidenav>}
-    <button class="sidebar-toggle-button"
-            [ngClass]="{ 'sidebar-toggle-open' : sidebarToggle, 'sidebar-toggle-close' : !sidebarToggle }"
-            (click)="toggleSidebar()" id="navbarToggleButton">
-      <img class="navigation-icon" src="../../../../assets/icons/arrow.svg" alt="arrow.svg">
-    </button>
+    <div class="sidebar-btn" (click)="toggleSidebar()">
+        <button class="sidebar-toggle-button"
+            [ngClass]="{'sidebar-toggle-open': sidebarToggle, 'sidebar-toggle-close': !sidebarToggle}"
+            id="navbarToggleButton">
+            <img class="navigation-icon" src="../../../../assets/icons/arrow.svg" alt="arrow.svg" />
+        </button>
+    </div>
 </div>
 
 <div class="home-content-wrapper">
     <app-header></app-header>
     <!-- <app-content></app-content> -->
     <router-outlet></router-outlet>
-
 </div>

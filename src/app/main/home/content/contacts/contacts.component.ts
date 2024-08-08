@@ -1,11 +1,13 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ContactsService} from '../../../../services/contacts/contacts.service';
-import {Contact} from "../../../../interfaces/contact";
-import {ButtonComponent} from '../../../utility/button/button.component';
+
 import {TranslateModule} from '@ngx-translate/core';
-import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {NgFor, NgIf, NgStyle} from '@angular/common';
 import {AddContactComponent} from "./add-contact/add-contact.component";
+import { ButtonComponent } from '../../../utility/button/button.component';
+import {Contact} from "../../../../interfaces/contact.interface";
+import { ContactDetailComponent } from "./contact-detail/contact-detail.component";
 
 @Component({
   selector: 'app-contacts',
@@ -19,8 +21,9 @@ import {AddContactComponent} from "./add-contact/add-contact.component";
     NgFor,
     NgStyle,
     NgIf,
-    AddContactComponent
-  ],
+    AddContactComponent,
+    ContactDetailComponent
+],
   providers: [
     ContactsService,
     {provide: 'Object', useValue: Object}
@@ -38,12 +41,16 @@ export class ContactsComponent {
   public groupArray: any[] = [];
   public showAddContact: boolean = false;
 
-  constructor(public contactsService: ContactsService) {
+  @Input() public contact: Contact = {} as Contact;
+
+  constructor(public contactsService: ContactsService, private router: Router) {
     this.getContactList();
   }
 
   private async getContactList(): Promise<void> {
     this.contacts = [];
+    this.groupLetters = [];
+    this.groupArray = [];
     this.contactsService.getAllContacts().subscribe(data => {
       this.sortContacts(data);
     });
@@ -54,7 +61,7 @@ export class ContactsComponent {
     const key = arr[0];
     this.contacts = data[key];
     this.contacts?.sort((a, b) => {
-      return a.lastName.localeCompare(b.lastName);
+        return (a.lastName ?? '').localeCompare(b.lastName ?? '');
     });
     await this.getGroupedContacts();
   };
@@ -62,12 +69,13 @@ export class ContactsComponent {
   private async getGroupedContacts(): Promise<void> {
     this.groupContacts = {};
     this.contacts.forEach((contact) => {
-      const letter = contact.lastName.charAt(0).toUpperCase();
-      if (!this.groupContacts[letter]) {
-        this.groupContacts[letter] = [];
-      }
-      this.groupContacts[letter].push(contact);
-    });
+      if (contact.lastName) {
+        const letter = contact.lastName.charAt(0).toUpperCase();
+        if (!this.groupContacts[letter]) {
+          this.groupContacts[letter] = [];
+        }
+        this.groupContacts[letter].push(contact);
+      }    });
     await this.renderGroupedContacts();
   };
 
@@ -85,13 +93,8 @@ export class ContactsComponent {
     });
   }
 
-  public openContactDetails(contact: Contact) {
-    console.log(contact)
+  public handleRefreshContacts() {
+    this.getContactList();
   }
 
-  //auslagern create contact!!!!
-  public randomColorPicker() {
-    let varColor = Math.floor(Math.random() * 359);
-    return `hsl(${varColor}, 75%, 75%)`;
-  }
 }

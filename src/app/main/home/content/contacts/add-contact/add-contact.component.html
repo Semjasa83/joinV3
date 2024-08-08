@@ -1,6 +1,44 @@
-<div class="dialog-add-contact" (click)="closeDialog()">
-  <div class="add-contact-wrapper" (click)="stopPropagation($event)">
+<div class="dialog-contact" (click)="closeDialog()">
+  <div class="add-contact-wrapper">
+    <span class="material-symbols-outlined close-icon" (click)="closeDialog()">close</span>
 
+    <div class="dialog-header" (click)="stopPropagation($event)">
+      <div class="dialog-wrapper">
+        <span class="headline">{{ "Home.ContactAdd.AddContact" | translate }}</span>
+        <span class="sub-headline">{{ "Home.ContactAdd.SubHeadline" | translate }}</span>
+        <div class="header-line"></div>
+        <div class="circle">
+          <img class="navigation-icon" src="./././assets/icons/person.svg" alt="person">
+        </div>
+      </div>
+    </div>
 
+    <div class="dialog-content" (click)="stopPropagation($event)">
+      <form class="content-wrapper" [formGroup]="addContactForm" (ngSubmit)="addContact()">
+        <div class="input-wrapper">
+          <input placeholder="{{'Home.ContactAdd.FirstName' | translate}}" type="text" formControlName="firstName">
+          <span class="material-symbols-outlined icon">person</span>
+        </div>
+        <div class="input-wrapper">
+          <input placeholder="{{'Home.ContactAdd.LastName' | translate}}" type="text" formControlName="lastName">
+          <span class="material-symbols-outlined icon">person</span>
+        </div>
+        <div class="input-wrapper">
+          <input placeholder="{{'Home.ContactAdd.Phone' | translate}}" type="number" formControlName="phone">
+          <span class="material-symbols-outlined icon">call</span>
+        </div>
+        <div class="input-wrapper">
+          <input placeholder="{{'Home.ContactAdd.Email' | translate}}" type="email" formControlName="email">
+          <span class="material-symbols-outlined icon">mail</span>
+        </div>
+        <div class="btn-wrapper">
+          <button class="sendButton" type="submit" [disabled]="!addContactForm.valid">
+            {{ 'Home.ContactAdd.CreateContact' | translate }}
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
+
+
