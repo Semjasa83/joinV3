@@ -3,8 +3,8 @@ import { TranslateModule } from "@ngx-translate/core";
 import { ContactsService } from '../../../../../services/contacts/contacts.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators, } from '@angular/forms';
 import { ButtonComponent } from '../../../../utility/button/button.component';
-import {lastValueFrom} from "rxjs";
-import {Contact} from "../../../../../interfaces/contact.interface";
+import { lastValueFrom } from "rxjs";
+import { Address, Contact, ContactImpl, AddressImpl } from "../../../../../interfaces/contact.interface";
 
 @Component({
   selector: 'app-add-contact',
@@ -42,21 +42,15 @@ export class AddContactComponent {
   }
 
   public async addContact() {
-    const newContact: Contact = {
-      firstName: this.addContactForm.get('firstName')!.value,
-      lastName: this.addContactForm.get('lastName')!.value,
-      email: this.addContactForm.get('email')!.value,
-      phone: this.addContactForm.get('phone')!.value,
-      address: {
-        street: '',
-        streetNumber: null,
-        city: '',
-        zip: null,
-        country: ''
-      },
-      color: this.randomColorPicker(),
-      _id: ''
-    };
+
+    let newContact: Contact = new ContactImpl();
+      newContact = {
+        ...newContact,
+        ...this.addContactForm.value,
+        address: new AddressImpl(),
+        color: this.randomColorPicker(),
+      }
+    
     try {
       await lastValueFrom(this.contactService.addContact(newContact));
       this.addContactForm.reset(this.addContactForm.value);

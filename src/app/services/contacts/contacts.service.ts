@@ -1,20 +1,20 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-// import { Contact } from '../../interfaces/contact';
 import { HttpClient } from '@angular/common/http';
-import {Contact} from "../../interfaces/contact.interface"; // Import the HttpClient module
+import { Contact, Address } from "../../interfaces/contact.interface";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactsService {
   private API_URL = 'http://localhost:3000/api/';
+  private URL_PARAM = 'contacts'; 
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient) { } // Inject the HttpClient module
+  constructor(private http: HttpClient) { }
 
   public getAllContacts() {
     return this.http.get<Contact[]>(this.API_URL + 'contacts');

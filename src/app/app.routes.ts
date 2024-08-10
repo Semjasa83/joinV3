@@ -19,9 +19,10 @@ export const routes: Routes = [
       {
         path: 'contacts', component: ContactsComponent, data: { name: 'Contacts', icon: 'perm_contact_calendar.svg' },
         children: [
-          // { path: '', component: ContactDefaultComponent },
-          { path: ':id', component: ContactDetailComponent }
+          { path: ':id', component: ContactDetailComponent },
+          { path: '', redirectTo: '', pathMatch: 'full' },
         ]
-      }],
+      }
+    ],
   },
 ];
