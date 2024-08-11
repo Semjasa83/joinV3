@@ -22,7 +22,6 @@ import { Address, Contact, ContactImpl, AddressImpl } from "../../../../../inter
 export class AddContactComponent {
 
   @Output() closeDialogEvent = new EventEmitter<void>();
-  @Output() refreshContacts = new EventEmitter<void>();
 
   addContactForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
@@ -42,7 +41,6 @@ export class AddContactComponent {
   }
 
   public async addContact() {
-
     let newContact: Contact = new ContactImpl();
       newContact = {
         ...newContact,
@@ -50,11 +48,9 @@ export class AddContactComponent {
         address: new AddressImpl(),
         color: this.randomColorPicker(),
       }
-    
     try {
-      await lastValueFrom(this.contactService.addContact(newContact));
+      await this.contactService.addContact(newContact);
       this.addContactForm.reset(this.addContactForm.value);
-      this.refreshContacts.emit();
       this.closeDialog();
     } catch (error) {
       console.error('Error adding contact:', error);

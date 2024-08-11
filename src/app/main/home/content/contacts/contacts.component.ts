@@ -32,7 +32,7 @@ import { ContactDetailComponent } from "./contact-detail/contact-detail.componen
   styleUrl: './contacts.component.scss'
 })
 
-export class ContactsComponent {
+export class ContactsComponent{
 
   public contacts: Contact[] = [];
   public groupContacts: { [key: string]: Contact[] } = {};
@@ -43,23 +43,20 @@ export class ContactsComponent {
 
   @Input() public contact: Contact = {} as Contact;
 
-  constructor(public contactsService: ContactsService, private router: Router) {
-    this.getContactList();
+  constructor(public contactsService: ContactsService, private router: Router) {}
+
+  public async ngOnInit() {
+    await this.contactsService.getAllContacts()
+    this.contactsService.contacts$.subscribe((response: Contact[]) => {  
+      this.contacts = response;
+      console.log('response', this.contacts);
+    });
+    this.sortContacts();
   }
 
-  private async getContactList(): Promise<void> {
-    this.contacts = [];
+  private async sortContacts(): Promise<void> {
     this.groupLetters = [];
     this.groupArray = [];
-    this.contactsService.getAllContacts().subscribe(data => {
-      this.sortContacts(data);
-    });
-  };
-
-  private async sortContacts(data: any): Promise<void> {
-    const arr = Object.keys(data);
-    const key = arr[0];
-    this.contacts = data[key];
     this.contacts?.sort((a, b) => {
         return (a.lastName ?? '').localeCompare(b.lastName ?? '');
     });
@@ -75,7 +72,8 @@ export class ContactsComponent {
           this.groupContacts[letter] = [];
         }
         this.groupContacts[letter].push(contact);
-      }    });
+      }    
+    });
     await this.renderGroupedContacts();
   };
 
@@ -91,10 +89,6 @@ export class ContactsComponent {
       this.groupArray.push(this.groupedContactsArray);
       this.groupedContactsArray = [];
     });
-  }
-
-  public handleRefreshContacts() {
-    this.getContactList();
   }
 
 }

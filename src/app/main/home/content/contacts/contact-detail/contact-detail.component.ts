@@ -1,10 +1,11 @@
 import { Contact, Address } from './../../../../../interfaces/contact.interface';
-import { Component, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { ContactsService } from "../../../../../services/contacts/contacts.service";
 import { NgIf, NgStyle } from '@angular/common';
 import { TranslateModule } from "@ngx-translate/core";
 import { ContactEditCardComponent } from "../contact-edit-card/contact-edit-card.component";
+import { firstValueFrom } from 'rxjs';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class ContactDetailComponent {
   public contactId: string = '';
 
   @Output() public contact: Contact = {} as Contact;
+  @Output() public refreshAfterDelete: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(private route: ActivatedRoute, private contactsService: ContactsService, private router: Router) {
     this.route.params.subscribe(params => {
@@ -35,18 +37,22 @@ export class ContactDetailComponent {
   }
 
   public async getContact() {
-    this.contactsService.getContact(this.contactId).subscribe((data: any) => {
+    try {
+      const data: any = await this.contactsService.getContact(this.contactId);
       this.contactData = data.contact as Contact;
-    });
-    console.log(this.contactData);
-    console.log(this.contactId);
-    
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   public async deleteContact(id: string) {
-    this.contactsService.deleteContact(id).subscribe((data: any) => { 
-      console.log(data); //TODO Notification BADGE!!!
-      this.router.navigate(['/home/contacts']);
-    });
+    try {
+      const response = await this.contactsService.deleteContact(id);
+      console.log(response); //TODO Notification BADGE!!!
+      this.router.navigate(['/home/contacts']).then(() => {window.location.reload()});
+    } catch (error) {
+      console.error(error);
+    }
   }
+
 }
