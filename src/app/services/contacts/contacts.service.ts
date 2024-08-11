@@ -1,38 +1,42 @@
+import { BehaviorSubject, firstValueFrom, lastValueFrom } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-// import { Contact } from '../../interfaces/contact';
 import { HttpClient } from '@angular/common/http';
-import {Contact} from "../../interfaces/contact.interface"; // Import the HttpClient module
+import { Contact, Address } from "../../interfaces/contact.interface";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactsService {
   private API_URL = 'http://localhost:3000/api/';
+  private URL_PARAM = 'contacts'; 
+  
+  private contacts = new BehaviorSubject<any>([]);
+  contacts$ = this.contacts.asObservable();
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient) { } // Inject the HttpClient module
+  constructor(private http: HttpClient) { }
 
-  public getAllContacts() {
-    return this.http.get<Contact[]>(this.API_URL + 'contacts');
+  public async getAllContacts() {
+    return lastValueFrom(this.http.get<Contact[]>(this.API_URL + 'contacts')).then((data: any) => {  this.contacts.next(data['contacts']) });
   };
 
-  public getContact(id: string) {
-    return this.http.get<Contact[]>(this.API_URL + `contacts/${id}`);
+  public async getContact(id: string) {
+    return lastValueFrom(this.http.get<Contact[]>(this.API_URL + `contacts/${id}`));
   };
 
-  public updateContact(id: string, contact: Contact) {
-    return this.http.put<Contact[]>(this.API_URL + `contacts/${id}`, contact, this.httpOptions);
+  public async updateContact(id: string, contact: Contact) {
+    return firstValueFrom(this.http.put<Contact[]>(this.API_URL + `contacts/${id}`, contact, this.httpOptions));
   };
 
-  public deleteContact(id: string) {
-    return this.http.delete<Contact[]>(this.API_URL + `contacts/${id}`);
+  public async deleteContact(id: string) {
+    return lastValueFrom(this.http.delete<Contact[]>(this.API_URL + `contacts/${id}`));
   };
 
-  public addContact(contact: Contact) {
-    return this.http.post<Contact[]>(this.API_URL + 'contacts', contact, this.httpOptions);
+  public async addContact(contact: Contact) {
+    return lastValueFrom(this.http.post<Contact[]>(this.API_URL + 'contacts', contact, this.httpOptions)).then((data: any) => {  window.location.reload() });
   };
 }

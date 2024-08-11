@@ -39,18 +39,22 @@
     .contact-option {
       display: flex;
       flex-direction: row;
-      :first-child {
-        margin-right: 1rem;
-      }
+      gap: 1rem;
 
       .contact-option-wrapper {
         align-items: center;
         display: flex;
         flex-direction: row;
-
+        min-width: fit-content;
+        width: 5rem;
 
         .icon {
           margin-right: 0.5rem;
+        }
+
+        &:hover {
+          cursor: pointer;
+          color: $secondary-color;
         }
       }
     }
@@ -60,19 +64,20 @@
 .contact-info-wrapper {
   display: flex;
   flex-direction: column;
+  
   .contact-info {
     font-size: 1.25rem;
     color: $background-contrast-color;
     margin: 1rem 0;
   }
+
   .contact-info-header {
     font-weight: bold;
     color: $background-contrast-color;
     margin: 1rem 0;
   }
+
   .contact-email-data {
-    color: $primary-color
+    color: $primary-color;
   }
-
-
 }
