@@ -8,7 +8,7 @@ export interface Contact {
   _id: null | string;
 }
 
-export interface Address {
+export interface Address extends Contact {
   street: string | null;
   streetNumber: number | null;
   city: string | null;
@@ -18,11 +18,18 @@ export interface Address {
 
 export class AddressImpl implements Address {
   constructor(
+    public firstName: string | null = '',
+    public lastName: string | null = '',
+    public email: string | null = '',
+    public phone: number | null = null,
+    public address: Address | null = null,
     public street: string | null = '',
     public streetNumber: number | null = null,
     public city: string | null = '',
     public zip: number | null = null,
-    public country: string | null = ''
+    public country: string | null = '',
+    public color: string = '',
+    public _id: string | null = null,
   ) {}
 }
 

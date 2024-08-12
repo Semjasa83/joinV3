@@ -37,8 +37,13 @@
       "EditBtn": "Edit",
       "DeleteBtn": "Delete",
       "ContactInformation": "Contact Information",
+      "Address": "Address",
       "Email": "Email",
-      "Phone": "Phone"
+      "Phone": "Phone",
+      "Street": "Street",
+      "City": "City",
+      "Zip": "Zip",
+      "Country": "Country"
     },
     "ContactEdit": {
       "EditContact": "Edit contact",

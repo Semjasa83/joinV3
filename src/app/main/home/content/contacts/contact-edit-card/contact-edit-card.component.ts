@@ -13,5 +13,6 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './contact-edit-card.component.scss'
 })
 export class ContactEditCardComponent {
+  
 
 }

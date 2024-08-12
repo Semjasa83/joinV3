@@ -6,6 +6,7 @@ import { NgIf, NgStyle } from '@angular/common';
 import { TranslateModule } from "@ngx-translate/core";
 import { ContactEditCardComponent } from "../contact-edit-card/contact-edit-card.component";
 import { firstValueFrom } from 'rxjs';
+import { EditContactComponent } from "../edit-contact/edit-contact.component";
 
 
 @Component({
@@ -16,17 +17,19 @@ import { firstValueFrom } from 'rxjs';
     NgStyle,
     TranslateModule,
     ContactEditCardComponent,
-    NgIf
-  ],
+    NgIf,
+    EditContactComponent
+],
   templateUrl: './contact-detail.component.html',
   styleUrl: './contact-detail.component.scss'
 })
 
 export class ContactDetailComponent {
-  public contactData: Contact = {} as Contact;
+  public contactData: Address = {} as Address;
   public contactId: string = '';
+  public openEditContact: boolean = false;
 
-  @Output() public contact: Contact = {} as Contact;
+  @Output() public contact: Address = {} as Address;
   @Output() public refreshAfterDelete: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(private route: ActivatedRoute, private contactsService: ContactsService, private router: Router) {
@@ -39,7 +42,9 @@ export class ContactDetailComponent {
   public async getContact() {
     try {
       const data: any = await this.contactsService.getContact(this.contactId);
-      this.contactData = data.contact as Contact;
+      this.contactData = data.contact as Address;
+      console.log(this.contactData);
+      
     } catch (error) {
       console.error(error);
     }
@@ -54,5 +59,6 @@ export class ContactDetailComponent {
       console.error(error);
     }
   }
+
 
 }
