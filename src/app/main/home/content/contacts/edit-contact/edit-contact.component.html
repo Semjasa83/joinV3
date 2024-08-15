@@ -4,8 +4,8 @@
 
         <div class="dialog-header" (click)="stopPropagation($event)">
             <div class="dialog-wrapper">
-                <span class="headline">{{ "Home.ContactAdd.AddContact" | translate }}</span>
-                <span class="sub-headline">{{ "Home.ContactAdd.SubHeadline" | translate }}</span>
+                <img class="logo" src="./././assets/pictures/Capa_1.png" alt="logo"> 
+                <span class="headline">{{ "Home.ContactEdit.EditContact" | translate }}</span>
                 <div class="header-line"></div>
                 <div class="circle">
                     <img class="navigation-icon" src="./././assets/icons/person.svg" alt="person">
@@ -14,7 +14,7 @@
         </div>
 
         <div class="dialog-content" (click)="stopPropagation($event)">
-            <form class="content-wrapper" [formGroup]="addContactForm" (ngSubmit)="addContact()">
+            <form class="content-wrapper" [formGroup]="addContactForm" (ngSubmit)="saveEditContact()">
                 <div class="input-wrapper">
                     <input placeholder="{{'Home.ContactAdd.FirstName' | translate}}" type="text"
                         formControlName="firstName">
@@ -33,10 +33,27 @@
                     <input placeholder="{{'Home.ContactAdd.Email' | translate}}" type="email" formControlName="email">
                     <span class="material-symbols-outlined icon">mail</span>
                 </div>
+
+                <div class="input-wrapper">
+                    <input placeholder="{{'Home.ContactAdd.LastName' | translate}}" type="text"
+                        formControlName="street">
+                    <span class="material-symbols-outlined icon">person</span>
+                </div>
+                <div class="input-wrapper">
+                    <input placeholder="{{'Home.ContactAdd.Phone' | translate}}" type="number" formControlName="streetNumber">
+                    <span class="material-symbols-outlined icon">call</span>
+                </div>
+                <div class="input-wrapper">
+                    <input placeholder="{{'Home.ContactAdd.Email' | translate}}" type="text" formControlName="city">
+                    <span class="material-symbols-outlined icon">mail</span>
+                </div>
+
                 <div class="btn-wrapper">
-                    <button class="sendButton" type="submit" [disabled]="!addContactForm.valid">
+                    <!-- <button class="sendButton" type="submit" [disabled]="!addContactForm.valid">
                         {{ 'Home.ContactAdd.CreateContact' | translate }}
-                    </button>
+                    </button> -->
+                    <app-button [bgrColor]="'background-color'" [txtColor]="'surface-dark-contrast-color'" [outlined]="false" [text]="'Home.ContactEdit.EditContact' | translate"></app-button>
+                    <app-button [bgrColor]="'background-color'" [txtColor]="'surface-dark-color'" [outlined]="true" [text]="'Home.ContactEdit.Delete' | translate"></app-button>
                 </div>
             </form>
         </div>

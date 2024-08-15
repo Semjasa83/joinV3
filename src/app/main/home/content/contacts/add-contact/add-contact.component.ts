@@ -61,4 +61,8 @@ export class AddContactComponent {
     let varColor = Math.floor(Math.random() * 359);
     return `hsl(${varColor}, 75%, 75%)`;
   }
+
+  public clearForm() {
+    this.addContactForm.reset();
+  }
 }

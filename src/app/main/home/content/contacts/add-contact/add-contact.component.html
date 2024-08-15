@@ -4,6 +4,7 @@
 
     <div class="dialog-header" (click)="stopPropagation($event)">
       <div class="dialog-wrapper">
+        <img class="logo" src="./././assets/pictures/Capa_1.png" alt="logo"> 
         <span class="headline">{{ "Home.ContactAdd.AddContact" | translate }}</span>
         <span class="sub-headline">{{ "Home.ContactAdd.SubHeadline" | translate }}</span>
         <div class="header-line"></div>
@@ -32,9 +33,8 @@
           <span class="material-symbols-outlined icon">mail</span>
         </div>
         <div class="btn-wrapper">
-          <button class="sendButton" type="submit" [disabled]="!addContactForm.valid">
-            {{ 'Home.ContactAdd.CreateContact' | translate }}
-          </button>
+          <app-button buttonType="button" [bgrColor]="'surface-color'" [txtColor]="'surface-dark-color'" [outlined]="true" [text]="'Home.ContactAdd.Delete' | translate" (click)="clearForm()"></app-button>
+          <app-button buttonType="submit" [bgrColor]="'surface-dark-color'" [txtColor]="'surface-dark-contrast-color'" [outlined]="false" [text]="'Home.ContactAdd.CreateContact' | translate"></app-button>
         </div>
       </form>
     </div>

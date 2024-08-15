@@ -19,6 +19,8 @@ export class ButtonComponent {
   @Input() bgrColor?: string;
   @Input() txtColor?: string;
   @Output() buttonClick: EventEmitter<void> | undefined;
+  @Input() outlined?: boolean = false;
+  @Input() buttonType?: string = 'button';
 
   onClick() {
     if (this.buttonClick) {

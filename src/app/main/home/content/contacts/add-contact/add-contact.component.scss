@@ -55,6 +55,11 @@
     height: 100%;
     width: 90%;
 
+    .logo {
+      width: 3rem;
+      margin-bottom: 1rem;
+    }
+
     .headline {
       color: $surface-color;
       font-size: 2.75rem;
@@ -64,6 +69,7 @@
     .sub-headline {
       color: $surface-color;
       font-size: 1.2rem;
+      margin-top: 1rem;
     }
 
     .header-line {
@@ -135,8 +141,10 @@
     }
 
     .btn-wrapper {
+      display: flex;
       margin: 1.5rem 0;
-      width: 50%;
+      width: 75%;
+      gap: 2rem;
     }
   }
 }

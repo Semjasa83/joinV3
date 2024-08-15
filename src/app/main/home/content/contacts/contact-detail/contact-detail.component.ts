@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ContactsService } from "../../../../../services/contacts/contacts.service";
 import { NgIf, NgStyle } from '@angular/common';
 import { TranslateModule } from "@ngx-translate/core";
-import { ContactEditCardComponent } from "../contact-edit-card/contact-edit-card.component";
 import { firstValueFrom } from 'rxjs';
 import { EditContactComponent } from "../edit-contact/edit-contact.component";
 
@@ -16,7 +15,6 @@ import { EditContactComponent } from "../edit-contact/edit-contact.component";
   imports: [
     NgStyle,
     TranslateModule,
-    ContactEditCardComponent,
     NgIf,
     EditContactComponent
 ],
@@ -43,8 +41,6 @@ export class ContactDetailComponent {
     try {
       const data: any = await this.contactsService.getContact(this.contactId);
       this.contactData = data.contact as Address;
-      console.log(this.contactData);
-      
     } catch (error) {
       console.error(error);
     }
@@ -60,5 +56,9 @@ export class ContactDetailComponent {
     }
   }
 
+  public async editContact() {
+    this.contactsService.setContactId(this.contactId);
+    this.openEditContact = true;
+  }
 
 }

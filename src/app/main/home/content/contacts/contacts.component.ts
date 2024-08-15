@@ -47,9 +47,8 @@ export class ContactsComponent{
 
   public async ngOnInit() {
     await this.contactsService.getAllContacts()
-    this.contactsService.contacts$.subscribe((response: Contact[]) => {  
+    this.contactsService.contacts$.subscribe((response: Contact[]) => {
       this.contacts = response;
-      console.log('response', this.contacts);
     });
     this.sortContacts();
   }
@@ -72,7 +71,7 @@ export class ContactsComponent{
           this.groupContacts[letter] = [];
         }
         this.groupContacts[letter].push(contact);
-      }    
+      }
     });
     await this.renderGroupedContacts();
   };
