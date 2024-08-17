@@ -27,19 +27,19 @@ export class ContactsService {
   };
 
   public async getContact(id: string) {
-    return lastValueFrom(this.http.get<Contact[]>(this.API_URL + `contacts/${id}`));
+    return lastValueFrom(this.http.get<Address>(this.API_URL + `contacts/${id}`));
   };
 
-  public async updateContact(id: string, contact: Contact) {
-    return firstValueFrom(this.http.put<Contact[]>(this.API_URL + `contacts/${id}`, contact, this.httpOptions));
+  public async updateContact(id: string, contact: Address) {
+    return firstValueFrom(this.http.put<Address>(this.API_URL + `contacts/${id}`, contact, this.httpOptions));
   };
 
   public async deleteContact(id: string) {
-    return lastValueFrom(this.http.delete<Contact[]>(this.API_URL + `contacts/${id}`));
+    return lastValueFrom(this.http.delete<Contact>(this.API_URL + `contacts/${id}`));
   };
 
   public async addContact(contact: Contact) {
-    return lastValueFrom(this.http.post<Contact[]>(this.API_URL + 'contacts', contact, this.httpOptions)).then((data: any) => {  window.location.reload() });
+    return lastValueFrom(this.http.post<Contact>(this.API_URL + 'contacts', contact, this.httpOptions)).then((data: any) => {  window.location.reload() });
   };
 
   public setContactId(id: string): void {

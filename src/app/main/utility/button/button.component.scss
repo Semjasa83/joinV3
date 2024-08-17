@@ -6,6 +6,7 @@
   justify-content: center;
   overflow: hidden;
   width: 100%;
+  padding: 0.5rem;
 }
 
 button {
@@ -27,7 +28,7 @@ button {
     cursor: pointer;
     background-color: $secondary-color;
     color: $surface-dark-contrast-color;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 1.95px 1.95px 2.6px;
   }
 
   .btn-text {
@@ -46,7 +47,7 @@ button {
   &:hover {
     border: 1px solid $secondary-color !important;
     color: $secondary-color;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 1.95px 1.95px 2.6px;
   }
 }
 

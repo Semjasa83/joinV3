@@ -10,7 +10,7 @@ export interface Contact {
 
 export interface Address extends Contact {
   street: string | null;
-  streetNumber: number | null;
+  streetNumber: string | null;
   city: string | null;
   zip: number | null;
   country: string | null;
@@ -24,7 +24,7 @@ export class AddressImpl implements Address {
     public phone: number | null = null,
     public address: Address | null = null,
     public street: string | null = '',
-    public streetNumber: number | null = null,
+    public streetNumber: string | null = '',
     public city: string | null = '',
     public zip: number | null = null,
     public country: string | null = '',

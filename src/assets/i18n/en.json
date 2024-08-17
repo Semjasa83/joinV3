@@ -48,7 +48,18 @@
     "ContactEdit": {
       "EditContact": "Edit contact",
       "Save": "Save",
-      "Delete": "Delete"
+      "Delete": "Delete",
+      "FirstName": "Firstname",
+      "LastName": "Lastname",
+      "Phone": "Phone",
+      "Mobile": "Mobile",
+      "Email": "Email",
+      "Street": "Street",
+      "StreetNumber": "St.No",
+      "City": "City",
+      "Zip": "Zip",
+      "Country": "Country"
+
     },
     "ContactAdd": {
       "AddContact": "Add contact",

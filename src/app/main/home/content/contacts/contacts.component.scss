@@ -79,15 +79,17 @@
   }
 
   .contact-shorttag {
-    align-items: center;
-    border: 2px solid $surface-color;
-    border-radius: 100%;
-    color: $surface-color;
     display: flex;
-    height: 2.625rem;
+    align-items: center;
     justify-content: center;
-    margin: 1rem;
+    color: $surface-color;
+    height: 2.625rem;
     width: 2.625rem;
+    min-height: 2.625rem;
+    min-width: 2.625rem;
+    margin: 1rem;
+    border: 2px solid $surface-color;
+    border-radius: 50%;
   }
 
   .contact-info {
