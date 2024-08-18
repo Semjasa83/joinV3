@@ -3,33 +3,30 @@ export interface Contact {
   lastName: string | null;
   email: string | null;
   phone: number | null;
-  address: Address | null;
+  address: AddressDetails | null;
   color: string;
   _id: null | string;
 }
 
-export interface Address extends Contact {
-  street: string | null;
-  streetNumber: string | null;
-  city: string | null;
+export interface AddressDetails {
+  street: string | '';
+  streetNumber: string | '';
+  city: string | '';
   zip: number | null;
-  country: string | null;
+  country: string | '';
 }
 
-export class AddressImpl implements Address {
+export interface Address extends Contact {
+  address: AddressDetails;
+}
+
+export class AddressImpl implements AddressDetails {
   constructor(
-    public firstName: string | null = '',
-    public lastName: string | null = '',
-    public email: string | null = '',
-    public phone: number | null = null,
-    public address: Address | null = null,
-    public street: string | null = '',
-    public streetNumber: string | null = '',
-    public city: string | null = '',
+    public street: string = '',
+    public streetNumber: string = '',
+    public city: string = '',
     public zip: number | null = null,
-    public country: string | null = '',
-    public color: string = '',
-    public _id: string | null = null,
+    public country: string = '',
   ) {}
 }
 
@@ -39,7 +36,7 @@ export class ContactImpl implements Contact {
     public lastName: string | null = '',
     public email: string | null = '',
     public phone: number | null = null,
-    public address: Address | null = new AddressImpl(),
+    public address: AddressDetails | null = new AddressImpl(),
     public color: string = '',
     public _id: string | null = null,
   ) {}

@@ -21,7 +21,7 @@ export class EditContactComponent {
 
   @Output() closeDialogEvent = new EventEmitter<void>();
   public contactId: string = '';
-  public contactData: Address = new AddressImpl();
+  public contactData: Contact = new ContactImpl();
 
   addContactForm = new FormGroup({
     firstName: new FormControl(''),
@@ -33,6 +33,8 @@ export class EditContactComponent {
     streetNumber: new FormControl(''),
     zip: new FormControl(null as number | null),
     country: new FormControl(''),
+    color: new FormControl(''),
+    _id: new FormControl(''),
   });
 
   constructor(private route: ActivatedRoute, private contactService: ContactsService) { }
@@ -43,7 +45,6 @@ export class EditContactComponent {
       if (id !== undefined) { this.contactId = id; }
       this.loadContactData(this.contactId);
     });
-
   }
 
   public stopPropagation(event: Event): void {
@@ -63,19 +64,36 @@ export class EditContactComponent {
       lastName: contact.lastName || '',
       phone: contact.phone || null,
       email: contact.email || '',
-      street: contact.street || '',
-      city: contact.city || '',
-      streetNumber: contact.streetNumber || null,
-      zip: contact.zip || null,
-      country: contact.country || null,
+      street: contact.address.street || '',
+      city: contact.address.city || '',
+      streetNumber: contact.address.streetNumber || null,
+      zip: contact.address.zip || null,
+      country: contact.address.country || null,
     });
   }
 
 
   public async saveEditContact() {
-    console.log(this.addContactForm.value);
+    const formValue: any = this.addContactForm.value;
+    const updatedContact: Address = {
+      firstName: formValue.firstName || '',
+      lastName: formValue.lastName || '',
+      phone: formValue.phone || null,
+      email: formValue.email || '',
+      address: { 
+        street: formValue.address?.street || '',
+        city: formValue.address?.city || '',
+        streetNumber: formValue.address?.streetNumber || '',
+        zip: formValue.address?.zip || null,
+        country: formValue.address?.country || '',
+      },
+      color: this.contactData.color,
+      _id: this.contactId
+    }
+    console.log(updatedContact);
+    // await this.contactService.updateContact(this.contactId, updatedContact)
   }
-};
+}
 
 
 
