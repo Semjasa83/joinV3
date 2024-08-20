@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ContactsService } from '../../../../../services/contacts/contacts.service';
-import { Address, AddressImpl, Contact, ContactImpl } from '../../../../../interfaces/contact.interface';
+import { Address, Contact, ContactImpl } from '../../../../../interfaces/contact.interface';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonComponent } from '../../../../utility/button/button.component';
 import { ActivatedRoute } from '@angular/router';
@@ -43,7 +43,7 @@ export class EditContactComponent {
     this.route.paramMap.subscribe(params => {
       const id: string = String(params.get('id'));
       if (id !== undefined) { this.contactId = id; }
-      this.loadContactData(this.contactId);
+      this.loadContactData();
     });
   }
 
@@ -55,7 +55,7 @@ export class EditContactComponent {
     this.closeDialogEvent.emit();
   }
 
-  public async loadContactData(id: string) {
+  public async loadContactData() {
     const response: any = await this.contactService.getContact(this.contactId);
     const contact: Address = response.contact
     this.contactData = contact;
@@ -76,22 +76,22 @@ export class EditContactComponent {
   public async saveEditContact() {
     const formValue: any = this.addContactForm.value;
     const updatedContact: Address = {
-      firstName: formValue.firstName || '',
-      lastName: formValue.lastName || '',
-      phone: formValue.phone || null,
-      email: formValue.email || '',
-      address: { 
-        street: formValue.address?.street || '',
-        city: formValue.address?.city || '',
-        streetNumber: formValue.address?.streetNumber || '',
-        zip: formValue.address?.zip || null,
-        country: formValue.address?.country || '',
+      firstName: formValue?.firstName || '',
+      lastName: formValue?.lastName || '',
+      phone: formValue?.phone || null,
+      email: formValue?.email || '',
+      address: {
+        street: formValue?.street || '',
+        city: formValue?.city || '',
+        streetNumber: formValue?.streetNumber || '',
+        zip: formValue?.zip || null,
+        country: formValue?.country || '',
       },
       color: this.contactData.color,
       _id: this.contactId
     }
     console.log(updatedContact);
-    // await this.contactService.updateContact(this.contactId, updatedContact)
+    await this.contactService.updateContact(this.contactId, updatedContact);
   }
 }
 

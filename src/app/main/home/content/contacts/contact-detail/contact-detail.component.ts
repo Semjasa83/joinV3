@@ -1,10 +1,9 @@
-import { Contact, Address } from './../../../../../interfaces/contact.interface';
+import { Address } from '../../../../../interfaces/contact.interface';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { ContactsService } from "../../../../../services/contacts/contacts.service";
 import { NgIf, NgStyle } from '@angular/common';
 import { TranslateModule } from "@ngx-translate/core";
-import { firstValueFrom } from 'rxjs';
 import { EditContactComponent } from "../edit-contact/edit-contact.component";
 
 
@@ -41,6 +40,8 @@ export class ContactDetailComponent {
     try {
       const data: any = await this.contactsService.getContact(this.contactId);
       this.contactData = data.contact as Address;
+      console.log(this.contactData)
+      console.log(this.contactData.address.street)
     } catch (error) {
       console.error(error);
     }
