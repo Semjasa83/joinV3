@@ -40,8 +40,6 @@ export class ContactDetailComponent {
     try {
       const data: any = await this.contactsService.getContact(this.contactId);
       this.contactData = data.contact as Address;
-      console.log(this.contactData)
-      console.log(this.contactData.address.street)
     } catch (error) {
       console.error(error);
     }

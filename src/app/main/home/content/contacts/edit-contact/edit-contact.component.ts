@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ContactsService } from '../../../../../services/contacts/contacts.service';
 import { Address, Contact, ContactImpl } from '../../../../../interfaces/contact.interface';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonComponent } from '../../../../utility/button/button.component';
 import { ActivatedRoute } from '@angular/router';
+import {NgStyle} from "@angular/common";
 
 @Component({
   selector: 'app-edit-contact',
@@ -13,11 +14,12 @@ import { ActivatedRoute } from '@angular/router';
     TranslateModule,
     ButtonComponent,
     ReactiveFormsModule,
+    NgStyle,
   ],
   templateUrl: './edit-contact.component.html',
   styleUrl: './edit-contact.component.scss'
 })
-export class EditContactComponent {
+export class EditContactComponent implements OnInit {
 
   @Output() closeDialogEvent = new EventEmitter<void>();
   public contactId: string = '';
@@ -90,8 +92,9 @@ export class EditContactComponent {
       color: this.contactData.color,
       _id: this.contactId
     }
-    console.log(updatedContact);
     await this.contactService.updateContact(this.contactId, updatedContact);
+    window.location.reload();
+    this.closeDialog();
   }
 }
 
