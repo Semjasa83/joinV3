@@ -45,8 +45,8 @@
 
     &:hover {
       .sidebar-toggle-open {
-        transition: all 0.5s ease-in-out;
-        transform: translateX(4rem);
+        //transition: all 0.5s ease-in-out;
+        //transform: translateX(4rem);
         .navigation-icon {
           transform: rotate(0deg);
           transition: 0.5s ease-in-out;
@@ -58,7 +58,7 @@
           transform: rotate(0deg);
           transition: 0.5s ease-in-out;
         }
-      } 
+      }
     }
     &:not(:hover){
       .sidebar-toggle-open {
@@ -89,11 +89,11 @@
       }
     }
   }
-
 }
 
 .sidebar-toggle-open {
   border: 1px solid $surface-dark-contrast-color;
+  transform: translateX(50%);
 }
 
 .sidebar-toggle-close {

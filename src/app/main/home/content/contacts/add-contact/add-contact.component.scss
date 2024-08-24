@@ -166,23 +166,6 @@
   'opsz' 16
 }
 
-.sendButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  background-color: $surface-dark-color;
-  color: $surface-dark-contrast-color;
-  width: 100%;
-  border-radius: .625rem;
-  padding: 0.5rem;
-  font-weight: 700;
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-
 @media (min-width: 1024px) {
   .add-contact-wrapper {
     flex-direction: row !important;

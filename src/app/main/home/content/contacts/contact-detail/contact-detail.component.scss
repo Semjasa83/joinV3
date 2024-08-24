@@ -5,6 +5,7 @@
   padding-left: 3rem;
   padding-top: 3rem;
   width: 100%;
+  overflow-y: scroll;
 }
 
 .contact-header {
@@ -64,7 +65,7 @@
 .contact-info-wrapper {
   display: flex;
   flex-direction: column;
-  
+
   .contact-info {
     font-size: 1.25rem;
     color: $background-contrast-color;

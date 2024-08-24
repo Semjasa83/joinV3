@@ -45,7 +45,7 @@
 .index-wrapper {
   display: flex;
   align-items: center;
-  width: 80%;
+  width: 90%;
   border-bottom: 1px solid $light-transparent-color;
   margin-bottom: 0.5rem;
 
@@ -60,23 +60,7 @@
   align-items: center;
   display: flex;
   flex-direction: row;
-  width: 80%;
-
-  &:hover {
-    background-color: $light-transparent-color;
-    border-radius: 0.625rem;
-    cursor: pointer;
-
-    .contact-info {
-      .contact-name {
-        color: $surface-color;
-      }
-
-      .contact-email {
-        color: $secondary-color;
-      }
-    }
-  }
+  width: 90%;
 
   .contact-shorttag {
     display: flex;
@@ -99,13 +83,29 @@
 
     .contact-name {
       color: $surface-contrast-color;
-      font-size: 1.2rem;
+      font-size: 120%;
       margin-bottom: 0.5rem;
     }
 
     .contact-email {
       color: $primary-color;
-      font-size: 0.9rem;
+      font-size: 90%;
+    }
+  }
+
+  &:hover {
+    background-color: $light-transparent-color;
+    border-radius: 0.625rem;
+    cursor: pointer;
+
+    .contact-info {
+      .contact-name {
+        color: $surface-color;
+      }
+
+      .contact-email {
+        color: $secondary-color;
+      }
     }
   }
 }
