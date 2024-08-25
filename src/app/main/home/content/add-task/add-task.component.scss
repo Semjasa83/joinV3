@@ -1,0 +1,10 @@
+@import '../../../../../assets/scss/variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+  overflow-y: auto;
+}
