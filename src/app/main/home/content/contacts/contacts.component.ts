@@ -76,7 +76,6 @@ export class ContactsComponent{
     await this.renderGroupedContacts();
   };
 
-
   private async renderGroupedContacts() {
     const arr = Object.entries(this.groupContacts);
     arr.forEach((group) => {

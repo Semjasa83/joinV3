@@ -1,0 +1,17 @@
+@import '../../../../assets/scss/variables.scss';
+
+.input-wrapper {
+  display: block;
+  width: 100%;
+  border: 1px solid $background-contrast-color;
+  border-radius: 0.5rem;
+  overflow: hidden;
+
+  input {
+    display: block;
+    width: 100%;
+    border-radius: 0.502rem;
+    border: unset;
+    padding: 0.5rem 0 0.5rem 0.25rem;
+  }
+}
