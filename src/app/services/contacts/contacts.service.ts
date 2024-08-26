@@ -1,14 +1,15 @@
-import {BehaviorSubject, firstValueFrom, lastValueFrom, Observable} from 'rxjs';
+import { BehaviorSubject, firstValueFrom, lastValueFrom, Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Contact, Address } from "../../interfaces/contact.interface";
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactsService {
-  private API_URL = 'http://localhost:3000/api/';
+  private API_URL =  `${environment.apiUrl}/api/`;
 
   private contacts = new BehaviorSubject<any>([]);
   contacts$ = this.contacts.asObservable();
