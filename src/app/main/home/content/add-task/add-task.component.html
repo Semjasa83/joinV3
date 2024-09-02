@@ -2,4 +2,16 @@
     <span class="route-headline">Add Task</span>
 </div>
 
-<app-input-field placeholder="name" [inputType]="'email'"></app-input-field>
+<app-input-field placeholder="{{'Home.Tasks.Title' | translate}}" [inputType]="'text'"></app-input-field>
+<textarea placeholder="{{'Home.Tasks.Description' | translate}}"></textarea>
+<select>
+  <option value="">{{'Home.Tasks.Assign' | translate}}</option>
+</select>
+<app-input-field placeholder="{{'Home.Tasks.Date' | translate}}" [inputType]="'date'"></app-input-field>
+<select>
+  <option value="">{{'Home.Tasks.Category' | translate}}</option>
+</select>
+
+
+
+

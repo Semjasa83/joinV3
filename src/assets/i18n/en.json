@@ -71,6 +71,15 @@
       "Phone": "Phone",
       "Mobile": "Mobile",
       "Email": "Email"
+    },
+    "Tasks": {
+      "Title": "Title",
+      "Description": "Description",
+      "Assign": "Assigned to",
+      "Date": "Due date",
+      "Priority": "Prior",
+      "Category": "Category",
+      "Subtasks": "Subtasks"
     }
   }
 }
