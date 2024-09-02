@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectorRef, Component, Input} from '@angular/core';
 import {ContactsService} from '../../../../services/contacts/contacts.service';
 
 import {TranslateModule} from '@ngx-translate/core';
@@ -22,8 +22,8 @@ import { ContactDetailComponent } from "./contact-detail/contact-detail.componen
     NgStyle,
     NgIf,
     AddContactComponent,
-    ContactDetailComponent
-],
+    ContactDetailComponent,
+  ],
   providers: [
     ContactsService,
     {provide: 'Object', useValue: Object}
@@ -38,24 +38,25 @@ export class ContactsComponent{
   public groupContacts: { [key: string]: Contact[] } = {};
   public groupLetters: string[] = [];
   public groupedContactsArray: Contact[] = [];
-  public groupArray: any[] = [];
+  public groupArray$: any[] = [];
   public showAddContact: boolean = false;
 
   @Input() public contact: Contact = {} as Contact;
 
-  constructor(public contactsService: ContactsService, private router: Router) {}
+  constructor(public contactsService: ContactsService, private router: Router, private cd: ChangeDetectorRef) {}
 
   public async ngOnInit() {
     await this.contactsService.getAllContacts()
     this.contactsService.contacts$.subscribe((response: Contact[]) => {
       this.contacts = response;
     });
+    this.cd.detectChanges();
     this.sortContacts();
   }
 
   private async sortContacts(): Promise<void> {
     this.groupLetters = [];
-    this.groupArray = [];
+    this.groupArray$ = [];
     this.contacts?.sort((a, b) => {
         return (a.lastName ?? '').localeCompare(b.lastName ?? '');
     });
@@ -84,7 +85,7 @@ export class ContactsComponent{
         const c = group[1][i];
         this.groupedContactsArray.push(c);
       }
-      this.groupArray.push(this.groupedContactsArray);
+      this.groupArray$.push(this.groupedContactsArray);
       this.groupedContactsArray = [];
     });
   }
