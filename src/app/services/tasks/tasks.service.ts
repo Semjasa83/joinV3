@@ -11,7 +11,7 @@ export class TasksService {
 
   private API_URL =  `${environment.apiUrl}/api/`;
 
-  private tasks = new BehaviorSubject<any>([]);
+  private tasks = new BehaviorSubject<Task[]>([]);
   tasks$ = this.tasks.asObservable();
 
   private taskIdSubject = new BehaviorSubject<string>('');
@@ -23,9 +23,16 @@ export class TasksService {
 
   constructor(private http: HttpClient) { }
 
-  public async getAllTasks() {
+  public async getAllTasks()  {
     return lastValueFrom(this.http.get<Task[]>(this.API_URL + 'tasks')).then((data: any) => {  this.tasks.next(data['tasks']) });
   };
+
+  public async testCall() {                                                                         //remember to remove this function
+    return this.http.get<Task[]>(this.API_URL + 'tasks', { observe: 'response' }).subscribe(res => {
+      console.log('response Status', res.status);
+      console.log('body', res.body);
+    });
+  }
 
   public async getTask(id: string) {
     return lastValueFrom(this.http.get<Task>(this.API_URL + `tasks/${id}`));

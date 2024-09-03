@@ -11,7 +11,7 @@ import { environment } from '../../../environments/environment';
 export class ContactsService {
   private API_URL =  `${environment.apiUrl}/api/`;
 
-  private contacts = new BehaviorSubject<any>([]);
+  private contacts = new BehaviorSubject<Contact[]>([]);
   contacts$ = this.contacts.asObservable();
 
   private contactIdSubject = new BehaviorSubject<string>('');
