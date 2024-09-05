@@ -17,6 +17,8 @@ export class ContactsService {
   private contactIdSubject = new BehaviorSubject<string>('');
   contactId$: Observable<string> = this.contactIdSubject.asObservable();
 
+  private pollingInterval: any;
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -49,5 +51,16 @@ export class ContactsService {
 
   public getContactId(): Observable<string> {
     return this.contactId$;
+  }
+
+  // Polling function
+  public startPolling(interval: number = 5000): void {
+    this.pollingInterval = setInterval(async () => {
+      await this.getAllContacts();
+    }, interval);
+  }
+
+  public stopPolling(): void {
+    clearInterval(this.pollingInterval);
   }
 }

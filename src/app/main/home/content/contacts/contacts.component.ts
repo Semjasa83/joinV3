@@ -49,9 +49,14 @@ export class ContactsComponent{
     await this.contactsService.getAllContacts()
     this.contactsService.contacts$.subscribe((response: Contact[]) => {
       this.contacts = response;
-    });
+    }).unsubscribe();
     this.cd.detectChanges();
-    this.sortContacts();
+    await this.sortContacts();
+    this.contactsService.startPolling();
+  }
+
+  public ngOnDestroy() {
+    this.contactsService.stopPolling();
   }
 
   private async sortContacts(): Promise<void> {

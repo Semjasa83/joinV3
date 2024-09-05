@@ -49,7 +49,8 @@ export class TasksService {
   };
 
   public async addTask(task: Task) {
-    return lastValueFrom(this.http.post<Task>(this.API_URL + 'tasks', task, this.httpOptions)).then((data: any) => {  window.location.reload() });
+    // return lastValueFrom(this.http.post<Task>(this.API_URL + 'tasks', task, this.httpOptions)).then((data: any) => {  window.location.reload() });
+    return lastValueFrom(this.http.post<Task>(this.API_URL + 'tasks', task, this.httpOptions));
   };
 
   public setTaskId(id: string): void {
