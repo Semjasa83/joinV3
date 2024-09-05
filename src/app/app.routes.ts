@@ -5,7 +5,6 @@ import { ContactsComponent } from './main/home/content/contacts/contacts.compone
 import { AddTaskComponent } from './main/home/content/add-task/add-task.component';
 import { BoardComponent } from './main/home/content/board/board.component';
 import { ContactDetailComponent } from './main/home/content/contacts/contact-detail/contact-detail.component';
-// import { ContactDefaultComponent } from './main/utility/contact-default/contact-default.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },

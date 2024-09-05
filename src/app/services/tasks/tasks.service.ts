@@ -17,6 +17,8 @@ export class TasksService {
   private taskIdSubject = new BehaviorSubject<string>('');
   taskId$: Observable<string> = this.taskIdSubject.asObservable();
 
+  private pollingInterval: any;
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -56,5 +58,16 @@ export class TasksService {
 
   public getTaskId(): Observable<string> {
     return this.taskId$;
+  }
+
+  // Polling function
+  public startPolling(interval: number = 5000): void {
+    this.pollingInterval = setInterval(async () => {
+      await this.getAllTasks();
+    }, interval);
+  }
+
+  public stopPolling(): void {
+    clearInterval(this.pollingInterval);
   }
 }

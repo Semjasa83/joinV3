@@ -3,6 +3,7 @@ import { InputFieldComponent } from "../../../utility/input-field/input-field.co
 import {TranslateModule} from "@ngx-translate/core";
 import {TasksService} from "../../../../services/tasks/tasks.service";
 import { Task } from '../../../../interfaces/task.interface';
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-add-task',
@@ -17,18 +18,23 @@ import { Task } from '../../../../interfaces/task.interface';
 export class AddTaskComponent {
 
   public tasks: Task[] = [];
+  private tasksSubscription: Subscription = new Subscription();
 
-  constructor(private tasksService: TasksService) {
-    // this.tasksService.testCall();
+  constructor(private tasksService: TasksService) { }
 
-  }
-
-  async ngOnInit() {
-    await this.tasksService.getAllTasks();
-    this.tasksService.tasks$.subscribe((tasks: Task[]) => {
-      this.tasks = tasks;
-      console.log('tasks', this.tasks);
-    });
-  }
+  // async ngOnInit() {
+  //   await this.tasksService.getAllTasks();
+  //   this.tasksService.tasks$.subscribe((tasks: Task[]) => {
+  //     this.tasks = tasks;
+  //   }).unsubscribe();
+  //   this.tasksService.startPolling();
+  // }
+  //
+  // ngOnDestroy() {
+  //   if (this.tasksSubscription) {
+  //     this.tasksSubscription.unsubscribe();
+  //   }
+  //   this.tasksService.stopPolling();
+  // }
 
 }
