@@ -14,6 +14,7 @@ import {
 import {routes} from './app/app.routes';
 import {HttpClient, HttpClientModule, provideHttpClient, withFetch} from "@angular/common/http";
 import {TranslateLoader, TranslateModule, TranslateService} from "@ngx-translate/core";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 bootstrapApplication(AppComponent,
   {
@@ -35,7 +36,7 @@ bootstrapApplication(AppComponent,
             deps: [HttpClient],
           },
         })
-      ),
+      ), provideAnimationsAsync(),
     ],
   },
 ).catch((err) => console.error(err));
