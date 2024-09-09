@@ -76,10 +76,12 @@
       "Title": "Title",
       "Description": "Description",
       "Assign": "Assigned to",
-      "Date": "Due date",
+      "DueDate": "Due date",
+      "Date": "Select date",
       "Priority": "Prior",
       "Category": "Category",
-      "Subtasks": "Subtasks"
+      "Subtasks": "Subtasks",
+      "Contacts": "Select contacts to assign"
     }
   }
 }

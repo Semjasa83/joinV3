@@ -6,15 +6,24 @@ import {Task} from '../../../../interfaces/task.interface';
 import {Subscription} from "rxjs";
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatOption, MatSelect} from "@angular/material/select";
+import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/material/datepicker";
+import {provideNativeDateAdapter} from "@angular/material/core";
 
 @Component({
     selector: 'app-add-task',
     standalone: true,
+    providers: [provideNativeDateAdapter()],
     imports: [
         InputFieldComponent,
         TranslateModule,
         MatInputModule,
-        MatFormFieldModule
+        MatFormFieldModule,
+        MatSelect,
+        MatOption,
+        MatDatepickerInput,
+        MatDatepickerToggle,
+        MatDatepicker
     ],
     templateUrl: './add-task.component.html',
     styleUrl: './add-task.component.scss'

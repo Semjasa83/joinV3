@@ -13,3 +13,30 @@
     <mat-label>{{'Home.Tasks.Description' | translate}}</mat-label>
     <textarea matInput cols="4" rows="3"></textarea>
 </mat-form-field>
+
+<span>{{'Home.Tasks.Assign' | translate}}</span>
+<mat-form-field appearance="outline">
+    <mat-label>{{'Home.Tasks.Contacts' | translate}}</mat-label>
+    <mat-select multiple>
+<!--        <mat-select-trigger>-->
+<!--            {{toppings.value?.[0] || ''}}-->
+<!--            @if ((toppings.value?.length || 0) > 1) {-->
+<!--                <span class="example-additional-selection">-->
+<!--          (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})-->
+<!--        </span>-->
+<!--            }-->
+<!--        </mat-select-trigger>-->
+<!--        @for (topping of toppingList; track topping) {-->
+<!--            <mat-option [value]="topping">{{topping}}</mat-option>-->
+<!--        }-->
+    </mat-select>
+</mat-form-field>
+
+<span>{{'Home.Tasks.DueDate' | translate}}</span>
+<mat-form-field appearance="outline">
+    <mat-label>{{'Home.Tasks.Date' | translate}}</mat-label>
+    <input matInput [matDatepicker]="picker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
