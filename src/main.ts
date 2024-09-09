@@ -36,7 +36,7 @@ bootstrapApplication(AppComponent,
             deps: [HttpClient],
           },
         })
-      ), provideAnimationsAsync(),
+      ), provideAnimationsAsync(), provideAnimationsAsync(),
     ],
   },
 ).catch((err) => console.error(err));

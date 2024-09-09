@@ -10,7 +10,7 @@ import {Subscription} from "rxjs";
   standalone: true,
   imports: [
     InputFieldComponent,
-    TranslateModule
+    TranslateModule,
   ],
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.scss'
