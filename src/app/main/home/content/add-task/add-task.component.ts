@@ -1,40 +1,45 @@
-import { Component } from '@angular/core';
-import { InputFieldComponent } from "../../../utility/input-field/input-field.component";
+import {Component} from '@angular/core';
+import {InputFieldComponent} from "../../../utility/input-field/input-field.component";
 import {TranslateModule} from "@ngx-translate/core";
 import {TasksService} from "../../../../services/tasks/tasks.service";
-import { Task } from '../../../../interfaces/task.interface';
+import {Task} from '../../../../interfaces/task.interface';
 import {Subscription} from "rxjs";
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @Component({
-  selector: 'app-add-task',
-  standalone: true,
-  imports: [
-    InputFieldComponent,
-    TranslateModule,
-  ],
-  templateUrl: './add-task.component.html',
-  styleUrl: './add-task.component.scss'
+    selector: 'app-add-task',
+    standalone: true,
+    imports: [
+        InputFieldComponent,
+        TranslateModule,
+        MatInputModule,
+        MatFormFieldModule
+    ],
+    templateUrl: './add-task.component.html',
+    styleUrl: './add-task.component.scss'
 })
 export class AddTaskComponent {
 
-  public tasks: Task[] = [];
-  private tasksSubscription: Subscription = new Subscription();
+    public tasks: Task[] = [];
+    private tasksSubscription: Subscription = new Subscription();
 
-  constructor(private tasksService: TasksService) { }
+    constructor(private tasksService: TasksService) {
+    }
 
-  // async ngOnInit() {
-  //   await this.tasksService.getAllTasks();
-  //   this.tasksService.tasks$.subscribe((tasks: Task[]) => {
-  //     this.tasks = tasks;
-  //   }).unsubscribe();
-  //   this.tasksService.startPolling();
-  // }
-  //
-  // ngOnDestroy() {
-  //   if (this.tasksSubscription) {
-  //     this.tasksSubscription.unsubscribe();
-  //   }
-  //   this.tasksService.stopPolling();
-  // }
+    // async ngOnInit() {
+    //   await this.tasksService.getAllTasks();
+    //   this.tasksService.tasks$.subscribe((tasks: Task[]) => {
+    //     this.tasks = tasks;
+    //   }).unsubscribe();
+    //   this.tasksService.startPolling();
+    // }
+    //
+    // ngOnDestroy() {
+    //   if (this.tasksSubscription) {
+    //     this.tasksSubscription.unsubscribe();
+    //   }
+    //   this.tasksService.stopPolling();
+    // }
 
 }

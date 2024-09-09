@@ -2,7 +2,14 @@
     <span class="route-headline">Add Task</span>
 </div>
 
-<mat-form-field class="example-full-width">
-  <mat-label>First name</mat-label>
+<span>{{'Home.Tasks.Title' | translate}}</span>
+<mat-form-field appearance="outline">
+  <mat-label>{{'Home.Tasks.Title' | translate}}</mat-label>
   <input matInput>
+</mat-form-field>
+
+<span>{{'Home.Tasks.Description' | translate}}</span>
+<mat-form-field appearance="outline">
+    <mat-label>{{'Home.Tasks.Description' | translate}}</mat-label>
+    <textarea matInput cols="4" rows="3"></textarea>
 </mat-form-field>
