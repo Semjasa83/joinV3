@@ -9,6 +9,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatOption, MatSelect} from "@angular/material/select";
 import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/material/datepicker";
 import {provideNativeDateAdapter} from "@angular/material/core";
+import {ButtonComponent} from "../../../utility/button/button.component";
 
 @Component({
     selector: 'app-add-task',
@@ -23,7 +24,8 @@ import {provideNativeDateAdapter} from "@angular/material/core";
         MatOption,
         MatDatepickerInput,
         MatDatepickerToggle,
-        MatDatepicker
+        MatDatepicker,
+        ButtonComponent
     ],
     templateUrl: './add-task.component.html',
     styleUrl: './add-task.component.scss'

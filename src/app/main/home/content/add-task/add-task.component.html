@@ -36,7 +36,29 @@
 <mat-form-field appearance="outline">
     <mat-label>{{'Home.Tasks.Date' | translate}}</mat-label>
     <input matInput [matDatepicker]="picker">
-    <mat-hint>MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<span>{{'Home.Tasks.Priority' | translate}}</span>
+<div class="btn-wrapper">
+    <app-button [bgrColor]="'surface-dark-color'" [icon]="'urgent'" [outlined]="true"
+                [text]="'Home.Tasks.PriorityHigh' | translate" [txtColor]="'surface-dark-contrast-color'">
+    </app-button>
+    <app-button [bgrColor]="'surface-dark-color'" [icon]="'medium'" [outlined]="true"
+                [text]="'Home.Tasks.PriorityMedium' | translate" [txtColor]="'surface-dark-contrast-color'">
+    </app-button>
+    <app-button [bgrColor]="'surface-dark-color'" [icon]="'low'" [outlined]="true"
+                [text]="'Home.Tasks.PriorityLow' | translate" [txtColor]="'surface-dark-contrast-color'">
+    </app-button>
+</div>
+
+<span>{{'Home.Tasks.Category' | translate}}</span>
+<mat-form-field appearance="outline">
+    <mat-label>{{'Home.Tasks.Category' | translate}}</mat-label>
+    <mat-select>
+<!--        @for (food of foods; track food) {-->
+<!--            <mat-option [value]="food.value">{{food.viewValue}}</mat-option>-->
+<!--        }-->
+    </mat-select>
 </mat-form-field>

@@ -78,10 +78,13 @@
       "Assign": "Assigned to",
       "DueDate": "Due date",
       "Date": "Select date",
-      "Priority": "Prior",
+      "Priority": "Priority",
       "Category": "Category",
       "Subtasks": "Subtasks",
-      "Contacts": "Select contacts to assign"
+      "Contacts": "Select contacts to assign",
+      "PriorityLow": "Low",
+      "PriorityMedium": "Medium",
+      "PriorityHigh": "Urgent"
     }
   }
 }
