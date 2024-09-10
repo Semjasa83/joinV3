@@ -34,6 +34,7 @@ export class AddTaskComponent {
 
     public tasks: Task[] = [];
     private tasksSubscription: Subscription = new Subscription();
+    public categories: string[] = ['To Do', 'In Progress', 'Await Feedback', 'Done'];
 
     constructor(private tasksService: TasksService) {
     }

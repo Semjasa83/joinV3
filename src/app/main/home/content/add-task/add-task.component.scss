@@ -13,7 +13,22 @@ textarea {
   resize: none;
 }
 
-.btn-wrapper {
+.form-subheadlines {
+  padding-left: 0.5rem;
+}
+
+.prio-btn-wrapper {
   display: flex;
   justify-content: space-between;
+}
+
+::ng-deep app-button {
+  margin-bottom: 1rem;
+  .btn-wrapper {
+    padding: 0.9rem !important;
+  }
+}
+
+::ng-deep mat-form-field {
+  padding: 0.5rem;
 }

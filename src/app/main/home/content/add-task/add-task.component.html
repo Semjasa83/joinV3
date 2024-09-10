@@ -2,19 +2,19 @@
     <span class="route-headline">Add Task</span>
 </div>
 
-<span>{{'Home.Tasks.Title' | translate}}</span>
+<span class="form-subheadlines">{{'Home.Tasks.Title' | translate}}</span>
 <mat-form-field appearance="outline">
   <mat-label>{{'Home.Tasks.Title' | translate}}</mat-label>
   <input matInput>
 </mat-form-field>
 
-<span>{{'Home.Tasks.Description' | translate}}</span>
+<span class="form-subheadlines">{{'Home.Tasks.Description' | translate}}</span>
 <mat-form-field appearance="outline">
     <mat-label>{{'Home.Tasks.Description' | translate}}</mat-label>
     <textarea matInput cols="4" rows="3"></textarea>
 </mat-form-field>
 
-<span>{{'Home.Tasks.Assign' | translate}}</span>
+<span class="form-subheadlines">{{'Home.Tasks.Assign' | translate}}</span>
 <mat-form-field appearance="outline">
     <mat-label>{{'Home.Tasks.Contacts' | translate}}</mat-label>
     <mat-select multiple>
@@ -32,7 +32,7 @@
     </mat-select>
 </mat-form-field>
 
-<span>{{'Home.Tasks.DueDate' | translate}}</span>
+<span class="form-subheadlines">{{'Home.Tasks.DueDate' | translate}}</span>
 <mat-form-field appearance="outline">
     <mat-label>{{'Home.Tasks.Date' | translate}}</mat-label>
     <input matInput [matDatepicker]="picker">
@@ -40,8 +40,8 @@
     <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
 
-<span>{{'Home.Tasks.Priority' | translate}}</span>
-<div class="btn-wrapper">
+<span class="form-subheadlines">{{'Home.Tasks.Priority' | translate}}</span>
+<div class="prio-btn-wrapper">
     <app-button [bgrColor]="'surface-dark-color'" [icon]="'urgent'" [outlined]="true"
                 [text]="'Home.Tasks.PriorityHigh' | translate" [txtColor]="'surface-dark-contrast-color'">
     </app-button>
@@ -53,12 +53,12 @@
     </app-button>
 </div>
 
-<span>{{'Home.Tasks.Category' | translate}}</span>
+<span class="form-subheadlines">{{'Home.Tasks.Category' | translate}}</span>
 <mat-form-field appearance="outline">
     <mat-label>{{'Home.Tasks.Category' | translate}}</mat-label>
     <mat-select>
-<!--        @for (food of foods; track food) {-->
-<!--            <mat-option [value]="food.value">{{food.viewValue}}</mat-option>-->
-<!--        }-->
+        @for (category of categories; track categories) {
+            <mat-option [value]="category">{{category}}</mat-option>
+        }
     </mat-select>
 </mat-form-field>
