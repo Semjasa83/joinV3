@@ -68,6 +68,10 @@ $light-transparent-color: #33333377;
   background-color: $success-color;
 }
 
+.success-txt-color {
+  color: $success-color;
+}
+
 .success-contrast-color {
   color: $success-contrast-color;
 }
@@ -76,12 +80,20 @@ $light-transparent-color: #33333377;
   background-color: $error-color;
 }
 
+.error-txt-color {
+  color: $error-color;
+}
+
 .error-contrast-color {
   color: $error-contrast-color;
 }
 
 .warning-color {
   background-color: $warning-color;
+}
+
+.warning-txt-color {
+  color: $warning-color;
 }
 
 .warning-contrast-color {

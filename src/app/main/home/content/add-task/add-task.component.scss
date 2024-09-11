@@ -35,13 +35,7 @@ textarea {
   }
 }
 
-.btn-section {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 1rem;
-  margin-left: 2rem;
-  width: 90%;
-}
+
 
 // Special Local Overrides
 
@@ -78,6 +72,24 @@ textarea {
     .right {
       padding-left: 1rem;
     }
-
+  }
+  .btn-section {
+    display: flex;
+    height: 100%;
+    width: 90%;
+    margin: 1rem 0 1rem 2rem;
+    justify-content: center;
+    .req-wrapper {
+      display: flex;
+      align-items: end;
+      width: 50%;
+      margin-bottom: 1.5rem;
+    }
+    .confirm-wrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: end;
+      width: 50%;
+    }
   }
 }

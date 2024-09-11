@@ -6,7 +6,7 @@
 
 <section class="split-wrapper">
     <div class="sub-section left split-line">
-        <span class="form-subheadlines">{{ 'Home.AddTask.Title' | translate }}</span>
+        <span class="form-subheadlines">{{ 'Home.AddTask.Title' | translate }}<span class="color: error-txt-color">*</span></span>
         <mat-form-field appearance="outline">
             <mat-label>{{ 'Home.AddTask.Title' | translate }}</mat-label>
             <input matInput>
@@ -38,7 +38,7 @@
     </div>
 
     <div class="sub-section right">
-        <span class="form-subheadlines">{{ 'Home.AddTask.DueDate' | translate }}</span>
+        <span class="form-subheadlines">{{ 'Home.AddTask.DueDate' | translate }}<span class="color: error-txt-color">*</span></span>
         <mat-form-field appearance="outline">
             <mat-label>{{ 'Home.AddTask.Date' | translate }}</mat-label>
             <input matInput [matDatepicker]="picker">
@@ -59,7 +59,7 @@
             </app-button>
         </div>
 
-        <span class="form-subheadlines">{{ 'Home.AddTask.Category' | translate }}</span>
+        <span class="form-subheadlines">{{ 'Home.AddTask.Category' | translate }}<span class="color: error-txt-color">*</span></span>
         <mat-form-field appearance="outline">
             <mat-label>{{ 'Home.AddTask.Category' | translate }}</mat-label>
             <mat-select>
@@ -69,19 +69,24 @@
             </mat-select>
         </mat-form-field>
     </div>
-
 </section>
 
 <div class="btn-section">
-    <app-button [text]="'Home.AddTask.Clear'| translate"
-                [bgrColor]="'surface-color'"
-                [txtColor]="'surface-dark-color'"
-                [outlined]="true">
-    </app-button>
-    <app-button [icon]="'check'"
-                [text]="'Home.AddTask.CreateTask'| translate"
-                [bgrColor]="'surface-dark-color'"
-                [txtColor]="'surface-dark-contrast-color'"
-                [outlined]="false">
-    </app-button>
+    <div class="req-wrapper">
+        <span><span class="color: error-txt-color">*</span>{{'Home.AddTask.Required' | translate}}</span>
+    </div>
+    <div class="confirm-wrapper">
+        <app-button [text]="'Home.AddTask.Clear'| translate"
+                    [bgrColor]="'surface-color'"
+                    [txtColor]="'surface-dark-color'"
+                    [outlined]="true">
+        </app-button>
+        <app-button [icon]="'check'"
+                    [text]="'Home.AddTask.CreateTask'| translate"
+                    [bgrColor]="'surface-dark-color'"
+                    [txtColor]="'surface-dark-contrast-color'"
+                    [outlined]="false">
+        </app-button>
+    </div>
+
 </div>
