@@ -31,14 +31,16 @@
   </section>
 
   <section class="detail-wrapper">
-    <div class="route-headline-wrapper">
-      <span class="route-headline route-line">Contacts</span>
-      <span class="route-sub-headline">Better with a team</span>
-    </div>
+      <app-subheadline [text]="'Home.Contacts.Headline' | translate"
+                       [subtext]="'Home.Contacts.SubHeadline' | translate"
+                       [line]="true">
+
+      </app-subheadline>
     <ng-container *ngIf="contact">
       <router-outlet></router-outlet>
     </ng-container>
   </section>
+
 </div>
 
 <ng-container *ngIf="showAddContact">

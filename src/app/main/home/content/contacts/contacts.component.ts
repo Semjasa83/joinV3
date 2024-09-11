@@ -8,22 +8,24 @@ import {AddContactComponent} from "./add-contact/add-contact.component";
 import { ButtonComponent } from '../../../utility/button/button.component';
 import {Contact} from "../../../../interfaces/contact.interface";
 import { ContactDetailComponent } from "./contact-detail/contact-detail.component";
+import {SubheadlineComponent} from "../../../utility/subheadline/subheadline.component";
 
 @Component({
   selector: 'app-contacts',
   standalone: true,
-  imports: [
-    TranslateModule,
-    ButtonComponent,
-    RouterOutlet,
-    RouterLink,
-    RouterLinkActive,
-    NgFor,
-    NgStyle,
-    NgIf,
-    AddContactComponent,
-    ContactDetailComponent,
-  ],
+    imports: [
+        TranslateModule,
+        ButtonComponent,
+        RouterOutlet,
+        RouterLink,
+        RouterLinkActive,
+        NgFor,
+        NgStyle,
+        NgIf,
+        AddContactComponent,
+        ContactDetailComponent,
+        SubheadlineComponent,
+    ],
   providers: [
     ContactsService,
     {provide: 'Object', useValue: Object}

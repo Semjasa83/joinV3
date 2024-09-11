@@ -1,0 +1,35 @@
+@import '../../../../assets/scss/variables.scss';
+
+:host {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 3rem;
+  width: 100%;
+  margin-top: 3rem;
+  margin-left: 3rem;
+}
+
+.route-headline {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: 3rem;
+  font-weight: 700;
+  color: $background-contrast-color;
+}
+
+.route-line {
+  padding-right: 1.5rem;
+  border-right: 3px solid $secondary-color;
+}
+
+.route-sub-headline {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: $background-contrast-color;
+  padding-left: 1.5rem;
+}

@@ -10,6 +10,7 @@ import {MatOption, MatSelect} from "@angular/material/select";
 import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/material/datepicker";
 import {provideNativeDateAdapter} from "@angular/material/core";
 import {ButtonComponent} from "../../../utility/button/button.component";
+import {SubheadlineComponent} from "../../../utility/subheadline/subheadline.component";
 
 @Component({
     selector: 'app-add-task',
@@ -25,7 +26,8 @@ import {ButtonComponent} from "../../../utility/button/button.component";
         MatDatepickerInput,
         MatDatepickerToggle,
         MatDatepicker,
-        ButtonComponent
+        ButtonComponent,
+        SubheadlineComponent
     ],
     templateUrl: './add-task.component.html',
     styleUrl: './add-task.component.scss'

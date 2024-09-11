@@ -5,35 +5,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: Inter;
-  //font-size: 1rem !important;
-  //font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-.route-headline-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-left: 3rem;
-  margin-top: 5rem;
-  height: fit-content;
-
-  .route-headline {
-    height: fit-content;
-    font-size: 3rem;
-    font-weight: 700;
-    color: $background-contrast-color;
-  }
-
-  .route-line {
-    padding-right: 1.5rem;
-    border-right: 3px solid $secondary-color;
-  }
-
-  .route-sub-headline {
-    height: fit-content;
-    font-size: 1.25rem;
-    font-weight: 300;
-    color: $background-contrast-color;
-    padding-left: 1.5rem;
-  }
+  font-size: 1rem !important;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
