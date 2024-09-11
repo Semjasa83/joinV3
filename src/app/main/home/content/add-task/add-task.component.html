@@ -1,62 +1,87 @@
-<app-subheadline [text]="'Home.AddTask.Headline' | translate"></app-subheadline>
+<app-subheadline
+        [text]="'Home.AddTask.Headline' | translate"
+        [subtext]="'Home.AddTask.SubHeadline' | translate"
+        [line]="true"
+></app-subheadline>
 
-<span class="form-subheadlines">{{'Home.AddTask.Title' | translate}}</span>
-<mat-form-field appearance="outline">
-  <mat-label>{{'Home.AddTask.Title' | translate}}</mat-label>
-  <input matInput>
-</mat-form-field>
+<section class="split-wrapper">
+    <div class="sub-section left split-line">
+        <span class="form-subheadlines">{{ 'Home.AddTask.Title' | translate }}</span>
+        <mat-form-field appearance="outline">
+            <mat-label>{{ 'Home.AddTask.Title' | translate }}</mat-label>
+            <input matInput>
+        </mat-form-field>
 
-<span class="form-subheadlines">{{'Home.AddTask.Description' | translate}}</span>
-<mat-form-field appearance="outline">
-    <mat-label>{{'Home.AddTask.Description' | translate}}</mat-label>
-    <textarea matInput cols="4" rows="3"></textarea>
-</mat-form-field>
+        <span class="form-subheadlines">{{ 'Home.AddTask.Description' | translate }}</span>
+        <mat-form-field appearance="outline">
+            <mat-label>{{ 'Home.AddTask.Description' | translate }}</mat-label>
+            <textarea matInput cols="4" rows="3"></textarea>
+        </mat-form-field>
 
-<span class="form-subheadlines">{{'Home.AddTask.Assign' | translate}}</span>
-<mat-form-field appearance="outline">
-    <mat-label>{{'Home.AddTask.Contacts' | translate}}</mat-label>
-    <mat-select multiple>
-<!--        <mat-select-trigger>-->
-<!--            {{toppings.value?.[0] || ''}}-->
-<!--            @if ((toppings.value?.length || 0) > 1) {-->
-<!--                <span class="example-additional-selection">-->
-<!--          (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})-->
-<!--        </span>-->
-<!--            }-->
-<!--        </mat-select-trigger>-->
-<!--        @for (topping of toppingList; track topping) {-->
-<!--            <mat-option [value]="topping">{{topping}}</mat-option>-->
-<!--        }-->
-    </mat-select>
-</mat-form-field>
+        <span class="form-subheadlines">{{ 'Home.AddTask.Assign' | translate }}</span>
+        <mat-form-field appearance="outline">
+            <mat-label>{{ 'Home.AddTask.Contacts' | translate }}</mat-label>
+            <mat-select multiple>
+                <!--        <mat-select-trigger>-->
+                <!--            {{toppings.value?.[0] || ''}}-->
+                <!--            @if ((toppings.value?.length || 0) > 1) {-->
+                <!--                <span class="example-additional-selection">-->
+                <!--          (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})-->
+                <!--        </span>-->
+                <!--            }-->
+                <!--        </mat-select-trigger>-->
+                <!--        @for (topping of toppingList; track topping) {-->
+                <!--            <mat-option [value]="topping">{{topping}}</mat-option>-->
+                <!--        }-->
+            </mat-select>
+        </mat-form-field>
+    </div>
 
-<span class="form-subheadlines">{{'Home.AddTask.DueDate' | translate}}</span>
-<mat-form-field appearance="outline">
-    <mat-label>{{'Home.AddTask.Date' | translate}}</mat-label>
-    <input matInput [matDatepicker]="picker">
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
+    <div class="sub-section right">
+        <span class="form-subheadlines">{{ 'Home.AddTask.DueDate' | translate }}</span>
+        <mat-form-field appearance="outline">
+            <mat-label>{{ 'Home.AddTask.Date' | translate }}</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
 
-<span class="form-subheadlines">{{'Home.AddTask.Priority' | translate}}</span>
-<div class="prio-btn-wrapper">
-    <app-button [bgrColor]="'surface-dark-color'" [icon]="'urgent'" [outlined]="true"
-                [text]="'Home.AddTask.PriorityHigh' | translate" [txtColor]="'surface-dark-contrast-color'">
+        <span class="form-subheadlines">{{ 'Home.AddTask.Priority' | translate }}</span>
+        <div class="prio-btn-wrapper">
+            <app-button [bgrColor]="'surface-dark-color'" [icon]="'urgent'" [outlined]="true"
+                        [text]="'Home.AddTask.PriorityHigh' | translate" [txtColor]="'surface-dark-contrast-color'">
+            </app-button>
+            <app-button [bgrColor]="'surface-dark-color'" [icon]="'medium'" [outlined]="true"
+                        [text]="'Home.AddTask.PriorityMedium' | translate" [txtColor]="'surface-dark-contrast-color'">
+            </app-button>
+            <app-button [bgrColor]="'surface-dark-color'" [icon]="'low'" [outlined]="true"
+                        [text]="'Home.AddTask.PriorityLow' | translate" [txtColor]="'surface-dark-contrast-color'">
+            </app-button>
+        </div>
+
+        <span class="form-subheadlines">{{ 'Home.AddTask.Category' | translate }}</span>
+        <mat-form-field appearance="outline">
+            <mat-label>{{ 'Home.AddTask.Category' | translate }}</mat-label>
+            <mat-select>
+                @for (category of categories; track categories) {
+                    <mat-option [value]="category">{{ category }}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+</section>
+
+<div class="btn-section">
+    <app-button [text]="'Home.AddTask.Clear'| translate"
+                [bgrColor]="'surface-color'"
+                [txtColor]="'surface-dark-color'"
+                [outlined]="true">
     </app-button>
-    <app-button [bgrColor]="'surface-dark-color'" [icon]="'medium'" [outlined]="true"
-                [text]="'Home.AddTask.PriorityMedium' | translate" [txtColor]="'surface-dark-contrast-color'">
-    </app-button>
-    <app-button [bgrColor]="'surface-dark-color'" [icon]="'low'" [outlined]="true"
-                [text]="'Home.AddTask.PriorityLow' | translate" [txtColor]="'surface-dark-contrast-color'">
+    <app-button [icon]="'check'"
+                [text]="'Home.AddTask.CreateTask'| translate"
+                [bgrColor]="'surface-dark-color'"
+                [txtColor]="'surface-dark-contrast-color'"
+                [outlined]="false">
     </app-button>
 </div>
-
-<span class="form-subheadlines">{{'Home.AddTask.Category' | translate}}</span>
-<mat-form-field appearance="outline">
-    <mat-label>{{'Home.AddTask.Category' | translate}}</mat-label>
-    <mat-select>
-        @for (category of categories; track categories) {
-            <mat-option [value]="category">{{category}}</mat-option>
-        }
-    </mat-select>
-</mat-form-field>

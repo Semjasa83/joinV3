@@ -33,6 +33,7 @@
     },
     "AddTask": {
       "Headline": "Add Task",
+      "SubHeadline": "Easier complete overview!",
       "Title": "Title",
       "Description": "Description",
       "Assign": "Assigned to",
@@ -44,7 +45,9 @@
       "Contacts": "Select contacts to assign",
       "PriorityLow": "Low",
       "PriorityMedium": "Medium",
-      "PriorityHigh": "Urgent"
+      "PriorityHigh": "Urgent",
+      "CreateTask": "Create task",
+      "Clear": "Clear"
     },
     "Board": {},
     "Contacts": {

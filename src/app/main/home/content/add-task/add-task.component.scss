@@ -7,6 +7,7 @@
   overflow: hidden;
   width: 100%;
   overflow-y: auto;
+  background-color: $background-color;
 }
 
 textarea {
@@ -22,8 +23,31 @@ textarea {
   justify-content: space-between;
 }
 
+.split-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .sub-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.btn-section {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  width: 90%;
+}
+
+// Special Local Overrides
+
 ::ng-deep app-button {
   margin-bottom: 1rem;
+
   .btn-wrapper {
     padding: 0.9rem !important;
   }
@@ -31,4 +55,29 @@ textarea {
 
 ::ng-deep mat-form-field {
   padding: 0.5rem;
+}
+
+
+// Media Queries
+
+@media (min-width: 1024px) {
+  .split-wrapper {
+    flex-direction: row;
+    width: 90%;
+    margin-top: 2rem;
+    margin-left: 2rem;
+
+    .split-line {
+      border-right: 1px solid $light-transparent-color;
+    }
+
+    .left {
+      padding-right: 1rem;
+    }
+
+    .right {
+      padding-left: 1rem;
+    }
+
+  }
 }

@@ -32,8 +32,12 @@ button {
   }
 
   .btn-text {
+    display: flex;
+    align-items: center;
     font-weight: 700;
     font-size: 1rem !important;
+    height: fit-content;
+    min-height: 24px;
   }
 
   .btn-icon {
@@ -53,6 +57,6 @@ button {
 }
 
 .border {
-  background-color: transparent !important;
+  background-color: $surface-color !important;
   color: $surface-dark-color;
 }
