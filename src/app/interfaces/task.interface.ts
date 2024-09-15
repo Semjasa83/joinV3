@@ -1,13 +1,13 @@
 import { Contact } from "./contact.interface";
 
 export interface Task {
-    title: string;
-    description: string;
-    dueDate: Date;
-    priority: string;
-    category: string;
-    subTasks: string[];
-    contacts: Contact[];
+    title: string | null;
+    description: string | null;
+    dueDate: Date | null;
+    priority: string | null;
+    category: string | null;
+    subTasks: string[] | null;
+    contacts: Contact[] | null;
     _id: string;
 }
 

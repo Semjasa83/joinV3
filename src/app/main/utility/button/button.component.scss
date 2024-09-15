@@ -60,3 +60,18 @@ button {
   background-color: $surface-color !important;
   color: $surface-dark-color;
 }
+
+.low {
+  background-color: $success-color;
+  color: $success-contrast-color;
+}
+
+.medium {
+  background-color: $warning-color;
+  color: $warning-contrast-color;
+}
+
+.high {
+  background-color: $error-color;
+  color: $error-contrast-color;
+}

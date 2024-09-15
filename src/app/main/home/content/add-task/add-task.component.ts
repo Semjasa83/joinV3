@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {InputFieldComponent} from "../../../utility/input-field/input-field.component";
 import {TranslateModule} from "@ngx-translate/core";
 import {TasksService} from "../../../../services/tasks/tasks.service";
-import {Task} from '../../../../interfaces/task.interface';
+import {Task, TaskImpl} from '../../../../interfaces/task.interface';
 import {Subscription} from "rxjs";
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -11,6 +11,7 @@ import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/m
 import {provideNativeDateAdapter} from "@angular/material/core";
 import {ButtonComponent} from "../../../utility/button/button.component";
 import {SubheadlineComponent} from "../../../utility/subheadline/subheadline.component";
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 
 @Component({
     selector: 'app-add-task',
@@ -27,33 +28,48 @@ import {SubheadlineComponent} from "../../../utility/subheadline/subheadline.com
         MatDatepickerToggle,
         MatDatepicker,
         ButtonComponent,
-        SubheadlineComponent
+        SubheadlineComponent,
+        ReactiveFormsModule
     ],
     templateUrl: './add-task.component.html',
     styleUrl: './add-task.component.scss'
 })
 export class AddTaskComponent {
 
-    public tasks: Task[] = [];
-    private tasksSubscription: Subscription = new Subscription();
-    public categories: string[] = ['To Do', 'In Progress', 'Await Feedback', 'Done'];
+    public categories: string[] = ['UX/UI', 'Backlog', 'Frontend', 'Backend'];
+    public priorities: string = '';
+
+    addTaskForm = new FormGroup({
+        title: new FormControl('', [Validators.required, Validators.minLength(4)]),
+        description: new FormControl(''),
+        dueDate: new FormControl(null, [Validators.required]),
+        priority: new FormControl(''),
+        category: new FormControl('', [Validators.required]),
+        contacts: new FormControl([])
+    });
 
     constructor(private tasksService: TasksService) {
     }
 
-    // async ngOnInit() {
-    //   await this.tasksService.getAllTasks();
-    //   this.tasksService.tasks$.subscribe((tasks: Task[]) => {
-    //     this.tasks = tasks;
-    //   }).unsubscribe();
-    //   this.tasksService.startPolling();
-    // }
-    //
-    // ngOnDestroy() {
-    //   if (this.tasksSubscription) {
-    //     this.tasksSubscription.unsubscribe();
-    //   }
-    //   this.tasksService.stopPolling();
-    // }
+    public async addTask() {
+        let newTask: Task = new TaskImpl();
+        newTask = {
+            ...newTask,
+            ...this.addTaskForm.value,
+            priority: this.priorities
+        }
+        try {
+            console.log('newTask:', newTask);
+            // await this.tasksService.addTask(newTask);
+            // this.addTaskForm.reset(this.addTaskForm.value);
+        } catch (error) {
+            console.error('Error adding task:', error);
+        }
+    }
+
+    public setPriority(priority: string) {
+        this.priorities = priority;
+        console.log('priority:', priority);
+    }
 
 }
