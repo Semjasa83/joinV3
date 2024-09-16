@@ -1,5 +1,5 @@
 <button class="btn-wrapper"
-        [ngClass]="[bgrColor, txtColor, priority || '']"
+        [ngClass]="[bgrColor, txtColor, priority ? priority : '']"
         [class.border]="outlined"
         (click)="onClick()"
         type="{{buttonType}}">

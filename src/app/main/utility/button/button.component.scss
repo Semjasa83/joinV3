@@ -10,7 +10,6 @@
 }
 
 button {
-  color: unset;
   background-color: unset;
 }
 
@@ -48,7 +47,7 @@ button {
     padding-left: 0.5rem;
     opacity: 1;
   }
-  
+
   &:hover {
     border: 1px solid $secondary-color !important;
     color: $secondary-color;
@@ -62,16 +61,16 @@ button {
 }
 
 .low {
-  background-color: $success-color;
-  color: $success-contrast-color;
+  border: 1px solid $success-color !important;
+  color: $success-color !important;
 }
 
 .medium {
-  background-color: $warning-color;
-  color: $warning-contrast-color;
+  border: 1px solid $warning-color !important;
+  color: $warning-color !important;
 }
 
-.high {
-  background-color: $error-color;
-  color: $error-contrast-color;
+.urgent {
+  border: 1px solid $error-color !important;
+  color: $error-color !important;
 }

@@ -3,7 +3,7 @@ import { Contact } from "./contact.interface";
 export interface Task {
     title: string | null;
     description: string | null;
-    dueDate: Date | null;
+    dueDate: Date | null | string;
     priority: string | null;
     category: string | null;
     subTasks: string[] | null;

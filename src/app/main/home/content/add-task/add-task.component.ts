@@ -29,7 +29,7 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/
         MatDatepicker,
         ButtonComponent,
         SubheadlineComponent,
-        ReactiveFormsModule
+        ReactiveFormsModule,
     ],
     templateUrl: './add-task.component.html',
     styleUrl: './add-task.component.scss'
@@ -42,7 +42,7 @@ export class AddTaskComponent {
     addTaskForm = new FormGroup({
         title: new FormControl('', [Validators.required, Validators.minLength(4)]),
         description: new FormControl(''),
-        dueDate: new FormControl(null, [Validators.required]),
+        dueDate: new FormControl(new Date, [Validators.required]),
         priority: new FormControl(''),
         category: new FormControl('', [Validators.required]),
         contacts: new FormControl([])
@@ -67,9 +67,8 @@ export class AddTaskComponent {
         }
     }
 
-    public setPriority(priority: string) {
+    public setPriority(priority: 'low' | 'medium' | 'urgent') {
         this.priorities = priority;
-        console.log('priority:', priority);
     }
 
 }

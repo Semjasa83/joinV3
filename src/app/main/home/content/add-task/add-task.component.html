@@ -54,19 +54,22 @@
                             [outlined]="true"
                             [text]="'Home.AddTask.PriorityHigh' | translate"
                             [txtColor]="'surface-dark-contrast-color'"
+                            [priority]="priorities === 'urgent' ? 'urgent' : ''"
                             (click)="setPriority('urgent')">
                 </app-button>
                 <app-button [bgrColor]="'surface-dark-color'"
                             [icon]="'medium'" [outlined]="true"
                             [text]="'Home.AddTask.PriorityMedium' | translate"
                             [txtColor]="'surface-dark-contrast-color'"
+                            [priority]="priorities === 'medium' ? 'medium' : ''"
                             (click)="setPriority('medium')">
                 </app-button>
                 <app-button [bgrColor]="'surface-dark-color'"
                             [icon]="'low'" [outlined]="true"
                             [text]="'Home.AddTask.PriorityLow' | translate"
                             [txtColor]="'surface-dark-contrast-color'"
-                            (click)="setPriority('low')">
+                            [priority]="priorities=== 'low' ? 'low' : ''"
+                (click)="setPriority('low')">
                 </app-button>
             </div>
 

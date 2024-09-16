@@ -21,7 +21,7 @@ export class ButtonComponent {
   @Output() buttonClick: EventEmitter<void> | undefined;
   @Input() outlined?: boolean = false;
   @Input() buttonType?: string = 'button';
-  @Input() priority?: 'low' | 'medium' | 'urgent';
+  @Input() priority?: 'low' | 'medium' | 'urgent' | '';
 
 
   onClick() {
