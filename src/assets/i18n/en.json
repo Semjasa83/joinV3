@@ -48,7 +48,8 @@
       "PriorityHigh": "Urgent",
       "CreateTask": "Create task",
       "Clear": "Clear",
-      "Required": "This field is required"
+      "Required": "This field is required",
+      "NoContacts": "No contacts available"
     },
     "Board": {},
     "Contacts": {

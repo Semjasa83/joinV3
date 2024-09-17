@@ -7,7 +7,8 @@
 <form [formGroup]="addTaskForm" (ngSubmit)="addTask()">
     <section class="split-wrapper">
         <div class="sub-section left split-line">
-            <span class="form-headlines">{{ 'Home.AddTask.Title' | translate }}<span class="color: error-txt-color">*</span></span>
+            <span class="form-headlines">{{ 'Home.AddTask.Title' | translate }}<span
+                    class="color: error-txt-color">*</span></span>
             <mat-form-field appearance="outline">
                 <mat-label>{{ 'Home.AddTask.Title' | translate }}</mat-label>
                 <input matInput formControlName="title">
@@ -23,23 +24,24 @@
             <mat-form-field appearance="outline">
                 <mat-label>{{ 'Home.AddTask.Contacts' | translate }}</mat-label>
                 <mat-select multiple>
-                    <!--        <mat-select-trigger>-->
-                    <!--            {{toppings.value?.[0] || ''}}-->
-                    <!--            @if ((toppings.value?.length || 0) > 1) {-->
-                    <!--                <span class="example-additional-selection">-->
-                    <!--          (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})-->
-                    <!--        </span>-->
-                    <!--            }-->
-                    <!--        </mat-select-trigger>-->
-                    <!--        @for (topping of toppingList; track topping) {-->
-                    <!--            <mat-option [value]="topping">{{topping}}</mat-option>-->
-                    <!--        }-->
+<!--                    <mat-select-trigger>-->
+<!--                        {{ contacts?.[0] || '' }}-->
+<!--                        @if ((contacts?.length || 0) > 1) {-->
+<!--                            <span class="example-additional-selection">-->
+<!--                                (+{{ (contacts?.length || 0) - 1 }} {{ contacts?.length === 2 ? 'other' : 'others' }})-->
+<!--                            </span>-->
+<!--                        }-->
+<!--                    </mat-select-trigger>-->
+                    @for (contact of contacts; track contacts) {
+                        <mat-option [value]="contact?._id">{{contact?.firstName}} {{contact?.lastName}}</mat-option>
+                    }
                 </mat-select>
             </mat-form-field>
         </div>
 
         <div class="sub-section right">
-            <span class="form-headlines">{{ 'Home.AddTask.DueDate' | translate }}<span class="color: error-txt-color">*</span></span>
+            <span class="form-headlines">{{ 'Home.AddTask.DueDate' | translate }}<span
+                    class="color: error-txt-color">*</span></span>
             <mat-form-field appearance="outline">
                 <mat-label>{{ 'Home.AddTask.Date' | translate }}</mat-label>
                 <input matInput [matDatepicker]="picker" formControlName="dueDate">
@@ -69,14 +71,15 @@
                             [text]="'Home.AddTask.PriorityLow' | translate"
                             [txtColor]="'surface-dark-contrast-color'"
                             [priority]="priorities=== 'low' ? 'low' : ''"
-                (click)="setPriority('low')">
+                            (click)="setPriority('low')">
                 </app-button>
             </div>
 
-            <span class="form-headlines">{{ 'Home.AddTask.Category' | translate }}<span class="color: error-txt-color">*</span></span>
+            <span class="form-headlines">{{ 'Home.AddTask.Category' | translate }}<span
+                    class="color: error-txt-color">*</span></span>
             <mat-form-field appearance="outline">
                 <mat-label>{{ 'Home.AddTask.Category' | translate }}</mat-label>
-                <mat-select  formControlName="category">
+                <mat-select formControlName="category">
                     @for (category of categories; track categories) {
                         <mat-option [value]="category">{{ category }}</mat-option>
                     }
@@ -87,7 +90,7 @@
 
     <div class="btn-section">
         <div class="req-wrapper">
-            <span><span class="color: error-txt-color">*</span>{{'Home.AddTask.Required' | translate}}</span>
+            <span><span class="color: error-txt-color">*</span>{{ 'Home.AddTask.Required' | translate }}</span>
         </div>
         <div class="confirm-wrapper">
             <app-button [text]="'Home.AddTask.Clear'| translate"

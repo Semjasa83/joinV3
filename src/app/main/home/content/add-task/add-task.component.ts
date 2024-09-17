@@ -6,12 +6,14 @@ import {Task, TaskImpl} from '../../../../interfaces/task.interface';
 import {Subscription} from "rxjs";
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatOption, MatSelect} from "@angular/material/select";
+import {MatOption, MatSelect, MatSelectTrigger} from "@angular/material/select";
 import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/material/datepicker";
 import {provideNativeDateAdapter} from "@angular/material/core";
 import {ButtonComponent} from "../../../utility/button/button.component";
 import {SubheadlineComponent} from "../../../utility/subheadline/subheadline.component";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {ContactsService} from "../../../../services/contacts/contacts.service";
+import {Contact} from "../../../../interfaces/contact.interface";
 
 @Component({
     selector: 'app-add-task',
@@ -30,6 +32,7 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/
         ButtonComponent,
         SubheadlineComponent,
         ReactiveFormsModule,
+        MatSelectTrigger,
     ],
     templateUrl: './add-task.component.html',
     styleUrl: './add-task.component.scss'
@@ -38,6 +41,7 @@ export class AddTaskComponent {
 
     public categories: string[] = ['UX/UI', 'Backlog', 'Frontend', 'Backend'];
     public priorities: string = '';
+    public contacts: Contact[] = [];
 
     addTaskForm = new FormGroup({
         title: new FormControl('', [Validators.required, Validators.minLength(4)]),
@@ -48,7 +52,14 @@ export class AddTaskComponent {
         contacts: new FormControl([])
     });
 
-    constructor(private tasksService: TasksService) {
+    constructor(private tasksService: TasksService, private contactsService: ContactsService) {}
+
+    public async ngOnInit() {
+        await this.contactsService.getAllContacts();
+        this.contactsService.contacts$.subscribe((response: Contact[]) => {
+            this.contacts = response;
+        })
+        this.sortContacts();
     }
 
     public async addTask() {
@@ -57,6 +68,7 @@ export class AddTaskComponent {
             ...newTask,
             ...this.addTaskForm.value,
             priority: this.priorities
+            // contacts: this.contacts,
         }
         try {
             console.log('newTask:', newTask);
@@ -69,6 +81,12 @@ export class AddTaskComponent {
 
     public setPriority(priority: 'low' | 'medium' | 'urgent') {
         this.priorities = priority;
+    }
+
+    private sortContacts() {
+        this.contacts?.sort((a, b) => {
+            return (a.lastName ?? '').localeCompare(b.lastName ?? '');
+        });
     }
 
 }
