@@ -5,9 +5,7 @@ import { AppComponent } from './app/app.component';
 import {
   PreloadAllModules,
   provideRouter,
-  withDebugTracing,
   withPreloading,
-  withRouterConfig
 }
   from '@angular/router';
 
@@ -22,7 +20,6 @@ bootstrapApplication(AppComponent,
       provideRouter(
         routes,
         withPreloading(PreloadAllModules),
-        // withDebugTracing(), //DEBUGGER
         ),
       provideHttpClient(withFetch()),
       TranslateService,
