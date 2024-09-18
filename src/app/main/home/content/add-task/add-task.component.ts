@@ -3,7 +3,6 @@ import {InputFieldComponent} from "../../../utility/input-field/input-field.comp
 import {TranslateModule} from "@ngx-translate/core";
 import {TasksService} from "../../../../services/tasks/tasks.service";
 import {Task, TaskImpl} from '../../../../interfaces/task.interface';
-import {Subscription} from "rxjs";
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatOption, MatSelect, MatSelectTrigger} from "@angular/material/select";
@@ -11,7 +10,7 @@ import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/m
 import {provideNativeDateAdapter} from "@angular/material/core";
 import {ButtonComponent} from "../../../utility/button/button.component";
 import {SubheadlineComponent} from "../../../utility/subheadline/subheadline.component";
-import {FormControl, FormGroup, ReactiveFormsModule, Validators, ɵValue} from "@angular/forms";
+import {FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import {ContactsService} from "../../../../services/contacts/contacts.service";
 import {Contact} from "../../../../interfaces/contact.interface";
 
@@ -92,15 +91,8 @@ export class AddTaskComponent {
     }
 
     public clearForm() {
-        this.addTaskForm.reset();
         this.setPriority('');
-
-        const buttons = document.querySelectorAll('button');
-        buttons.forEach(button => {
-            button.classList.remove('low');
-            button.classList.remove('medium');
-            button.classList.remove('urgent');
-        })
+        this.addTaskForm.reset();
     }
 
 

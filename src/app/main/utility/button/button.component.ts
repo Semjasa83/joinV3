@@ -23,7 +23,6 @@ export class ButtonComponent {
   @Input() buttonType?: string = 'button';
   @Input() priority?: 'low' | 'medium' | 'urgent' | '';
 
-
   onClick() {
     if (this.buttonClick) {
       this.buttonClick.emit();
