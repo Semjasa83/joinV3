@@ -1,0 +1,102 @@
+@import '../../../../../assets/scss/variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+  overflow-y: auto;
+  background-color: $background-color;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+textarea {
+  resize: none;
+}
+
+.form-headlines {
+  padding-left: 0.5rem;
+}
+
+.prio-btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.split-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .sub-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+
+
+// Special Local Overrides
+
+::ng-deep app-button {
+  margin-bottom: 1rem;
+
+  .btn-wrapper {
+    padding: 0.9rem !important;
+  }
+}
+
+::ng-deep mat-form-field {
+  padding: 0.5rem;
+}
+
+
+// Media Queries
+
+@media (min-width: 1024px) {
+  .split-wrapper {
+    flex-direction: row;
+    width: 90%;
+    margin-top: 2rem;
+    margin-left: 2rem;
+
+    .split-line {
+      border-right: 1px solid $light-transparent-color;
+    }
+
+    .left {
+      padding-right: 1rem;
+    }
+
+    .right {
+      padding-left: 1rem;
+    }
+  }
+  .btn-section {
+    display: flex;
+    height: 100%;
+    width: 90%;
+    margin: 1rem 0 1rem 2rem;
+    justify-content: center;
+    .req-wrapper {
+      display: flex;
+      align-items: end;
+      width: 50%;
+      margin-bottom: 1.5rem;
+    }
+    .confirm-wrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: end;
+      width: 50%;
+    }
+  }
+}

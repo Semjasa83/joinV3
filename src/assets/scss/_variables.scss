@@ -1,98 +1,109 @@
+$primary-color: #007CEE;
+$primary-contrast-color: #ffffff;
+$secondary-color: #28abe2;
+$secondary-contrast-color: #ffffff;
 
-    $primary-color: #007CEE;
-    $primary-contrast-color: #ffffff;
-    $secondary-color: #28abe2;
-    $secondary-contrast-color: #ffffff;
-    
-    // $surface-color: #00a8e8;
-    $surface-color: #ffffff;
-    $surface-contrast-color: #000000;
-    $surface-dark-color: #2b3647;
-    $surface-dark-contrast-color: #CDCDCD;
-    $background-color: #f6f7f8;
-    $background-contrast-color: #000000;
-    
-    $success-color: #c0e58b;
-    $success-contrast-color: #000000;
-    
-    $error-color: #ff6f69;
-    $error-contrast-color: #000000;
-    
-    $warning-color: #ffcc5c;
-    $warning-contrast-color: #000000;
+// $surface-color: #00a8e8;
+$surface-color: #ffffff;
+$surface-contrast-color: #000000;
+$surface-dark-color: #2b3647;
+$surface-dark-contrast-color: #CDCDCD;
+$background-color: #f3f3f3;
+$background-contrast-color: #000000;
 
-    $highlight-dark-color: #081931;
-    $light-transparent-color: #33333377;
+$success-color: #7AE229;
+$success-contrast-color: #000000;
+
+$error-color: #ff6f69;
+$error-contrast-color: #000000;
+
+$warning-color: #FFA800;
+$warning-contrast-color: #000000;
+
+$highlight-dark-color: #081931;
+$light-transparent-color: #33333377;
 
 
-      .primary-color {
-        background-color: $primary-color;
-      }
-      
-      .primary-contrast-color {
-        color: $primary-contrast-color;
-      }
-      
-      .secondary-color {
-        background-color: $secondary-color;
-      }
-      
-      .secondary-contrast-color {
-        color: $secondary-contrast-color;
-      }
-      
-      .surface-color {
-        background-color: $surface-color;
-      }
-      
-      .surface-contrast-color {
-        color: $surface-contrast-color;
-      }
-      
-      .surface-dark-color {
-        background-color: $surface-dark-color;
-      }
-      
-      .surface-dark-contrast-color {
-        color: $surface-dark-contrast-color;
-      }
-      
-      .background-color {
-        background-color: $background-color;
-      }
-      
-      .background-contrast-color {
-        color: $background-contrast-color;
-      }
-      
-      .success-color {
-        background-color: $success-color;
-      }
-      
-      .success-contrast-color {
-        color: $success-contrast-color;
-      }
-      
-      .error-color {
-        background-color: $error-color;
-      }
-      
-      .error-contrast-color {
-        color: $error-contrast-color;
-      }
-      
-      .warning-color {
-        background-color: $warning-color;
-      }
-      
-      .warning-contrast-color {
-        color: $warning-contrast-color;
-      }
-      
-      .highlight-dark-color {
-        background-color: $highlight-dark-color;
-      }
+.primary-color {
+  background-color: $primary-color;
+}
 
-      .light-transparent-color {
-        color: $light-transparent-color;
-      }
+.primary-contrast-color {
+  color: $primary-contrast-color;
+}
+
+.secondary-color {
+  background-color: $secondary-color;
+}
+
+.secondary-contrast-color {
+  color: $secondary-contrast-color;
+}
+
+.surface-color {
+  background-color: $surface-color;
+}
+
+.surface-contrast-color {
+  color: $surface-contrast-color;
+}
+
+.surface-dark-color {
+  background-color: $surface-dark-color;
+}
+
+.surface-dark-contrast-color {
+  color: $surface-dark-contrast-color;
+}
+
+.background-color {
+  background-color: $background-color;
+}
+
+.background-contrast-color {
+  color: $background-contrast-color;
+}
+
+.success-color {
+  background-color: $success-color;
+}
+
+.success-txt-color {
+  color: $success-color;
+}
+
+.success-contrast-color {
+  color: $success-contrast-color;
+}
+
+.error-color {
+  background-color: $error-color;
+}
+
+.error-txt-color {
+  color: $error-color;
+}
+
+.error-contrast-color {
+  color: $error-contrast-color;
+}
+
+.warning-color {
+  background-color: $warning-color;
+}
+
+.warning-txt-color {
+  color: $warning-color;
+}
+
+.warning-contrast-color {
+  color: $warning-contrast-color;
+}
+
+.highlight-dark-color {
+  background-color: $highlight-dark-color;
+}
+
+.light-transparent-color {
+  color: $light-transparent-color;
+}

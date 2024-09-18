@@ -1,1 +1,109 @@
-<p>add-task works!</p>
+<app-subheadline
+        [text]="'Home.AddTask.Headline' | translate"
+        [subtext]="'Home.AddTask.SubHeadline' | translate"
+        [line]="true"
+></app-subheadline>
+
+<form [formGroup]="addTaskForm" (ngSubmit)="addTask()">
+    <section class="split-wrapper">
+        <div class="sub-section left split-line">
+            <span class="form-headlines">{{ 'Home.AddTask.Title' | translate }}<span
+                    class="color: error-txt-color">*</span></span>
+            <mat-form-field appearance="outline">
+                <mat-label>{{ 'Home.AddTask.Title' | translate }}</mat-label>
+                <input matInput formControlName="title">
+            </mat-form-field>
+
+            <span class="form-headlines">{{ 'Home.AddTask.Description' | translate }}</span>
+            <mat-form-field appearance="outline">
+                <mat-label>{{ 'Home.AddTask.Description' | translate }}</mat-label>
+                <textarea matInput cols="4" rows="3" formControlName="description"></textarea>
+            </mat-form-field>
+
+            <span class="form-headlines">{{ 'Home.AddTask.Assign' | translate }}</span>
+            <mat-form-field appearance="outline">
+                <mat-label>{{ 'Home.AddTask.Contacts' | translate }}</mat-label>
+                <mat-select multiple formControlName="contacts">
+                    @for (contact of contactList; track contactList) {
+                        <mat-option [value]="contact?._id">{{contact?.firstName}} {{contact?.lastName}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="sub-section right">
+            <span class="form-headlines">{{ 'Home.AddTask.DueDate' | translate }}<span
+                    class="color: error-txt-color">*</span></span>
+            <mat-form-field appearance="outline">
+                <mat-label>{{ 'Home.AddTask.Date' | translate }}</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="dueDate">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <span class="form-headlines">{{ 'Home.AddTask.Priority' | translate }}</span>
+            <div class="prio-btn-wrapper">
+
+                <app-button [bgrColor]="'surface-dark-color'"
+                            [icon]="'urgent'"
+                            [outlined]="true"
+                            [text]="'Home.AddTask.PriorityHigh' | translate"
+                            [txtColor]="'surface-dark-contrast-color'"
+                            [priority]="priorities === 'urgent' ? 'urgent' : ''"
+                            (click)="setPriority('urgent')">
+                </app-button>
+
+                <app-button [bgrColor]="'surface-dark-color'"
+                            [icon]="'medium'" [outlined]="true"
+                            [text]="'Home.AddTask.PriorityMedium' | translate"
+                            [txtColor]="'surface-dark-contrast-color'"
+                            [priority]="priorities === 'medium' ? 'medium' : ''"
+                            (click)="setPriority('medium')">
+                </app-button>
+
+                <app-button [bgrColor]="'surface-dark-color'"
+                            [icon]="'low'" [outlined]="true"
+                            [text]="'Home.AddTask.PriorityLow' | translate"
+                            [txtColor]="'surface-dark-contrast-color'"
+                            [priority]="priorities=== 'low' ? 'low' : ''"
+                            (click)="setPriority('low')">
+                </app-button>
+
+            </div>
+
+            <span class="form-headlines">{{ 'Home.AddTask.Category' | translate }}<span
+                    class="color: error-txt-color">*</span></span>
+            <mat-form-field appearance="outline">
+                <mat-label>{{ 'Home.AddTask.Category' | translate }}</mat-label>
+                <mat-select formControlName="category">
+                    @for (category of categories; track categories) {
+                        <mat-option [value]="category">{{ category }}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </section>
+
+    <div class="btn-section">
+        <div class="req-wrapper">
+            <span><span class="color: error-txt-color">*</span>{{ 'Home.AddTask.Required' | translate }}</span>
+        </div>
+        <div class="confirm-wrapper">
+            <app-button [text]="'Home.AddTask.Clear'| translate"
+                        [bgrColor]="'surface-color'"
+                        [txtColor]="'surface-dark-color'"
+                        [outlined]="true"
+                        (click)="clearForm()">
+            </app-button>
+            <app-button [icon]="'check'"
+                        [text]="'Home.AddTask.CreateTask'| translate"
+                        [bgrColor]="'surface-dark-color'"
+                        [txtColor]="'surface-dark-contrast-color'"
+                        [outlined]="false"
+                        buttonType="submit"
+                        (click)="clearForm()">
+            </app-button>
+        </div>
+
+    </div>
+</form>

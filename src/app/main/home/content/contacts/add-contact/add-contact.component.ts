@@ -3,8 +3,7 @@ import { TranslateModule } from "@ngx-translate/core";
 import { ContactsService } from '../../../../../services/contacts/contacts.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators, } from '@angular/forms';
 import { ButtonComponent } from '../../../../utility/button/button.component';
-import { lastValueFrom } from "rxjs";
-import { Address, Contact, ContactImpl, AddressImpl } from "../../../../../interfaces/contact.interface";
+import { Contact, ContactImpl, AddressImpl } from "../../../../../interfaces/contact.interface";
 
 @Component({
   selector: 'app-add-contact',

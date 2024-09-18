@@ -27,11 +27,35 @@
       "board": "Board",
       "contacts": "Contacts"
     },
-    "Dashboard": {},
-    "AddTask": {},
+    "Dashboard": {
+      "Headline": "Join 360",
+      "SubHeadline": "Key Metrics at a Glace"
+    },
+    "AddTask": {
+      "Headline": "Add Task",
+      "SubHeadline": "Easier complete overview!",
+      "Title": "Title",
+      "Description": "Description",
+      "Assign": "Assigned to",
+      "DueDate": "Due date",
+      "Date": "Select date",
+      "Priority": "Priority",
+      "Category": "Category",
+      "Subtasks": "Subtasks",
+      "Contacts": "Select contacts to assign",
+      "PriorityLow": "Low",
+      "PriorityMedium": "Medium",
+      "PriorityHigh": "Urgent",
+      "CreateTask": "Create task",
+      "Clear": "Clear",
+      "Required": "This field is required",
+      "NoContacts": "No contacts available"
+    },
     "Board": {},
     "Contacts": {
-      "AddContact": "Add new contact"
+      "AddContact": "Add new contact",
+      "Headline": "Contacts",
+      "SubHeadline": "Better with a team!"
     },
     "ContactDetail": {
       "EditBtn": "Edit",
@@ -72,5 +96,6 @@
       "Mobile": "Mobile",
       "Email": "Email"
     }
+
   }
 }

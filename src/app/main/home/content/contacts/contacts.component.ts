@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectorRef, Component, Input} from '@angular/core';
 import {ContactsService} from '../../../../services/contacts/contacts.service';
 
 import {TranslateModule} from '@ngx-translate/core';
@@ -8,22 +8,24 @@ import {AddContactComponent} from "./add-contact/add-contact.component";
 import { ButtonComponent } from '../../../utility/button/button.component';
 import {Contact} from "../../../../interfaces/contact.interface";
 import { ContactDetailComponent } from "./contact-detail/contact-detail.component";
+import {SubheadlineComponent} from "../../../utility/subheadline/subheadline.component";
 
 @Component({
   selector: 'app-contacts',
   standalone: true,
-  imports: [
-    TranslateModule,
-    ButtonComponent,
-    RouterOutlet,
-    RouterLink,
-    RouterLinkActive,
-    NgFor,
-    NgStyle,
-    NgIf,
-    AddContactComponent,
-    ContactDetailComponent
-],
+    imports: [
+        TranslateModule,
+        ButtonComponent,
+        RouterOutlet,
+        RouterLink,
+        RouterLinkActive,
+        NgFor,
+        NgStyle,
+        NgIf,
+        AddContactComponent,
+        ContactDetailComponent,
+        SubheadlineComponent,
+    ],
   providers: [
     ContactsService,
     {provide: 'Object', useValue: Object}
@@ -38,24 +40,30 @@ export class ContactsComponent{
   public groupContacts: { [key: string]: Contact[] } = {};
   public groupLetters: string[] = [];
   public groupedContactsArray: Contact[] = [];
-  public groupArray: any[] = [];
+  public groupArray$: any[] = [];
   public showAddContact: boolean = false;
 
   @Input() public contact: Contact = {} as Contact;
 
-  constructor(public contactsService: ContactsService, private router: Router) {}
+  constructor(public contactsService: ContactsService, private router: Router, private cd: ChangeDetectorRef) {}
 
   public async ngOnInit() {
     await this.contactsService.getAllContacts()
     this.contactsService.contacts$.subscribe((response: Contact[]) => {
       this.contacts = response;
-    });
-    this.sortContacts();
+    }).unsubscribe();
+    this.cd.detectChanges();
+    await this.sortContacts();
+    this.contactsService.startPolling();
+  }
+
+  public ngOnDestroy() {
+    this.contactsService.stopPolling();
   }
 
   private async sortContacts(): Promise<void> {
     this.groupLetters = [];
-    this.groupArray = [];
+    this.groupArray$ = [];
     this.contacts?.sort((a, b) => {
         return (a.lastName ?? '').localeCompare(b.lastName ?? '');
     });
@@ -76,7 +84,6 @@ export class ContactsComponent{
     await this.renderGroupedContacts();
   };
 
-
   private async renderGroupedContacts() {
     const arr = Object.entries(this.groupContacts);
     arr.forEach((group) => {
@@ -85,7 +92,7 @@ export class ContactsComponent{
         const c = group[1][i];
         this.groupedContactsArray.push(c);
       }
-      this.groupArray.push(this.groupedContactsArray);
+      this.groupArray$.push(this.groupedContactsArray);
       this.groupedContactsArray = [];
     });
   }

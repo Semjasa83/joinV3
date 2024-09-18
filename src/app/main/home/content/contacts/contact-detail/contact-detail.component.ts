@@ -47,9 +47,9 @@ export class ContactDetailComponent {
 
   public async deleteContact(id: string) {
     try {
+      await this.router.navigate(['home', 'contacts']);
       const response = await this.contactsService.deleteContact(id);
       console.log(response); //TODO Notification BADGE!!!
-      this.router.navigate(['/home/contacts']).then(() => {window.location.reload()});
     } catch (error) {
       console.error(error);
     }

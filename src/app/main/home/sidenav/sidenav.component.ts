@@ -1,7 +1,7 @@
 import { Component, OnInit,  } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from "@angular/router";
-import { routes } from '../../../app.routes';
 import {NgFor, NgIf, NgOptimizedImage} from '@angular/common';
+import { HOME_ROUTES } from '../home-routing.routes';
 
 @Component({
     selector: 'app-sidenav',
@@ -24,10 +24,9 @@ export class SidenavComponent implements OnInit{
     }
 
     public ngOnInit(): void {
-        if (routes[1].children) {
-            this.routesData = routes[1].children;
-            // console.log(routes[1].children);
-
+        const homeRoute = HOME_ROUTES.find(route => route.path === '');
+        if (homeRoute && homeRoute.children) {
+            this.routesData = homeRoute.children;
         }
     }
 }
