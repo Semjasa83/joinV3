@@ -29,12 +29,12 @@ export class TasksService {
     return lastValueFrom(this.http.get<Task[]>(this.API_URL + 'tasks')).then((data: any) => {  this.tasks.next(data['tasks']) });
   };
 
-  public async testCall() {                                                                         //remember to remove this function
-    return this.http.get<Task[]>(this.API_URL + 'tasks', { observe: 'response' }).subscribe(res => {
-      console.log('response Status', res.status);
-      console.log('body', res.body);
-    });
-  }
+  // public async testCall() {                                                                         //remember to remove this function
+  //   return this.http.get<Task[]>(this.API_URL + 'tasks', { observe: 'response' }).subscribe(res => {
+  //     console.log('response Status', res.status);
+  //     console.log('body', res.body);
+  //   });
+  // }
 
   public async getTask(id: string) {
     return lastValueFrom(this.http.get<Task>(this.API_URL + `tasks/${id}`));
@@ -62,13 +62,13 @@ export class TasksService {
   }
 
   // Polling function
-  public startPolling(interval: number = 5000): void {
-    this.pollingInterval = setInterval(async () => {
-      await this.getAllTasks();
-    }, interval);
-  }
-
-  public stopPolling(): void {
-    clearInterval(this.pollingInterval);
-  }
+  // public startPolling(interval: number = 5000): void {
+  //   this.pollingInterval = setInterval(async () => {
+  //     await this.getAllTasks();
+  //   }, interval);
+  // }
+  //
+  // public stopPolling(): void {
+  //   clearInterval(this.pollingInterval);
+  // }
 }

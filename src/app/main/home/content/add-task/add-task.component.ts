@@ -11,7 +11,7 @@ import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/m
 import {provideNativeDateAdapter} from "@angular/material/core";
 import {ButtonComponent} from "../../../utility/button/button.component";
 import {SubheadlineComponent} from "../../../utility/subheadline/subheadline.component";
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormControl, FormGroup, ReactiveFormsModule, Validators, ɵValue} from "@angular/forms";
 import {ContactsService} from "../../../../services/contacts/contacts.service";
 import {Contact} from "../../../../interfaces/contact.interface";
 
@@ -41,7 +41,7 @@ export class AddTaskComponent {
 
     public categories: string[] = ['UX/UI', 'Backlog', 'Frontend', 'Backend'];
     public priorities: string = '';
-    public contacts: Contact[] = [];
+    public contactList: Contact[] = [];
 
     addTaskForm = new FormGroup({
         title: new FormControl('', [Validators.required, Validators.minLength(4)]),
@@ -57,36 +57,52 @@ export class AddTaskComponent {
     public async ngOnInit() {
         await this.contactsService.getAllContacts();
         this.contactsService.contacts$.subscribe((response: Contact[]) => {
-            this.contacts = response;
+            this.contactList = response;
         })
         this.sortContacts();
     }
 
+    public setPriority(priority: '' | 'low' | 'medium' | 'urgent') {
+        this.priorities = priority;
+    }
+
+    private sortContacts() {
+        this.contactList?.sort((a, b) => {
+            return (a.lastName ?? '').localeCompare(b.lastName ?? '');
+        });
+    }
+
     public async addTask() {
+        const contactArr: string[] = this.addTaskForm?.value?.contacts || [];
         let newTask: Task = new TaskImpl();
         newTask = {
             ...newTask,
             ...this.addTaskForm.value,
-            priority: this.priorities
-            // contacts: this.contacts,
+            priority: this.priorities,
+            contacts: contactArr,
+            _id: null
         }
         try {
             console.log('newTask:', newTask);
-            // await this.tasksService.addTask(newTask);
-            // this.addTaskForm.reset(this.addTaskForm.value);
+            await this.tasksService.addTask(newTask);
+            this.addTaskForm.reset();
         } catch (error) {
             console.error('Error adding task:', error);
         }
     }
 
-    public setPriority(priority: 'low' | 'medium' | 'urgent') {
-        this.priorities = priority;
+    public clearForm() {
+        this.addTaskForm.reset();
+        this.setPriority('');
+
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(button => {
+            button.classList.remove('low');
+            button.classList.remove('medium');
+            button.classList.remove('urgent');
+        })
     }
 
-    private sortContacts() {
-        this.contacts?.sort((a, b) => {
-            return (a.lastName ?? '').localeCompare(b.lastName ?? '');
-        });
-    }
+
 
 }
