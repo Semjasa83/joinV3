@@ -42,7 +42,21 @@ textarea {
   }
 }
 
+.btn-task-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column-reverse;
+  width: 100%;
 
+  .confirm-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 98%;
+    margin: 0 1rem;
+  }
+}
 
 // Special Local Overrides
 
@@ -80,12 +94,14 @@ textarea {
       padding-left: 1rem;
     }
   }
-  .btn-section {
+  .btn-task-section {
     display: flex;
+    flex-direction: row;
     height: 100%;
     width: 90%;
     margin: 1rem 0 1rem 2rem;
     justify-content: center;
+
     .req-wrapper {
       display: flex;
       align-items: end;

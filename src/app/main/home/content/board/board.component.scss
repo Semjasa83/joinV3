@@ -1,0 +1,83 @@
+@import '../../../../../assets/scss/variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+  background-color: $background-color;
+}
+
+.upper-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.board-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
+  justify-content: flex-start;
+  gap: 1rem;
+
+  .board-subsection {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+
+    .headline {
+      font-weight: 600;
+    }
+  }
+}
+
+.task {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  overflow: hidden;
+  width: 100%;
+  background-color: $surface-color;
+  border-radius: 1rem;
+  box-shadow: 5px 5px 5px 1px #33333322;
+}
+
+
+@media (min-width: 1024px) {
+  .upper-section-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+    .upper-section {
+      flex-direction: row;
+      justify-content: flex-end;
+      width: 50%;
+
+      //mat-form-field {
+      //  width: 60%;
+      //}
+
+      app-button {
+        width: 60%;
+        margin-bottom: 1.25rem;
+      }
+    }
+  }
+
+  .board-wrapper {
+    flex-direction: row;
+
+    .board-subsection {
+
+    }
+
+  }
+
+}

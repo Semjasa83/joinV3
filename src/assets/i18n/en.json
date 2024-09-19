@@ -51,7 +51,16 @@
       "Required": "This field is required",
       "NoContacts": "No contacts available"
     },
-    "Board": {},
+    "Board": {
+      "Headline": "Board",
+      "SubHeadline": "Take complete overview!",
+      "FindTask": "Find task",
+      "AddTask": "Add task",
+      "ToDo": "To Do",
+      "InProgress": "In Progress",
+      "AwaitFeedback": "Await Feedback",
+      "Done": "Done"
+    },
     "Contacts": {
       "AddContact": "Add new contact",
       "Headline": "Contacts",

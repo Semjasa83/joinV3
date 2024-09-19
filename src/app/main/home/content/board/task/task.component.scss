@@ -1,0 +1,13 @@
+@import '../../../../../../assets/scss/variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  overflow: hidden;
+  width: 100%;
+  background-color: $surface-color;
+  border-radius: 1rem;
+  box-shadow: 5px 5px 5px 1px #33333322;
+}
+

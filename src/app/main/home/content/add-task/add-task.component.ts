@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {InputFieldComponent} from "../../../utility/input-field/input-field.component";
 import {TranslateModule} from "@ngx-translate/core";
 import {TasksService} from "../../../../services/tasks/tasks.service";
 import {Task, TaskImpl} from '../../../../interfaces/task.interface';
@@ -19,7 +18,6 @@ import {Contact} from "../../../../interfaces/contact.interface";
     standalone: true,
     providers: [provideNativeDateAdapter()],
     imports: [
-        InputFieldComponent,
         TranslateModule,
         MatInputModule,
         MatFormFieldModule,
