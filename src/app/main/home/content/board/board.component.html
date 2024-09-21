@@ -1,56 +1,99 @@
-<app-subheadline
-        [text]="'Home.Board.Headline' | translate"
-        [subtext]="'Home.Board.SubHeadline' | translate"
-        [line]="true">
+<app-subheadline [text]="'Home.Board.Headline' | translate" [subtext]="'Home.Board.SubHeadline' | translate"
+    [line]="true">
 </app-subheadline>
 
 <section class="upper-section-wrapper">
     <div class="upper-section">
-
-<!--        <mat-form-field appearance="outline">-->
-<!--            <mat-label>{{'Home.Board.FindTask' | translate}}</mat-label>-->
-<!--            <input type="text" matInput>-->
-<!--            <mat-icon matSuffix>search</mat-icon>-->
-<!--        </mat-form-field>-->
-        <app-button [bgrColor]="'surface-dark-color'" [icon]="'add'"
-                    [text]="'Home.Board.AddTask' | translate" [txtColor]="'surface-dark-contrast-color'"
-                    (click)="showAddTask = true">
+        <!--        <mat-form-field appearance="outline">-->
+        <!--            <mat-label>{{'Home.Board.FindTask' | translate}}</mat-label>-->
+        <!--            <input type="text" matInput>-->
+        <!--            <mat-icon matSuffix>search</mat-icon>-->
+        <!--        </mat-form-field>-->
+        <app-button [bgrColor]="'surface-dark-color'" [icon]="'add'" [text]="'Home.Board.AddTask' | translate"
+            [txtColor]="'surface-dark-contrast-color'" (click)="showAddTask = true">
         </app-button>
     </div>
 </section>
 
 <section class="board-wrapper">
     <div class="board-subsection">
-        <span class="headline">{{'Home.Board.ToDo' | translate }}</span>
-        @for( task of tasks; track tasks){
-        <div class="task">
-            <div class="title">{{task.category}}</div>
-            <span class="headline">{{task.title}}</span>
-            <span class="description">{{task.description}}</span>
+        <span class="headline">{{ "Home.Board.ToDo" | translate }}</span>
+        <section class="drag-area" #toDo>
+            @for( task of tasks; track tasks){
+            <div class="task">
+                <div class="title">{{ task.category }}</div>
+                <span class="headline">{{ task.title }}</span>
+                <span class="description">{{ task.description }}</span>
+                <section class="lower-section">
+                    <div class="contacts-wrapper">
+                        <div class="contact"></div>
+                    </div>
+                    <div>Prio</div>
+                </section>
+            </div>
+            }
+        </section>
+    </div>
+
+    <div class="board-subsection">
+        <span class="headline">{{ "Home.Board.InProgress" | translate }}</span>
+        <section class="drag-area" #progress>
+            <!-- @for( task of tasks; track tasks){ -->
+            <div class="task">
+                <!-- <div class="title">{{ task.category }}</div>
+            <span class="headline">{{ task.title }}</span>
+            <span class="description">{{ task.description }}</span>
             <section class="lower-section">
                 <div class="contacts-wrapper">
                     <div class="contact"></div>
                 </div>
                 <div>Prio</div>
-            </section>
-
-        </div>
-        }
+            </section> -->
+            </div>
+            <!-- } -->
+        </section>
     </div>
 
+
     <div class="board-subsection">
-        <span class="headline">{{'Home.Board.InProgress' | translate }}</span>
-        <div>2</div>
+        <span class="headline">{{ "Home.Board.AwaitFeedback" | translate }}</span>
+        <section class="drag-area" #feedback>
+            <!-- @for( task of tasks; track tasks){ -->
+            <div class="task">
+                <!-- <div class="title">{{ task.category }}</div>
+            <span class="headline">{{ task.title }}</span>
+            <span class="description">{{ task.description }}</span>
+            <section class="lower-section">
+                <div class="contacts-wrapper">
+                    <div class="contact"></div>
+                </div>
+                <div>Prio</div>
+            </section> -->
+            </div>
+            <!-- } -->
+        </section>
     </div>
+
     <div class="board-subsection">
-        <span class="headline">{{'Home.Board.AwaitFeedback' | translate }}</span>
-        <div>3</div>
-    </div>
-    <div class="board-subsection">
-        <span class="headline">{{'Home.Board.Done' | translate }}</span>
-        <div>4</div>
+        <span class="headline">{{ "Home.Board.Done" | translate }}</span>
+        <section class="drag-area" #done>
+            <!-- @for( task of tasks; track tasks){ -->
+            <div class="task">
+                <!-- <div class="title">{{ task.category }}</div>
+            <span class="headline">{{ task.title }}</span>
+            <span class="description">{{ task.description }}</span>
+            <section class="lower-section">
+                <div class="contacts-wrapper">
+                    <div class="contact"></div>
+                </div>
+                <div>Prio</div>
+            </section> -->
+            </div>
+            <!-- } -->
+        </section>
     </div>
 </section>
 
-
-
+<!-- @if(showAddTask){
+    <app-add-task-dialog (close)="showAddTask = false"></app-add-task-dialog>
+} -->

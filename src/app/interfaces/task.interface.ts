@@ -8,6 +8,7 @@ export interface Task {
     category: string | null;
     subTasks: string[] | null;
     contacts: string[] | null;
+    posStatus: String | null;
     _id: null | string;
 }
 
@@ -20,6 +21,7 @@ export class TaskImpl implements Task {
         public category: string = '',
         public subTasks: string[] = [],
         public contacts: string[] = [],
+        public posStatus: String = 'toDo',
         public _id: string = '',
     ) {}
 }

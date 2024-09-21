@@ -10,6 +10,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 import {ButtonComponent} from "../../../utility/button/button.component";
 import {TaskComponent} from "./task/task.component";
+import { AddTaskDialogComponent } from '../add-task/add-task-dialog/add-task-dialog.component';
 
 @Component({
   selector: 'app-board',
@@ -21,7 +22,8 @@ import {TaskComponent} from "./task/task.component";
     MatIcon,
     MatInput,
     ButtonComponent,
-    TaskComponent
+    TaskComponent,
+    AddTaskDialogComponent
   ],
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss'
