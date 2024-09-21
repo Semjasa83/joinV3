@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TranslateModule} from "@ngx-translate/core";
 import {TasksService} from "../../../../services/tasks/tasks.service";
 import {Task, TaskImpl} from '../../../../interfaces/task.interface';
@@ -34,7 +34,7 @@ import {Contact} from "../../../../interfaces/contact.interface";
     templateUrl: './add-task.component.html',
     styleUrl: './add-task.component.scss'
 })
-export class AddTaskComponent {
+export class AddTaskComponent implements OnInit {
 
     public categories: string[] = ['UX/UI', 'Backlog', 'Frontend', 'Backend'];
     public priorities: string = '';
@@ -46,7 +46,8 @@ export class AddTaskComponent {
         dueDate: new FormControl(new Date, [Validators.required]),
         priority: new FormControl(''),
         category: new FormControl('', [Validators.required]),
-        contacts: new FormControl([])
+        contacts: new FormControl([]),
+        posStatus: new FormControl('toDo'),
     });
 
     constructor(private tasksService: TasksService, private contactsService: ContactsService) {}
@@ -80,9 +81,8 @@ export class AddTaskComponent {
             _id: null
         }
         try {
-            console.log('newTask:', newTask);
             await this.tasksService.addTask(newTask);
-            this.addTaskForm.reset();
+            this.clearForm();
         } catch (error) {
             console.error('Error adding task:', error);
         }
