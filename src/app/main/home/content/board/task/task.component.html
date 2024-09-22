@@ -1,12 +1,17 @@
 <div class="card-wrapper">
-    <div class="title"></div>
-    <span class="headline"></span>
-    <span class="description"></span>
-    <section class="lower-section">
-        <div class="contacts-wrapper">
-            <div class="contact"></div>
-        </div>
-        <div>Prio</div>
-    </section>
+    <div class="task">
+        <div class="title">{{ task?.category }}</div>
+        <span class="headline">{{ task?.title }}</span>
+        <span class="description">{{ task?.description }}</span>
+        <section class="lower-section">
+            <div class="contacts-wrapper">
 
+                    @for (contact of contacts; track contacts) {
+                        <div class="contact">{{contact.firstName}}</div>
+                    }
+
+            </div>
+            <div>{{task?.priority}}</div>
+        </section>
+    </div>
 </div>

@@ -1,5 +1,5 @@
 <app-subheadline [text]="'Home.Board.Headline' | translate" [subtext]="'Home.Board.SubHeadline' | translate"
-    [line]="true">
+                 [line]="true">
 </app-subheadline>
 
 <section class="upper-section-wrapper">
@@ -10,7 +10,7 @@
         <!--            <mat-icon matSuffix>search</mat-icon>-->
         <!--        </mat-form-field>-->
         <app-button [bgrColor]="'surface-dark-color'" [icon]="'add'" [text]="'Home.Board.AddTask' | translate"
-            [txtColor]="'surface-dark-contrast-color'" (click)="showAddTask = true">
+                    [txtColor]="'surface-dark-contrast-color'" (click)="showAddTask = true">
         </app-button>
     </div>
 </section>
@@ -18,78 +18,58 @@
 <section class="board-wrapper">
     <div class="board-subsection">
         <span class="headline">{{ "Home.Board.ToDo" | translate }}</span>
-        <section class="drag-area" #toDo>
-            @for( task of tasks; track tasks){
-            <div class="task">
-                <div class="title">{{ task.category }}</div>
-                <span class="headline">{{ task.title }}</span>
-                <span class="description">{{ task.description }}</span>
-                <section class="lower-section">
-                    <div class="contacts-wrapper">
-                        <div class="contact"></div>
-                    </div>
-                    <div>Prio</div>
-                </section>
-            </div>
+        <section class="drag-area"
+                 id="cdk-drop-list-0"
+                 cdkDropList
+                 #todoList="cdkDropList"
+                 [cdkDropListData]="todo"
+                 [cdkDropListConnectedTo]="[progressList, feedbackList, doneList]"
+                 (cdkDropListDropped)="drop($event)">
+            @if (tasks!.length > 0) {
+                @for (task of tasks; track trackByTaskId) {
+                    <app-task cdkDrag [task]="task"></app-task>
+                }
             }
         </section>
     </div>
 
     <div class="board-subsection">
         <span class="headline">{{ "Home.Board.InProgress" | translate }}</span>
-        <section class="drag-area" #progress>
-            <!-- @for( task of tasks; track tasks){ -->
-            <div class="task">
-                <!-- <div class="title">{{ task.category }}</div>
-            <span class="headline">{{ task.title }}</span>
-            <span class="description">{{ task.description }}</span>
-            <section class="lower-section">
-                <div class="contacts-wrapper">
-                    <div class="contact"></div>
-                </div>
-                <div>Prio</div>
-            </section> -->
-            </div>
-            <!-- } -->
+        <section class="drag-area"
+                 id="cdk-drop-list-1"
+                 cdkDropList
+                 #progressList="cdkDropList"
+                 [cdkDropListData]="progress"
+                 [cdkDropListConnectedTo]="[todoList, feedbackList, doneList]"
+                 (cdkDropListDropped)="drop($event)">
+
         </section>
     </div>
 
 
     <div class="board-subsection">
         <span class="headline">{{ "Home.Board.AwaitFeedback" | translate }}</span>
-        <section class="drag-area" #feedback>
-            <!-- @for( task of tasks; track tasks){ -->
-            <div class="task">
-                <!-- <div class="title">{{ task.category }}</div>
-            <span class="headline">{{ task.title }}</span>
-            <span class="description">{{ task.description }}</span>
-            <section class="lower-section">
-                <div class="contacts-wrapper">
-                    <div class="contact"></div>
-                </div>
-                <div>Prio</div>
-            </section> -->
-            </div>
-            <!-- } -->
+        <section class="drag-area"
+                 id="cdk-drop-list-2"
+                 cdkDropList
+                 #feedbackList="cdkDropList"
+                 [cdkDropListData]="feedback"
+                 [cdkDropListConnectedTo]="[todoList, progressList, doneList]"
+                 (cdkDropListDropped)="drop($event)">
+
         </section>
     </div>
 
     <div class="board-subsection">
         <span class="headline">{{ "Home.Board.Done" | translate }}</span>
-        <section class="drag-area" #done>
-            <!-- @for( task of tasks; track tasks){ -->
-            <div class="task">
-                <!-- <div class="title">{{ task.category }}</div>
-            <span class="headline">{{ task.title }}</span>
-            <span class="description">{{ task.description }}</span>
-            <section class="lower-section">
-                <div class="contacts-wrapper">
-                    <div class="contact"></div>
-                </div>
-                <div>Prio</div>
-            </section> -->
-            </div>
-            <!-- } -->
+        <section class="drag-area"
+                 id="cdk-drop-list-3"
+                 cdkDropList
+                 #doneList="cdkDropList"
+                 [cdkDropListData]="done"
+                 [cdkDropListConnectedTo]="[todoList, progressList, feedbackList]"
+                 (cdkDropListDropped)="drop($event)">
+
         </section>
     </div>
 </section>

@@ -11,3 +11,12 @@
   box-shadow: 5px 5px 5px 1px #33333322;
 }
 
+.task {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: 95%;
+  background-color: $surface-color;
+  border-radius: 1rem;
+  box-shadow: 5px 5px 5px 1px #33333322;
+}

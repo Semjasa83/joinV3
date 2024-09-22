@@ -11,6 +11,14 @@ import {FormsModule} from '@angular/forms';
 import {ButtonComponent} from "../../../utility/button/button.component";
 import {TaskComponent} from "./task/task.component";
 import { AddTaskDialogComponent } from '../add-task/add-task-dialog/add-task-dialog.component';
+import {
+  CdkDrag,
+  CdkDragDrop,
+  CdkDropList,
+  CdkDropListGroup,
+  moveItemInArray,
+  transferArrayItem
+} from "@angular/cdk/drag-drop";
 
 @Component({
   selector: 'app-board',
@@ -23,7 +31,10 @@ import { AddTaskDialogComponent } from '../add-task/add-task-dialog/add-task-dia
     MatInput,
     ButtonComponent,
     TaskComponent,
-    AddTaskDialogComponent
+    AddTaskDialogComponent,
+    CdkDrag,
+    CdkDropListGroup,
+    CdkDropList
   ],
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss'
@@ -35,6 +46,11 @@ export class BoardComponent {
   private pollingInterval: any;
   public showAddTask: boolean = false;
 
+  public done: Task[] = [];
+  public feedback: Task[] = [];
+  public progress: Task[] = [];
+  public todo: Task[] = [];
+
   constructor(private tasksService: TasksService) {}
 
   async ngOnInit() {
@@ -43,6 +59,7 @@ export class BoardComponent {
       this.tasks = tasks;
     }).unsubscribe();
     this.startPolling();
+    console.log(this.tasks);
   }
 
   ngOnDestroy() {
@@ -68,4 +85,25 @@ export class BoardComponent {
   //     console.log('body', res.body);
   //   });
   // }
+
+
+  public drop(event: CdkDragDrop<string[]> | any) {
+    console.log(event);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+          event.previousContainer.data,
+          event.container.data,
+          event.previousIndex,
+          event.currentIndex,
+      );
+    }
+  }
+
+  public trackByTaskId(index: number, task: Task) {
+    console.log(index)
+    console.log(task._id)
+    return task._id;
+  }
 }
