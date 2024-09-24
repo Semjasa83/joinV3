@@ -33,6 +33,10 @@ export class ContactsService {
     return lastValueFrom(this.http.get<Address>(this.API_URL + `contacts/${id}`));
   };
 
+  public getSpecContact(id: string): Observable<{ contact: Contact }> {
+    return this.http.get<{ contact: Address }>(this.API_URL +  `contacts/${id}`);
+  }
+
   public async updateContact(id: string, contact: Address) {
     return firstValueFrom(this.http.put<Address>(this.API_URL + `contacts/${id}`, contact, this.httpOptions));
   };
@@ -49,11 +53,16 @@ export class ContactsService {
     this.contactIdSubject.next(id);
   }
 
-  public getContactId(): Observable<string> {
-    return this.contactId$;
-  }
+  // public getContactId(): Observable<string> {
+  //   return this.contactId$;
+  // }
 
-  // Polling function
+
+
+
+
+
+  // Polling function for delete and export to contacts.component.ts
   public startPolling(interval: number = 5000): void {
     this.pollingInterval = setInterval(async () => {
       await this.getAllContacts();

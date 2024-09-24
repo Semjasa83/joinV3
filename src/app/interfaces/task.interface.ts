@@ -1,4 +1,3 @@
-import { Contact } from "./contact.interface";
 
 export interface Task {
     title: string | null;

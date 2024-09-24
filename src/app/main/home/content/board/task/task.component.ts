@@ -1,47 +1,51 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import {Task} from "../../../../../interfaces/task.interface";
 import {Contact} from "../../../../../interfaces/contact.interface";
 import {ContactsService} from "../../../../../services/contacts/contacts.service";
-import {NgIf} from "@angular/common";
+import {AsyncPipe, JsonPipe, NgClass, NgForOf, NgIf, NgStyle} from "@angular/common";
+import {firstValueFrom} from 'rxjs';
 
 @Component({
-  selector: 'app-task',
-  standalone: true,
-  imports: [
-    NgIf
-  ],
-  templateUrl: './task.component.html',
-  styleUrl: './task.component.scss'
+    selector: 'app-task',
+    standalone: true,
+    imports: [
+        NgIf,
+        NgForOf,
+        JsonPipe,
+        AsyncPipe,
+        NgClass,
+        NgStyle
+    ],
+    templateUrl: './task.component.html',
+    styleUrl: './task.component.scss',
 })
-export class TaskComponent {
+export class TaskComponent implements OnInit {
 
-  @Input() task?: Task;
-  public contacts: Contact[] = [];
+    @Input() task?: Task;
+    @Input() contacts: Contact[] = [];
+    public contactList: Contact[] = [];
 
-  constructor(private contactsService: ContactsService) {
-  }
-
-  async ngOnInit() {
-    console.log(this.task);
-    await this.getContacts();
-  }
-
-  public async getContacts() {
-    if (this.task?.contacts) {
-        for (let contactId of this.task.contacts) {
-            await this.contactsService.getContact(contactId).then((contact: Contact) => {
-            this.contacts.push(contact);
-            });
-        }
-      console.log(this.contacts);
-      // this.sortContacts();
+    constructor(private contactsService: ContactsService, private cdr: ChangeDetectorRef) {
     }
-  }
 
-  private sortContacts() {
-    this.contacts?.sort((a, b) => {
-      return (a.lastName ?? '').localeCompare(b.lastName ?? '');
-    });
-  }
+    public async ngOnInit() {
+        await this.loadContactList();
+    }
 
+    private async loadContactList() {
+        if (this.task?.contacts) {
+            try {
+                const contactPromises = this.task.contacts.map(contactId => firstValueFrom(this.contactsService.getSpecContact(contactId)));
+                const contacts = await Promise.all(contactPromises);
+                this.contactList = contacts
+                    .filter(e => e?.contact !== null)
+                    .map(e => e.contact as Contact);
+                this.cdr.detectChanges();
+            } catch (error) {
+                console.error('Error loading contacts:', error);
+            }
+        }
+    }
 }
+
+

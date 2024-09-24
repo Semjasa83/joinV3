@@ -9,6 +9,7 @@ import { ButtonComponent } from '../../../utility/button/button.component';
 import {Contact} from "../../../../interfaces/contact.interface";
 import { ContactDetailComponent } from "./contact-detail/contact-detail.component";
 import {SubheadlineComponent} from "../../../utility/subheadline/subheadline.component";
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-contacts',
@@ -43,6 +44,8 @@ export class ContactsComponent{
   public groupArray$: any[] = [];
   public showAddContact: boolean = false;
 
+  private contactsSubscription: Subscription = new Subscription();
+
   @Input() public contact: Contact = {} as Contact;
 
   constructor(public contactsService: ContactsService, private router: Router, private cd: ChangeDetectorRef) {}
@@ -51,13 +54,16 @@ export class ContactsComponent{
     await this.contactsService.getAllContacts()
     this.contactsService.contacts$.subscribe((response: Contact[]) => {
       this.contacts = response;
-    }).unsubscribe();
+    });
     this.cd.detectChanges();
     await this.sortContacts();
     this.contactsService.startPolling();
   }
 
   public ngOnDestroy() {
+    if(this.contactsSubscription) {
+      this.contactsSubscription.unsubscribe();
+    }
     this.contactsService.stopPolling();
   }
 

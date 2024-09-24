@@ -1,17 +1,17 @@
-<div class="card-wrapper">
-    <div class="task">
-        <div class="title">{{ task?.category }}</div>
-        <span class="headline">{{ task?.title }}</span>
-        <span class="description">{{ task?.description }}</span>
-        <section class="lower-section">
-            <div class="contacts-wrapper">
-
-                    @for (contact of contacts; track contacts) {
-                        <div class="contact">{{contact.firstName}}</div>
-                    }
-
+<div class="task">
+    <div class="category" [ngClass]="task?.category?.toLowerCase() + '-color'">{{ task?.category }}</div>
+    <span class="title">{{ task?.title }}</span>
+    <span class="description">{{ task?.description }}</span>
+    <section class="lower-section">
+        @if (contactList.length > 0) {
+            <div class="contact" id="contactTag">
+                @for (contact of contactList; track contactList; let i = $index) {
+                    <div class="contact-circle" [ngStyle]="{'background-color': contact.color}">{{ contact.firstName?.charAt(0)?.toUpperCase() }}{{ contact.lastName?.charAt(0)?.toUpperCase() }}</div>
+                }
             </div>
-            <div>{{task?.priority}}</div>
-        </section>
-    </div>
+        }
+        <div>{{ task?.priority }}</div>
+    </section>
 </div>
+
+

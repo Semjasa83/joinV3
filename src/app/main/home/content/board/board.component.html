@@ -23,7 +23,7 @@
                  cdkDropList
                  #todoList="cdkDropList"
                  [cdkDropListData]="todo"
-                 [cdkDropListConnectedTo]="[progressList, feedbackList, doneList]"
+                 [cdkDropListConnectedTo]="[todoList, progressList, feedbackList, doneList]"
                  (cdkDropListDropped)="drop($event)">
             @if (tasks!.length > 0) {
                 @for (task of tasks; track trackByTaskId) {
@@ -40,7 +40,7 @@
                  cdkDropList
                  #progressList="cdkDropList"
                  [cdkDropListData]="progress"
-                 [cdkDropListConnectedTo]="[todoList, feedbackList, doneList]"
+                 [cdkDropListConnectedTo]="[todoList, progressList, feedbackList, doneList]"
                  (cdkDropListDropped)="drop($event)">
 
         </section>
@@ -54,7 +54,7 @@
                  cdkDropList
                  #feedbackList="cdkDropList"
                  [cdkDropListData]="feedback"
-                 [cdkDropListConnectedTo]="[todoList, progressList, doneList]"
+                 [cdkDropListConnectedTo]="[todoList, progressList, feedbackList, doneList]"
                  (cdkDropListDropped)="drop($event)">
 
         </section>
@@ -67,7 +67,7 @@
                  cdkDropList
                  #doneList="cdkDropList"
                  [cdkDropListData]="done"
-                 [cdkDropListConnectedTo]="[todoList, progressList, feedbackList]"
+                 [cdkDropListConnectedTo]="[todoList, progressList, feedbackList, doneList]"
                  (cdkDropListDropped)="drop($event)">
 
         </section>

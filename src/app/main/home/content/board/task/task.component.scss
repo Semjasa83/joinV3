@@ -3,12 +3,14 @@
 :host {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: fit-content;
-  overflow: hidden;
-  width: 100%;
-  background-color: $surface-color;
-  border-radius: 1rem;
-  box-shadow: 5px 5px 5px 1px #33333322;
+  width: calc(100% - 0.5rem);
+  padding: 0.25rem;
+  //background-color: $surface-color;
+  //border-radius: 1rem;
+  //box-shadow: 5px 5px 5px 1px #33333322;
 }
 
 .task {
@@ -17,6 +19,55 @@
   height: fit-content;
   width: 95%;
   background-color: $surface-color;
-  border-radius: 1rem;
-  box-shadow: 5px 5px 5px 1px #33333322;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 8px 3px #33333322;
+  padding: 1rem;
+
+  .category {
+    width: fit-content;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .title {
+    display: flex;
+    width: 100%;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    text-wrap: auto;
+  }
+
+  .description {
+    display: flex;
+    width: 100%;
+    text-wrap: auto;
+  }
+
+  .lower-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 1rem 0;
+
+    .contact {
+      display: flex;
+      flex-direction: row;
+
+      .contact-circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 1.5rem;
+        height: 1.5rem;
+        border: 1px solid $surface-color;
+        border-radius: 50%;
+        padding: 0.4rem;
+        color: $surface-color;
+      }
+    }
+  }
 }
+
+

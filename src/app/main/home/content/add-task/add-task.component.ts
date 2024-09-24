@@ -36,7 +36,7 @@ import {Contact} from "../../../../interfaces/contact.interface";
 })
 export class AddTaskComponent implements OnInit {
 
-    public categories: string[] = ['UX/UI', 'Backlog', 'Frontend', 'Backend'];
+    public categories: string[] = ['UX', 'Backlog', 'Frontend', 'Backend'];
     public priorities: string = '';
     public contactList: Contact[] = [];
 

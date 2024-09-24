@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Task} from "../../../../interfaces/task.interface";
 import {Subscription} from "rxjs";
 import {TasksService} from "../../../../services/tasks/tasks.service";
@@ -7,7 +7,6 @@ import {TranslateModule} from "@ngx-translate/core";
 import {MatIcon} from '@angular/material/icon';
 import {MatInput} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormsModule} from '@angular/forms';
 import {ButtonComponent} from "../../../utility/button/button.component";
 import {TaskComponent} from "./task/task.component";
 import { AddTaskDialogComponent } from '../add-task/add-task-dialog/add-task-dialog.component';
@@ -19,6 +18,7 @@ import {
   moveItemInArray,
   transferArrayItem
 } from "@angular/cdk/drag-drop";
+import { ContactsService } from '../../../../services/contacts/contacts.service';
 
 @Component({
   selector: 'app-board',
@@ -39,7 +39,7 @@ import {
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss'
 })
-export class BoardComponent {
+export class BoardComponent implements OnInit, OnDestroy {
 
   public tasks: Task[] = [];
   private tasksSubscription: Subscription = new Subscription();
@@ -51,42 +51,63 @@ export class BoardComponent {
   public progress: Task[] = [];
   public todo: Task[] = [];
 
-  constructor(private tasksService: TasksService) {}
+  constructor(private tasksService: TasksService, private contactsService: ContactsService) {}
 
-  async ngOnInit() {
+  public async ngOnInit() {
     await this.tasksService.getAllTasks();
     this.tasksService.tasks$.subscribe((tasks: Task[]) => {
       this.tasks = tasks;
-    }).unsubscribe();
+    });
     this.startPolling();
-    console.log(this.tasks);
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy() {
     if (this.tasksSubscription) {
       this.tasksSubscription.unsubscribe();
     }
     this.stopPolling();
   }
 
-  public startPolling(interval: number = 5000): void {
+  // private loadTasks() {
+  //   this.tasks.forEach((task: Task) => {
+  //     switch (task.status) {
+  //       case 'done':
+  //         this.done.push(task);
+  //         break;
+  //       case 'feedback':
+  //         this.feedback.push(task);
+  //         break;
+  //       case 'progress':
+  //         this.progress.push(task);
+  //         break;
+  //       case 'todo':
+  //         this.todo.push(task);
+  //         break;
+  //     }
+  //   });
+  // }
+
+  /**
+   * Refresh tasks every interval
+   * @param interval Polling interval in milliseconds
+   */
+  private startPolling(interval: number = 5000): void {
     this.pollingInterval = setInterval(async () => {
       await this.tasksService.getAllTasks();
     }, interval);
   }
 
-  public stopPolling(): void {
+  /**
+   * Stop polling
+   */
+  private stopPolling(): void {
     clearInterval(this.pollingInterval);
   }
 
-  // public async testCall() {                                                                         //remember to remove this function
-  //   return this.http.get<Task[]>(this.API_URL + 'tasks', { observe: 'response' }).subscribe(res => {
-  //     console.log('response Status', res.status);
-  //     console.log('body', res.body);
-  //   });
-  // }
-
-
+  /**
+   * For CDK Drag and Drop from Angular Material
+   * @param event Drag and drop event
+   */
   public drop(event: CdkDragDrop<string[]> | any) {
     console.log(event);
     if (event.previousContainer === event.container) {
