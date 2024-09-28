@@ -59,7 +59,8 @@
       "ToDo": "To Do",
       "InProgress": "In Progress",
       "AwaitFeedback": "Await Feedback",
-      "Done": "Done"
+      "Done": "Done",
+      "More": "more"
     },
     "Contacts": {
       "AddContact": "Add new contact",

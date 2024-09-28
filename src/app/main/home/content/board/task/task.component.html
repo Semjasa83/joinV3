@@ -5,12 +5,15 @@
     <section class="lower-section">
         @if (contactList.length > 0) {
             <div class="contact" id="contactTag">
-                @for (contact of contactList; track contactList; let i = $index) {
-                    <div class="contact-circle" [ngStyle]="{'background-color': contact.color}">{{ contact.firstName?.charAt(0)?.toUpperCase() }}{{ contact.lastName?.charAt(0)?.toUpperCase() }}</div>
+                @for (contact of contactList.slice(0, 3); track contactList; let i = $index) {
+                    <div class="contact-circle" [ngStyle]="{'background-color': contact.color, 'left.px': i * 25}">{{ contact.firstName?.charAt(0)?.toUpperCase() }}{{ contact.lastName?.charAt(0)?.toUpperCase() }}</div>
+                }
+                @if (contactList.length > 3) {
+                    <span class="more-contacts" [ngStyle]="{'left.px': 4 * 22}">+{{ contactList.length - 3 }}</span>
                 }
             </div>
         }
-        <div>{{ task?.priority }}</div>
+        <img class="add-icon" src="./././assets/icons/{{ task?.priority }}.svg" alt="{{ task?.priority }}">
     </section>
 </div>
 

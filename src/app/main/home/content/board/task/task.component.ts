@@ -4,6 +4,7 @@ import {Contact} from "../../../../../interfaces/contact.interface";
 import {ContactsService} from "../../../../../services/contacts/contacts.service";
 import {AsyncPipe, JsonPipe, NgClass, NgForOf, NgIf, NgStyle} from "@angular/common";
 import {firstValueFrom} from 'rxjs';
+import {TranslateModule} from "@ngx-translate/core";
 
 @Component({
     selector: 'app-task',
@@ -14,7 +15,8 @@ import {firstValueFrom} from 'rxjs';
         JsonPipe,
         AsyncPipe,
         NgClass,
-        NgStyle
+        NgStyle,
+        TranslateModule
     ],
     templateUrl: './task.component.html',
     styleUrl: './task.component.scss',

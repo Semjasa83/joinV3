@@ -7,10 +7,8 @@
   align-items: center;
   height: fit-content;
   width: calc(100% - 0.5rem);
-  padding: 0.25rem;
-  //background-color: $surface-color;
-  //border-radius: 1rem;
-  //box-shadow: 5px 5px 5px 1px #33333322;
+  padding: 0.5rem 1rem;
+  overflow: hidden;
 }
 
 .task {
@@ -42,6 +40,8 @@
     display: flex;
     width: 100%;
     text-wrap: auto;
+    margin-bottom: 1rem;
+    color: $light-transparent-color;
   }
 
   .lower-section {
@@ -52,20 +52,37 @@
     margin: 1rem 0;
 
     .contact {
+      position: relative;
       display: flex;
       flex-direction: row;
 
       .contact-circle {
+        position: absolute;
+        bottom: -18px;
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 1.125rem;
+        height: 1.125rem;
         border: 1px solid $surface-color;
         border-radius: 50%;
         padding: 0.4rem;
         color: $surface-color;
+        font-size: 0.75rem;
       }
+
+      .more-contacts {
+        display: flex;
+        position: absolute;
+        bottom: -10px;
+        width: 100%;
+        font-size: 0.9rem;
+        color: $light-transparent-color;
+      }
+    }
+
+    .add-icon {
+      margin-right: 1rem;
     }
   }
 }
