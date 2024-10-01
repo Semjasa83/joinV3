@@ -10,15 +10,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {ButtonComponent} from "../../../utility/button/button.component";
 import {TaskComponent} from "./task/task.component";
 import { AddTaskDialogComponent } from '../add-task/add-task-dialog/add-task-dialog.component';
-import {
-  CdkDrag,
-  CdkDragDrop,
-  CdkDropList,
-  CdkDropListGroup,
-  moveItemInArray,
-  transferArrayItem
-} from "@angular/cdk/drag-drop";
 import { ContactsService } from '../../../../services/contacts/contacts.service';
+import {NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-board',
@@ -32,9 +25,7 @@ import { ContactsService } from '../../../../services/contacts/contacts.service'
     ButtonComponent,
     TaskComponent,
     AddTaskDialogComponent,
-    CdkDrag,
-    CdkDropListGroup,
-    CdkDropList
+    NgOptimizedImage,
   ],
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss'
@@ -104,23 +95,23 @@ export class BoardComponent implements OnInit, OnDestroy {
     clearInterval(this.pollingInterval);
   }
 
-  /**
-   * For CDK Drag and Drop from Angular Material
-   * @param event Drag and drop event
-   */
-  public drop(event: CdkDragDrop<string[]> | any) {
-    console.log(event);
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(
-          event.previousContainer.data,
-          event.container.data,
-          event.previousIndex,
-          event.currentIndex,
-      );
-    }
-  }
+  // /**
+  //  * For CDK Drag and Drop from Angular Material
+  //  * @param event Drag and drop event
+  //  */
+  // public drop(event: CdkDragDrop<string[]> | any) {
+  //   console.log(event);
+  //   if (event.previousContainer === event.container) {
+  //     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+  //   } else {
+  //     transferArrayItem(
+  //         event.previousContainer.data,
+  //         event.container.data,
+  //         event.previousIndex,
+  //         event.currentIndex,
+  //     );
+  //   }
+  // }
 
   public trackByTaskId(index: number, task: Task) {
     console.log(index)

@@ -1,12 +1,12 @@
 <div class="logo-wrapper">
-    <img src="../../../../assets/pictures/Capa_dark.svg">
+    <img src="assets/pictures/Capa_dark.svg">
 </div>
 
 <ng-container *ngFor="let route of routesData; index as i">
     <ng-container *ngIf="i > 0">
         <a class="navigation-option" [routerLink]="route.path" routerLinkActive="isActive" ariaCurrentWhenActive="page">
             <div class="navigation-route-wrapper">
-                <img class="navigation-icon" src="../../../../assets/icons/{{ route.data.icon }}" alt="{{ route.data.icon }}">
+                <img class="navigation-icon" src="assets/icons/{{ route.data.icon }}.svg" alt="{{ route.data.icon }}">
                 <span class="navigation-route-name">{{ route.data.name }}</span>
             </div>
         </a>

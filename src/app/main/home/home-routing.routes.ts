@@ -16,22 +16,22 @@ export const HOME_ROUTES: Routes = [{
         {
             path: 'dashboard',
             component: DashboardComponent,
-            data: {name: 'Dashboard', icon: 'space_dashboard.svg'}
+            data: {name: 'Dashboard', icon: 'space_dashboard'}
         },
         {
             path: 'addtask',
             component: AddTaskComponent,
-            data: {name: 'Add Task', icon: 'edit_square.svg'}
+            data: {name: 'Add Task', icon: 'edit_square'}
         },
         {
             path: 'board',
             component: BoardComponent,
-            data: {name: 'Board', icon: 'calendar_view_week.svg'}
+            data: {name: 'Board', icon: 'calendar_view_week'}
         },
         {
             path: 'contacts',
             component: ContactsComponent,
-            data: {name: 'Contacts', icon: 'perm_contact_calendar.svg'},
+            data: {name: 'Contacts', icon: 'perm_contact_calendar'},
             children: [
                 {path: '', redirectTo: '', pathMatch: 'full'},
                 {path: ':id', component: ContactDetailComponent},

@@ -19,18 +19,12 @@
     <div class="board-subsection">
         <div class="headline">
             <span>{{ "Home.Board.ToDo" | translate }}</span>
-            <img class="add-icon" src="./././assets/icons/add_dark.svg" alt="add">
+            <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">
         </div>
-        <section class="drag-area"
-                 id="cdk-drop-list-0"
-                 cdkDropList
-                 #todoList="cdkDropList"
-                 [cdkDropListData]="todo"
-                 [cdkDropListConnectedTo]="[todoList, progressList, feedbackList, doneList]"
-                 (cdkDropListDropped)="drop($event)">
+        <section class="drag-area">
             @if (tasks!.length > 0) {
                 @for (task of tasks; track trackByTaskId) {
-                    <app-task cdkDrag [task]="task"></app-task>
+                        <app-task cdkDrag [task]="task"></app-task>
                 }
             }
         </section>
@@ -39,15 +33,9 @@
     <div class="board-subsection">
         <div class="headline">
             <span>{{ "Home.Board.InProgress" | translate }}</span>
-            <img class="add-icon" src="./././assets/icons/add_dark.svg" alt="add">
+            <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">
         </div>
-        <section class="drag-area"
-                 id="cdk-drop-list-1"
-                 cdkDropList
-                 #progressList="cdkDropList"
-                 [cdkDropListData]="progress"
-                 [cdkDropListConnectedTo]="[todoList, progressList, feedbackList, doneList]"
-                 (cdkDropListDropped)="drop($event)">
+        <section class="drag-area">
 
         </section>
     </div>
@@ -56,15 +44,9 @@
     <div class="board-subsection">
         <div class="headline">
             <span>{{ "Home.Board.AwaitFeedback" | translate }}</span>
-            <img class="add-icon" src="./././assets/icons/add_dark.svg" alt="add">
+            <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">
         </div>
-        <section class="drag-area"
-                 id="cdk-drop-list-2"
-                 cdkDropList
-                 #feedbackList="cdkDropList"
-                 [cdkDropListData]="feedback"
-                 [cdkDropListConnectedTo]="[todoList, progressList, feedbackList, doneList]"
-                 (cdkDropListDropped)="drop($event)">
+        <section class="drag-area">
 
         </section>
     </div>
@@ -72,15 +54,9 @@
     <div class="board-subsection">
         <div class="headline">
             <span>{{ "Home.Board.Done" | translate }}</span>
-            <img class="add-icon" src="./././assets/icons/add_dark.svg" alt="add">
+            <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">
         </div>
-        <section class="drag-area"
-                 id="cdk-drop-list-3"
-                 cdkDropList
-                 #doneList="cdkDropList"
-                 [cdkDropListData]="done"
-                 [cdkDropListConnectedTo]="[todoList, progressList, feedbackList, doneList]"
-                 (cdkDropListDropped)="drop($event)">
+        <section class="drag-area">
 
         </section>
     </div>
@@ -89,3 +65,7 @@
 <!-- @if(showAddTask){
     <app-add-task-dialog (close)="showAddTask = false"></app-add-task-dialog>
 } -->
+
+<ng-template #emptySection>
+blub
+</ng-template>
