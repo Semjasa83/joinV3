@@ -56,11 +56,12 @@
       "SubHeadline": "Take complete overview!",
       "FindTask": "Find task",
       "AddTask": "Add task",
-      "ToDo": "To Do",
-      "InProgress": "In Progress",
-      "AwaitFeedback": "Await Feedback",
+      "Todo": "To Do",
+      "Progress": "In Progress",
+      "Feedback": "Await Feedback",
       "Done": "Done",
-      "More": "more"
+      "More": "more",
+      "Placeholder": "drag and drop task here"
     },
     "Contacts": {
       "AddContact": "Add new contact",

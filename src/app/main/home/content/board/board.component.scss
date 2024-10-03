@@ -16,7 +16,7 @@
   justify-content: center;
   width: 100%;
 
-  app-button{
+  app-button {
     width: 95%;
     margin: 1.25rem 0;
   }
@@ -29,26 +29,34 @@
   height: calc(100vh - 17rem);
   justify-content: flex-start;
   align-items: center;
-  gap: 1rem;
   overflow-y: auto;
   /* Hide scrollbar for IE, Edge and Firefox */
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 
-  .board-subsection {
+  .board-section {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
     width: 95%;
     gap: 1rem;
 
-    .headline {
+    .headline-wrapper {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 1rem;
-      font-weight: 600;
-      font-size: 1.25rem;
       width: 100%;
+
+      .headline {
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        font-size: 1.25rem;
+      }
 
       .add-icon {
         border: 2px solid $surface-dark-color;
@@ -56,14 +64,37 @@
       }
     }
 
+
+  }
+
+  .board-subsection {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 4rem;
+    max-height: fit-content;
+    
     .drag-area {
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 100%;
       gap: 1rem;
-    }
 
+      .placeholder {
+        width: 100%;;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 3px dotted $highlight-dark-color;
+        background-color: $light-transparent-color;
+        border-radius: 1rem;
+        height: 3.5rem;
+        font-weight: 600;
+        font-size: 1.25rem;
+        opacity: 0.5;
+      }
+    }
   }
 }
 
@@ -71,10 +102,6 @@
 .board-wrapper::-webkit-scrollbar {
   display: none;
 }
-
-
-
-
 
 
 @media (min-width: 1024px) {
@@ -97,27 +124,6 @@
         margin-bottom: 1.25rem;
       }
     }
-  }
-
-  .board-wrapper {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-
-    .board-subsection {
-      justify-content: space-between;
-      align-items: center;
-      width: 23%;
-
-      .headline {
-        position: static;
-      }
-
-      .drag-area {
-        width: 100%;
-      }
-    }
-
   }
 
   app-add-task-dialog {

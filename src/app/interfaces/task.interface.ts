@@ -20,7 +20,7 @@ export class TaskImpl implements Task {
         public category: string = '',
         public subTasks: string[] = [],
         public contacts: string[] = [],
-        public posStatus: String = 'toDo',
+        public posStatus: String = 'ToDo',
         public _id: string = '',
     ) {}
 }

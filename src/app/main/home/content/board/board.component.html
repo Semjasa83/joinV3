@@ -1,5 +1,5 @@
 <app-subheadline [text]="'Home.Board.Headline' | translate" [subtext]="'Home.Board.SubHeadline' | translate"
-                 [line]="true">
+    [line]="true">
 </app-subheadline>
 
 <section class="upper-section-wrapper">
@@ -10,62 +10,35 @@
         <!--            <mat-icon matSuffix>search</mat-icon>-->
         <!--        </mat-form-field>-->
         <app-button [bgrColor]="'surface-dark-color'" [icon]="'add'" [text]="'Home.Board.AddTask' | translate"
-                    [txtColor]="'surface-dark-contrast-color'" (click)="showAddTask = true">
+            [txtColor]="'surface-dark-contrast-color'" (click)="showAddTask = true">
         </app-button>
     </div>
 </section>
 
 <section class="board-wrapper">
-    <div class="board-subsection">
-        <div class="headline">
-            <span>{{ "Home.Board.ToDo" | translate }}</span>
+    <div class="board-section">
+        @for (head of headlines; track headlines; let i = $index) {
+        <div class="headline-wrapper">
+            <span class="headline">{{ 'Home.Board.' + head | translate }}</span>
             <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">
         </div>
-        <section class="drag-area">
-            @if (tasks!.length > 0) {
-                @for (task of tasks; track trackByTaskId) {
-                        <app-task cdkDrag [task]="task"></app-task>
-                }
-            }
-        </section>
-    </div>
+        <div class="board-subsection">
+            <section class="drag-area" id="{{head}}" cdkDropList [cdkDropListConnectedTo]="filterHeadlines(head)"
+                [cdkDropListData]="head" (cdkDropListDropped)="drop($event)">
 
-    <div class="board-subsection">
-        <div class="headline">
-            <span>{{ "Home.Board.InProgress" | translate }}</span>
-            <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">
+                @if (tasks!.length > 0) {
+                    @for (task of tasks; track trackByTaskId; let idx = $index) {
+                        @if (task.posStatus === head) {
+                        <app-task [task]="task" id="drag{{idx}}" cdkDrag></app-task>
+                        }
+                    }
+                } 
+            </section>
+
         </div>
-        <section class="drag-area">
+        }
 
-        </section>
     </div>
 
 
-    <div class="board-subsection">
-        <div class="headline">
-            <span>{{ "Home.Board.AwaitFeedback" | translate }}</span>
-            <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">
-        </div>
-        <section class="drag-area">
-
-        </section>
-    </div>
-
-    <div class="board-subsection">
-        <div class="headline">
-            <span>{{ "Home.Board.Done" | translate }}</span>
-            <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">
-        </div>
-        <section class="drag-area">
-
-        </section>
-    </div>
 </section>
-
-<!-- @if(showAddTask){
-    <app-add-task-dialog (close)="showAddTask = false"></app-add-task-dialog>
-} -->
-
-<ng-template #emptySection>
-blub
-</ng-template>
