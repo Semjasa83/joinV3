@@ -47,7 +47,7 @@ export class AddTaskComponent implements OnInit {
         priority: new FormControl(''),
         category: new FormControl('', [Validators.required]),
         contacts: new FormControl([]),
-        posStatus: new FormControl('Todo'),
+        posStatus: new FormControl(0),
     });
 
     constructor(private tasksService: TasksService, private contactsService: ContactsService) {}

@@ -12,7 +12,7 @@ import { TaskComponent } from "./task/task.component";
 import { AddTaskDialogComponent } from "../add-task/add-task-dialog/add-task-dialog.component";
 import { ContactsService } from "../../../../services/contacts/contacts.service";
 import { NgOptimizedImage } from "@angular/common";
-import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
+import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem, CdkDropListGroup } from "@angular/cdk/drag-drop";
 
 @Component({
   selector: "app-board",
@@ -38,7 +38,7 @@ export class BoardComponent implements OnInit, OnDestroy {
   private pollingInterval: any;
   public showAddTask: boolean = false;
 
-  public headlines: string[] = ["Todo", "Progress", "Feedback", "Done"];
+  // public headlines: string[] = ["Todo", "Progress", "Feedback", "Done"];
   public done: Task[] = [];
   public feedback: Task[] = [];
   public progress: Task[] = [];
@@ -50,11 +50,10 @@ export class BoardComponent implements OnInit, OnDestroy {
   ) {}
 
   public async ngOnInit() {
-    await this.tasksService.getAllTasks();
-    this.tasksService.tasks$.subscribe((tasks: Task[]) => {
-      this.tasks = tasks;
-    });
-    this.startPolling();
+    await this.loadTasks(); // Load tasks from Backend
+    this.categorizeTasks(); // Categorize tasks into different arrays
+    this.checkArrays(); // Debugging
+    this.startPolling(); // Start polling the Board intervals from Backend
   }
 
   public ngOnDestroy() {
@@ -64,9 +63,45 @@ export class BoardComponent implements OnInit, OnDestroy {
     this.stopPolling();
   }
 
-  drop(event: CdkDragDrop<any>) {
+
+  private async loadTasks() {
+    try {
+      await this.tasksService.getAllTasks();
+      this.tasksService.tasks$.subscribe((tasks: Task[]) => {
+        this.tasks = tasks;
+      });
+    } catch (error) {
+      console.error('Error at loading Tasks:', error);
+    }
+  } 
+
+
+  private categorizeTasks() {
+    this.todo = [];
+    this.progress = [];
+    this.feedback = [];
+    this.done = [];
+    this.tasks.forEach((task: Task) => {
+      switch (task.posStatus) {
+        case 0:
+          this.todo.push(task);
+          break;
+        case 1:
+          this.progress.push(task);
+          break;
+        case 2:
+          this.feedback.push(task);
+          break;
+        case 3:
+          this.done.push(task);
+          break;
+      }
+    });
+  }
+
+  /********** Drag n Drop Section ***************/
+  public drop(event: CdkDragDrop<Task[]>) {
     console.log(event);
-    
     if (event.previousContainer === event.container) {
       // Reorder items within the same list
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -79,69 +114,42 @@ export class BoardComponent implements OnInit, OnDestroy {
         event.currentIndex
       );
     }
+    this.checkArrays();
   }
 
-  public filterHeadlines(head: string) {
-      return this.headlines.filter(h => h !== head);
-  }
 
-  // private loadTasks() {
-  //   this.tasks.forEach((task: Task) => {
-  //     switch (task.status) {
-  //       case 'done':
-  //         this.done.push(task);
-  //         break;
-  //       case 'feedback':
-  //         this.feedback.push(task);
-  //         break;
-  //       case 'progress':
-  //         this.progress.push(task);
-  //         break;
-  //       case 'todo':
-  //         this.todo.push(task);
-  //         break;
-  //     }
-  //   });
-  // }
-
-  // /**
-  //  * For CDK Drag and Drop from Angular Material
-  //  * @param event Drag and drop event
-  //  */
-  // public drop(event: CdkDragDrop<string[]> | any) {
-  //   console.log(event);
-  //   if (event.previousContainer === event.container) {
-  //     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-  //   } else {
-  //     transferArrayItem(
-  //         event.previousContainer.data,
-  //         event.container.data,
-  //         event.previousIndex,
-  //         event.currentIndex,
-  //     );
-  //   }
-  // }
-
-  public trackByTaskId(index: number, task: Task) {
-    console.log(index);
-    console.log(task._id);
-    return task._id;
-  }
-
-  /**
-   * Refresh tasks every interval
-   * @param interval Polling interval in milliseconds
-   */
+  /********** Polling Section ***************/
   private startPolling(interval: number = 5000): void {
     this.pollingInterval = setInterval(async () => {
       await this.tasksService.getAllTasks();
     }, interval);
   }
 
-  /**
-   * Stop polling
-   */
+
   private stopPolling(): void {
     clearInterval(this.pollingInterval);
   }
+
+
+
+
+
+
+
+  private checkArrays() {
+    console.log('todo', this.todo);
+    console.log('done', this.done);
+    console.log('progress', this.progress);
+    console.log('feedback', this.feedback);
+  }
+
+    // public filterHeadlines(head: string) {
+  //     return this.headlines.filter(h => h !== head);
+  // }
+
+    // public trackByTaskId(index: number, task: Task) {
+  //   console.log(index);
+  //   console.log(task._id);
+  //   return task._id;
+  // }
 }
