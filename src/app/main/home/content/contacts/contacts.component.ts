@@ -55,7 +55,6 @@ export class ContactsComponent{
     this.contactsService.contacts$.subscribe((response: Contact[]) => {
       this.contacts = response;
     });
-    this.cd.detectChanges();
     await this.sortContacts();
     this.contactsService.startPolling();
   }

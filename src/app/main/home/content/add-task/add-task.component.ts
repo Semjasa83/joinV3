@@ -78,6 +78,7 @@ export class AddTaskComponent implements OnInit {
             ...this.addTaskForm.value,
             priority: this.priorities,
             contacts: contactArr,
+            posStatus: 0,
             _id: null
         }
         try {
@@ -92,7 +93,4 @@ export class AddTaskComponent implements OnInit {
         this.setPriority('');
         this.addTaskForm.reset();
     }
-
-
-
 }

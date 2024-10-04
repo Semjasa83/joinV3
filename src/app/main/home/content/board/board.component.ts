@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { ChangeDetectorRef, Component, HostListener, OnDestroy, OnInit } from "@angular/core";
 import { Task } from "../../../../interfaces/task.interface";
 import { Subscription } from "rxjs";
 import { TasksService } from "../../../../services/tasks/tasks.service";
@@ -38,6 +38,7 @@ export class BoardComponent implements OnInit, OnDestroy {
   private pollingInterval: any;
   public showAddTask: boolean = false;
 
+  // @HostListener('window:resize', ['$event'])
   // public headlines: string[] = ["Todo", "Progress", "Feedback", "Done"];
   public done: Task[] = [];
   public feedback: Task[] = [];
@@ -46,25 +47,26 @@ export class BoardComponent implements OnInit, OnDestroy {
 
   constructor(
     private tasksService: TasksService,
-    private contactsService: ContactsService
+    private contactsService: ContactsService,
+    private cd: ChangeDetectorRef
   ) {}
 
   public async ngOnInit() {
     await this.loadTasks(); // Load tasks from Backend
     this.categorizeTasks(); // Categorize tasks into different arrays
     this.checkArrays(); // Debugging
-    this.startPolling(); // Start polling the Board intervals from Backend
+    // this.startPolling(); // Start polling the Board intervals from Backend
   }
 
-  public ngOnDestroy() {
+  public ngOnDestroy(): void {
     if (this.tasksSubscription) {
       this.tasksSubscription.unsubscribe();
     }
-    this.stopPolling();
+    // this.stopPolling();
   }
 
 
-  private async loadTasks() {
+  private async loadTasks(): Promise<void> {
     try {
       await this.tasksService.getAllTasks();
       this.tasksService.tasks$.subscribe((tasks: Task[]) => {
@@ -76,7 +78,7 @@ export class BoardComponent implements OnInit, OnDestroy {
   } 
 
 
-  private categorizeTasks() {
+  private categorizeTasks(): void {
     this.todo = [];
     this.progress = [];
     this.feedback = [];
@@ -100,13 +102,13 @@ export class BoardComponent implements OnInit, OnDestroy {
   }
 
   /********** Drag n Drop Section ***************/
-  public drop(event: CdkDragDrop<Task[]>) {
-    console.log(event);
+  public drop(event: CdkDragDrop<Task[]>): void {
     if (event.previousContainer === event.container) {
       // Reorder items within the same list
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       // Move items between lists
+      console.log('previousContainer', event.previousContainer.data);
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
@@ -119,16 +121,16 @@ export class BoardComponent implements OnInit, OnDestroy {
 
 
   /********** Polling Section ***************/
-  private startPolling(interval: number = 5000): void {
-    this.pollingInterval = setInterval(async () => {
-      await this.tasksService.getAllTasks();
-    }, interval);
-  }
+  // private startPolling(interval: number = 5000): void {
+  //   this.pollingInterval = setInterval(async () => {
+  //     await this.tasksService.getAllTasks();
+  //   }, interval);
+  // }
 
 
-  private stopPolling(): void {
-    clearInterval(this.pollingInterval);
-  }
+  // private stopPolling(): void {
+  //   clearInterval(this.pollingInterval);
+  // }
 
 
 
@@ -137,7 +139,7 @@ export class BoardComponent implements OnInit, OnDestroy {
 
 
   private checkArrays() {
-    console.log('todo', this.todo);
+    console.log('todo', this.todo[0].posStatus);
     console.log('done', this.done);
     console.log('progress', this.progress);
     console.log('feedback', this.feedback);
@@ -147,9 +149,18 @@ export class BoardComponent implements OnInit, OnDestroy {
   //     return this.headlines.filter(h => h !== head);
   // }
 
-    // public trackByTaskId(index: number, task: Task) {
-  //   console.log(index);
-  //   console.log(task._id);
-  //   return task._id;
+    public trackByTaskId(index: number, task: Task) {
+    return task._id;
+  }
+
+  // public onResize(event: Event) {
+  //   this.handleResize();
+  //   console.log(event);
+    
   // }
+
+  // private handleResize() {
+  //   this.cd.detectChanges();
+  // }
+
 }
