@@ -4,6 +4,9 @@ import { ContactsService } from '../../../../../services/contacts/contacts.servi
 import { FormControl, FormGroup, ReactiveFormsModule, Validators, } from '@angular/forms';
 import { ButtonComponent } from '../../../../utility/button/button.component';
 import { Contact, ContactImpl, AddressImpl } from "../../../../../interfaces/contact.interface";
+import {MatFormField} from "@angular/material/form-field";
+import {MatInputModule} from '@angular/material/input';
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'app-add-contact',
@@ -12,6 +15,9 @@ import { Contact, ContactImpl, AddressImpl } from "../../../../../interfaces/con
     TranslateModule,
     ButtonComponent,
     ReactiveFormsModule,
+    MatFormField,
+    MatInputModule,
+    MatIcon
   ],
   templateUrl: './add-contact.component.html',
   styleUrl: './add-contact.component.scss'

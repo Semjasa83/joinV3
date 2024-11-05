@@ -43,6 +43,8 @@ export class ContactsComponent{
   public groupedContactsArray: Contact[] = [];
   public groupArray$: any[] = [];
   public showAddContact: boolean = false;
+  private pollingInterval: any;
+  private interval: number = 4000;
 
   private contactsSubscription: Subscription = new Subscription();
 
@@ -56,14 +58,14 @@ export class ContactsComponent{
       this.contacts = response;
     });
     await this.sortContacts();
-    this.contactsService.startPolling();
+    this.startPolling(this.interval);
   }
 
   public ngOnDestroy() {
     if(this.contactsSubscription) {
       this.contactsSubscription.unsubscribe();
     }
-    this.contactsService.stopPolling();
+    this.stopPolling();
   }
 
   private async sortContacts(): Promise<void> {
@@ -100,6 +102,16 @@ export class ContactsComponent{
       this.groupArray$.push(this.groupedContactsArray);
       this.groupedContactsArray = [];
     });
+  }
+
+  public startPolling(interval:number ): void {
+    this.pollingInterval = setInterval(async () => {
+      await this.contactsService.getAllContacts();
+    }, interval);
+  }
+
+  public stopPolling(): void {
+    clearInterval(this.pollingInterval);
   }
 
 }

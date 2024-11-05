@@ -134,9 +134,25 @@
         padding-right: 0.5rem;
       }
 
+      mat-form-field{
+        height: 100%;
+        width: 90% !important;
+        border: unset;
+        border-radius: 0.5rem;
+        background-color: unset;
+        padding-left: 0.25rem;
+        padding-right: 0.5rem;
+      }
+
       .icon {
         position: absolute;
         right: 0.5rem;
+        height: 90%;
+        width: fit-content;
+
+        svg {
+            fill: $background-contrast-color;
+        }
       }
     }
 
@@ -157,6 +173,16 @@
   color: $surface-dark-contrast-color;
   padding: 0.5rem;
   cursor: pointer;
+
+  svg {
+    fill: $background-contrast-color;
+  }
+
+  &:hover {
+    svg {
+      fill: $primary-color;
+    }
+  }
 }
 
 .material-symbols-outlined {

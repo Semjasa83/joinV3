@@ -1,42 +1,79 @@
 <div class="dialog-contact" (click)="closeDialog()">
-  <div class="add-contact-wrapper">
-    <span class="material-symbols-outlined close-icon" (click)="closeDialog()">close</span>
-
-    <div class="dialog-header" (click)="stopPropagation($event)">
-      <div class="dialog-wrapper">
-        <img class="logo" src="assets/pictures/Capa_1.png" alt="logo"> 
-        <span class="headline">{{ "Home.ContactAdd.AddContact" | translate }}</span>
-        <span class="sub-headline">{{ "Home.ContactAdd.SubHeadline" | translate }}</span>
-        <div class="header-line"></div>
-        <div class="circle">
-          <img class="navigation-icon" src="assets/icons/person.svg" alt="person">
-        </div>
+   <div class="add-contact-wrapper">
+    <span class="close-icon" (click)="closeDialog()"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                                          viewBox="0 -960 960 960" width="24px" fill="#2b3647"><path
+        d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+    </span>
+      
+      <div class="dialog-header" (click)="stopPropagation($event)">
+         <div class="dialog-wrapper">
+            <img class="logo" src="assets/pictures/Capa_1.png" alt="logo">
+            <span class="headline">{{ "Home.ContactAdd.AddContact" | translate }}</span>
+            <span class="sub-headline">{{ "Home.ContactAdd.SubHeadline" | translate }}</span>
+            <div class="header-line"></div>
+            <div class="circle">
+               <svg class="navigation-icon" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960"
+                    width="48px" fill="#e8eaed">
+                  <path
+                      d="M480-492.92q-57.75 0-95.22-37.47-37.47-37.48-37.47-95.42 0-57.94 37.47-95.22T480-758.31q57.75 0 95.22 37.28t37.47 95.22q0 57.94-37.47 95.42-37.47 37.47-95.22 37.47ZM180-187.69v-75.93q0-32.23 17.08-56.15t44.38-36.77q63.16-28.07 121.76-42.31 58.6-14.23 116.77-14.23 58.16 0 116.47 14.54t121.21 42.27q28.38 12.82 45.35 36.62Q780-295.85 780-263.62v75.93H180Zm45.39-45.39h509.22v-30.54q0-15.61-9.88-29.92-9.88-14.31-25.81-22.46-59-28.69-111.3-40.19-52.3-11.5-107.62-11.5-55.32 0-108.43 11.5-53.11 11.5-111.11 40.19-15.92 8.15-25.5 22.46-9.57 14.31-9.57 29.92v30.54ZM480-538.31q37.46 0 62.38-24.92 24.93-24.92 24.93-62.38 0-37.47-24.93-62.39-24.92-24.92-62.38-24.92T417.62-688q-24.93 24.92-24.93 62.39 0 37.46 24.93 62.38 24.92 24.92 62.38 24.92Zm0-87.3Zm0 392.53Z"/>
+               </svg>
+            </div>
+         </div>
       </div>
-    </div>
+      
+      <div class="dialog-content" (click)="stopPropagation($event)">
+         <form class="content-wrapper" [formGroup]="addContactForm" (ngSubmit)="addContact()">
+            <mat-form-field appearance="outline">
+               <mat-label>{{'Home.ContactAdd.FirstName' | translate}}</mat-label>
+               <input matInput placeholder="{{'Home.ContactAdd.FirstName' | translate}}" formControlName="firstName">
+               <mat-icon matSuffix>
+                  <svg xmlns="http://www.w3.org/2000/svg" height="auto"
+                       viewBox="0 -960 960 960" width="auto" fill="#000000"><path d="M480-492.92q-57.75 0-95.22-37.47-37.47-37.48-37.47-95.42 0-57.94 37.47-95.22T480-758.31q57.75 0 95.22 37.28t37.47 95.22q0 57.94-37.47 95.42-37.47 37.47-95.22 37.47ZM180-187.69v-75.93q0-32.23 17.08-56.15t44.38-36.77q63.16-28.07 121.76-42.31 58.6-14.23 116.77-14.23 58.16 0 116.47 14.54t121.21 42.27q28.38 12.82 45.35 36.62Q780-295.85 780-263.62v75.93H180Zm45.39-45.39h509.22v-30.54q0-15.61-9.88-29.92-9.88-14.31-25.81-22.46-59-28.69-111.3-40.19-52.3-11.5-107.62-11.5-55.32 0-108.43 11.5-53.11 11.5-111.11 40.19-15.92 8.15-25.5 22.46-9.57 14.31-9.57 29.92v30.54ZM480-538.31q37.46 0 62.38-24.92 24.93-24.92 24.93-62.38 0-37.47-24.93-62.39-24.92-24.92-62.38-24.92T417.62-688q-24.93 24.92-24.93 62.39 0 37.46 24.93 62.38 24.92 24.92 62.38 24.92Zm0-87.3Zm0 392.53Z"/>
+                  </svg>
+               </mat-icon>
+            </mat-form-field>
+            <div class="input-wrapper">
+<!--               <input placeholder="{{'Home.ContactAdd.FirstName' | translate}}" type="text" formControlName="firstName">-->
 
-    <div class="dialog-content" (click)="stopPropagation($event)">
-      <form class="content-wrapper" [formGroup]="addContactForm" (ngSubmit)="addContact()">
-        <div class="input-wrapper">
-          <input placeholder="{{'Home.ContactAdd.FirstName' | translate}}" type="text" formControlName="firstName">
-          <span class="material-symbols-outlined icon">person</span>
-        </div>
-        <div class="input-wrapper">
-          <input placeholder="{{'Home.ContactAdd.LastName' | translate}}" type="text" formControlName="lastName">
-          <span class="material-symbols-outlined icon">person</span>
-        </div>
-        <div class="input-wrapper">
-          <input placeholder="{{'Home.ContactAdd.Phone' | translate}}" type="number" formControlName="phone">
-          <span class="material-symbols-outlined icon">call</span>
-        </div>
-        <div class="input-wrapper">
-          <input placeholder="{{'Home.ContactAdd.Email' | translate}}" type="email" formControlName="email">
-          <span class="material-symbols-outlined icon">mail</span>
-        </div>
-        <div class="btn-wrapper">
-          <app-button buttonType="button" [bgrColor]="'surface-color'" [txtColor]="'surface-dark-color'" [outlined]="true" [text]="'Home.ContactAdd.Delete' | translate" (click)="clearForm()"></app-button>
-          <app-button buttonType="submit" [bgrColor]="'surface-dark-color'" [txtColor]="'surface-dark-contrast-color'" [outlined]="false" [text]="'Home.ContactAdd.CreateContact' | translate"></app-button>
-        </div>
-      </form>
-    </div>
-  </div>
+               <span class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="auto"
+                       viewBox="0 -960 960 960" width="auto" fill="#e8eaed"><path d="M480-492.92q-57.75 0-95.22-37.47-37.47-37.48-37.47-95.42 0-57.94 37.47-95.22T480-758.31q57.75 0 95.22 37.28t37.47 95.22q0 57.94-37.47 95.42-37.47 37.47-95.22 37.47ZM180-187.69v-75.93q0-32.23 17.08-56.15t44.38-36.77q63.16-28.07 121.76-42.31 58.6-14.23 116.77-14.23 58.16 0 116.47 14.54t121.21 42.27q28.38 12.82 45.35 36.62Q780-295.85 780-263.62v75.93H180Zm45.39-45.39h509.22v-30.54q0-15.61-9.88-29.92-9.88-14.31-25.81-22.46-59-28.69-111.3-40.19-52.3-11.5-107.62-11.5-55.32 0-108.43 11.5-53.11 11.5-111.11 40.19-15.92 8.15-25.5 22.46-9.57 14.31-9.57 29.92v30.54ZM480-538.31q37.46 0 62.38-24.92 24.93-24.92 24.93-62.38 0-37.47-24.93-62.39-24.92-24.92-62.38-24.92T417.62-688q-24.93 24.92-24.93 62.39 0 37.46 24.93 62.38 24.92 24.92 62.38 24.92Zm0-87.3Zm0 392.53Z"/>
+                  </svg>
+               </span>
+            </div>
+            <div class="input-wrapper">
+               <input placeholder="{{'Home.ContactAdd.LastName' | translate}}" type="text" formControlName="lastName">
+               <span class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="auto"
+                       viewBox="0 -960 960 960" width="auto" fill="#e8eaed"><path d="M480-492.92q-57.75 0-95.22-37.47-37.47-37.48-37.47-95.42 0-57.94 37.47-95.22T480-758.31q57.75 0 95.22 37.28t37.47 95.22q0 57.94-37.47 95.42-37.47 37.47-95.22 37.47ZM180-187.69v-75.93q0-32.23 17.08-56.15t44.38-36.77q63.16-28.07 121.76-42.31 58.6-14.23 116.77-14.23 58.16 0 116.47 14.54t121.21 42.27q28.38 12.82 45.35 36.62Q780-295.85 780-263.62v75.93H180Zm45.39-45.39h509.22v-30.54q0-15.61-9.88-29.92-9.88-14.31-25.81-22.46-59-28.69-111.3-40.19-52.3-11.5-107.62-11.5-55.32 0-108.43 11.5-53.11 11.5-111.11 40.19-15.92 8.15-25.5 22.46-9.57 14.31-9.57 29.92v30.54ZM480-538.31q37.46 0 62.38-24.92 24.93-24.92 24.93-62.38 0-37.47-24.93-62.39-24.92-24.92-62.38-24.92T417.62-688q-24.93 24.92-24.93 62.39 0 37.46 24.93 62.38 24.92 24.92 62.38 24.92Zm0-87.3Zm0 392.53Z"/>
+                  </svg>
+               </span>
+            </div>
+            <div class="input-wrapper">
+               <input placeholder="{{'Home.ContactAdd.Phone' | translate}}" type="number" formControlName="phone">
+               <span class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="auto"
+                       viewBox="0 -960 960 960" width="auto" fill="#e8eaed"><path d="M777.61-140q-113.07 0-227.19-52.58-114.11-52.58-209.69-148.34-95.57-95.77-148.15-209.7Q140-664.54 140-777.61q0-18.17 12-30.28T182-820h130.46q15.15 0 26.73 9.89 11.58 9.88 14.73 24.42L376.85-668q2.38 16.38-1 28.15-3.39 11.77-12.16 19.77l-92.38 89.93q22.3 40.84 50.96 77.27 28.65 36.42 62.04 69.57 32.92 32.93 70 61.16 37.08 28.23 80.08 52.54l89.76-90.54q9.39-9.77 22.74-13.7 13.34-3.92 27.73-1.92l111.07 22.62q15.15 4 24.73 15.46t9.58 26V-182q0 18-12.11 30t-30.28 12ZM242.92-586.92l71.39-68.31q1.92-1.54 2.5-4.23.58-2.69-.19-5l-17.39-89.39q-.77-3.07-2.69-4.61-1.92-1.54-5-1.54H206q-2.31 0-3.85 1.54-1.53 1.54-1.53 3.85 3.07 41 13.42 83.3 10.34 42.31 28.88 84.39Zm348 345.69q39.77 18.54 82.96 28.35 43.2 9.8 80.73 11.65 2.31 0 3.85-1.54t1.54-3.85v-84.15q0-3.08-1.54-5t-4.61-2.69l-84-17.08q-2.31-.77-4.04-.19-1.73.58-3.66 2.5l-71.23 72Zm-348-345.69Zm348 345.69Z"/>
+                  </svg>
+               </span>
+            </div>
+            <div class="input-wrapper">
+               <input placeholder="{{'Home.ContactAdd.Email' | translate}}" type="email" formControlName="email">
+               <span class="icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="auto"
+                       viewBox="0 -960 960 960" width="auto" fill="#000000"><path d="M172.31-180Q142-180 121-201q-21-21-21-51.31v-455.38Q100-738 121-759q21-21 51.31-21h615.38Q818-780 839-759q21 21 21 51.31v455.38Q860-222 839-201q-21 21-51.31 21H172.31ZM480-457.69 160-662.31v410q0 5.39 3.46 8.85t8.85 3.46h615.38q5.39 0 8.85-3.46t3.46-8.85v-410L480-457.69Zm0-62.31 313.85-200h-627.7L480-520ZM160-662.31V-720v467.69q0 5.39 3.46 8.85t8.85 3.46H160v-422.31Z"/>
+                  </svg>
+               </span>
+            </div>
+            <div class="btn-wrapper">
+               <app-button buttonType="button" [bgrColor]="'surface-color'" [txtColor]="'surface-dark-color'"
+                           [outlined]="true" [text]="'Home.ContactAdd.Delete' | translate"
+                           (click)="clearForm()"></app-button>
+               <app-button buttonType="submit" [bgrColor]="'surface-dark-color'"
+                           [txtColor]="'surface-dark-contrast-color'" [outlined]="false"
+                           [text]="'Home.ContactAdd.CreateContact' | translate"></app-button>
+            </div>
+         </form>
+      </div>
+   </div>
 </div>

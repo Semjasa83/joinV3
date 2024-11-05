@@ -17,8 +17,6 @@ export class ContactsService {
   private contactIdSubject = new BehaviorSubject<string>('');
   contactId$: Observable<string> = this.contactIdSubject.asObservable();
 
-  private pollingInterval: any;
-
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -34,7 +32,7 @@ export class ContactsService {
   };
 
   public getSpecContact(id: string): Observable<{ contact: Contact }> {
-    return this.http.get<{ contact: Address }>(this.API_URL +  `contacts/${id}`);
+    return this.http.get<{ contact: Address }>(this.API_URL + `contacts/${id}`);
   }
 
   public async updateContact(id: string, contact: Address) {
@@ -53,23 +51,15 @@ export class ContactsService {
     this.contactIdSubject.next(id);
   }
 
-  // public getContactId(): Observable<string> {
-  //   return this.contactId$;
-  // }
-
-
-
-
-
 
   // Polling function for delete and export to contacts.component.ts
-  public startPolling(interval: number = 5000): void {
-    this.pollingInterval = setInterval(async () => {
-      await this.getAllContacts();
-    }, interval);
-  }
-
-  public stopPolling(): void {
-    clearInterval(this.pollingInterval);
-  }
+  // public startPolling(interval: number = 5000): void {
+  //   this.pollingInterval = setInterval(async () => {
+  //     await this.getAllContacts();
+  //   }, interval);
+  // }
+  //
+  // public stopPolling(): void {
+  //   clearInterval(this.pollingInterval);
+  // }
 }
