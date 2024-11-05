@@ -50,12 +50,17 @@
         width: 5rem;
 
         .icon {
-          margin-right: 0.5rem;
+          margin-right: 0.25rem;
+          fill: $background-contrast-color;
         }
 
         &:hover {
           cursor: pointer;
           color: $secondary-color;
+
+          .icon {
+            fill: $secondary-color;
+          }
         }
       }
     }

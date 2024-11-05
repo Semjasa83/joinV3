@@ -23,83 +23,8 @@
   flex-direction: column;
   height: 100%;
   transition: all 0.5s ease-in-out;
-  .sidebar-btn {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    bottom: 4rem;
-    width: 100%;
-    .sidebar-toggle-button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: unset;
-      height: 3rem;
-      width: 3rem;
-      border-radius: 50%;
-      margin-left: 3rem;
-      .navigation-icon {
-        transform: rotate(-180deg);
-      }
-    }
-
-    &:hover {
-      .sidebar-toggle-open {
-        //transition: all 0.5s ease-in-out;
-        //transform: translateX(4rem);
-        .navigation-icon {
-          transform: rotate(0deg);
-          transition: 0.5s ease-in-out;
-        }
-      }
-
-      .sidebar-toggle-close{
-        .navigation-icon {
-          transform: rotate(0deg);
-          transition: 0.5s ease-in-out;
-        }
-      }
-    }
-    &:not(:hover){
-      .sidebar-toggle-open {
-        transition: all 0.75s ease-in-out;
-        .navigation-icon {
-          transform: rotate(-180deg);
-          transition: 0.5s ease-in-out;
-        }
-      }
-
-      .sidebar-toggle-close {
-        .navigation-icon {
-          transform: rotate(-90deg);
-          transition: 0.5s ease-in-out;
-        }
-      }
-    }
-
-    &:not(.sidebar-btn-open) {
-      left: 0;
-      width: 6rem !important;
-    }
-
-    &:has(.sidebar-btn-open) {
-      width: 100% !important;
-      .sidebar-toggle-button {
-        transform: none;
-      }
-    }
-  }
 }
 
-.sidebar-toggle-open {
-  border: 1px solid $surface-dark-contrast-color;
-  transform: translateX(50%);
-}
-
-.sidebar-toggle-close {
-  border: 1px solid $surface-dark-color;
-  background-color: $surface-dark-color !important;
-}
 
 app-header {
   z-index: 2;

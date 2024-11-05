@@ -4,39 +4,54 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  overflow: scroll;
+  overflow-x: hidden;
   width: 100%;
   background-color: $background-color;
 }
 
-.upper-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.upper-section-wrapper {
   width: 100%;
 
-  app-button {
-    width: 95%;
-    margin: 1.25rem 0;
+  .upper-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+
+    app-button {
+      width: 12rem;
+      margin-left: 2rem;
+    }
   }
+}
+
+
+.lower-section-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .drop-list-wrapper {
   display: flex;
   flex-direction: row;
   gap: 2rem;
+  width: 95%;
+  height: fit-content;
+  padding-left: 1rem;
 }
 
 .board-wrapper {
   display: flex;
   flex-direction: column;
   width: 100%;
-  // height: calc(100vh - 17rem);
   height: 100%;
   justify-content: flex-start;
   align-items: center;
-  // overflow-y: auto;
   /* Hide scrollbar for IE, Edge and Firefox */
   -ms-overflow-style: none;
   /* IE and Edge */
@@ -81,7 +96,7 @@
     width: 100%;
     min-height: 100%;
     height: fit-content;
-    
+
     .drag-area {
       display: flex;
       flex-direction: column;
@@ -129,8 +144,8 @@
       //}
 
       app-button {
-        width: 60%;
-        margin-bottom: 1.25rem;
+        width: 16rem;
+        margin-right: 2rem;
       }
     }
   }

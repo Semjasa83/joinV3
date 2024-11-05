@@ -1,121 +1,119 @@
 <app-subheadline [text]="'Home.Board.Headline' | translate" [subtext]="'Home.Board.SubHeadline' | translate"
-    [line]="true">
+                 [line]="true">
 </app-subheadline>
 
 <section class="upper-section-wrapper">
-    <div class="upper-section">
-        <!--        <mat-form-field appearance="outline">-->
-        <!--            <mat-label>{{'Home.Board.FindTask' | translate}}</mat-label>-->
-        <!--            <input type="text" matInput>-->
-        <!--            <mat-icon matSuffix>search</mat-icon>-->
-        <!--        </mat-form-field>-->
-        <app-button [bgrColor]="'surface-dark-color'" [icon]="'add'" [text]="'Home.Board.AddTask' | translate"
-            [txtColor]="'surface-dark-contrast-color'" (click)="showAddTask = true">
-        </app-button>
-    </div>
+   <div class="upper-section">
+      <!--        <mat-form-field appearance="outline">-->
+      <!--            <mat-label>{{'Home.Board.FindTask' | translate}}</mat-label>-->
+      <!--            <input type="text" matInput>-->
+      <!--            <mat-icon matSuffix>search</mat-icon>-->
+      <!--        </mat-form-field>-->
+      <app-button [bgrColor]="'surface-dark-color'" [icon]="'add'" [text]="'Home.Board.AddTask' | translate"
+                  [txtColor]="'surface-dark-contrast-color'" (click)="showAddTask = true">
+      </app-button>
+   </div>
 </section>
 
-<div cdkDropListGroup class="drop-list-wrapper">
-    <section class="board-wrapper">
-        <div class="board-section">
+
+<div class="lower-section-wrapper">
+   <div cdkDropListGroup class="drop-list-wrapper">
+      <section class="board-wrapper">
+         <div class="board-section">
             <div class="headline-wrapper">
-                <span class="headline">{{ 'Home.Board.Todo' | translate }}</span>
-                <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">
+               <span class="headline">{{ 'Home.Board.Todo' | translate }}</span>
+               <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">
             </div>
             <div class="board-subsection">
-                <section class="drag-area" id="cdk-drop-list-0" #listTodo="cdkDropList" cdkDropList [cdkDropListConnectedTo]="[listProgress, listFeedback, listDone]"
-                    [cdkDropListData]="todo" (cdkDropListDropped)="drop($event)">
-                    @if (tasks!.length > 0) {
-                        @for (task of todo; track trackByTaskId(idx, task); let idx = $index) {
-                            <app-task [task]="task" id="{{idx}}" cdkDrag></app-task>
-                        }
-                    } 
-                </section>
+               <section class="drag-area" id="cdk-drop-list-0" #listTodo="cdkDropList" cdkDropList
+                        [cdkDropListConnectedTo]="[listProgress, listFeedback, listDone]"
+                        [cdkDropListData]="todo" (cdkDropListDropped)="drop($event)">
+                  <ng-container *ngIf="todo.length === 0">
+                     <ng-container *ngTemplateOutlet="placeholder"></ng-container>
+                  </ng-container>
+                  @if (tasks.length > 0) {
+                     @for (task of todo; track trackByTaskId( idx, task ); let idx = $index) {
+                        <app-task [task]="task" id="{{idx}}" cdkDrag></app-task>
+                     }
+                  }
+               </section>
             </div>
-        </div>
-    </section>
-    
-    <section class="board-wrapper">
-        <div class="board-section">
+         </div>
+      </section>
+      
+      <section class="board-wrapper">
+         <div class="board-section">
             <div class="headline-wrapper">
-                <span class="headline">{{ 'Home.Board.Progress' | translate }}</span>
-                <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">
+               <span class="headline">{{ 'Home.Board.Progress' | translate }}</span>
+               <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">
             </div>
             <div class="board-subsection">
-                <section class="drag-area" id="cdk-drop-list-1" #listProgress="cdkDropList" cdkDropList [cdkDropListConnectedTo]="[listTodo, listFeedback, listDone]"
-                    [cdkDropListData]="progress" (cdkDropListDropped)="drop($event)">
-                    @if (tasks!.length > 0) {
-                        @for (task of progress; track trackByTaskId(idx, task); let idx = $index) {
-                            <app-task [task]="task" id="{{idx}}" cdkDrag></app-task>
-                        }
-                    } 
-                </section>
+               <section class="drag-area" id="cdk-drop-list-1" #listProgress="cdkDropList" cdkDropList
+                        [cdkDropListConnectedTo]="[listTodo, listFeedback, listDone]"
+                        [cdkDropListData]="progress" (cdkDropListDropped)="drop($event)">
+                  <ng-container *ngIf="progress.length === 0">
+                     <ng-container *ngTemplateOutlet="placeholder"></ng-container>
+                  </ng-container>
+                  @if (tasks.length > 0) {
+                     @for (task of progress; track trackByTaskId( idx, task ); let idx = $index) {
+                        <app-task [task]="task" id="{{idx}}" cdkDrag></app-task>
+                     }
+                  }
+               </section>
             </div>
-        </div>
-    </section>
-    
-    <section class="board-wrapper">
-        <div class="board-section">
+         </div>
+      </section>
+      
+      <section class="board-wrapper">
+         <div class="board-section">
             <div class="headline-wrapper">
-                <span class="headline">{{ 'Home.Board.Feedback' | translate }}</span>
-                <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">
+               <span class="headline">{{ 'Home.Board.Feedback' | translate }}</span>
+               <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">
             </div>
             <div class="board-subsection">
-                <section class="drag-area" id="cdk-drop-list-2" #listFeedback="cdkDropList" cdkDropList [cdkDropListConnectedTo]="[listTodo, listProgress, listDone]"
-                    [cdkDropListData]="feedback" (cdkDropListDropped)="drop($event)">
-                    @if (tasks!.length > 0) {
-                        @for (task of feedback; track trackByTaskId(idx, task); let idx = $index) {
-                            <app-task [task]="task" id="{{idx}}" cdkDrag></app-task>
-                        }
-                    } 
-                </section>
+               <section class="drag-area" id="cdk-drop-list-2" #listFeedback="cdkDropList" cdkDropList
+                        [cdkDropListConnectedTo]="[listTodo, listProgress, listDone]"
+                        [cdkDropListData]="feedback" (cdkDropListDropped)="drop($event)">
+                  <ng-container *ngIf="feedback.length === 0">
+                     <ng-container *ngTemplateOutlet="placeholder"></ng-container>
+                  </ng-container>
+                  @if (tasks.length > 0) {
+                     @for (task of feedback; track trackByTaskId( idx, task ); let idx = $index) {
+                        <app-task [task]="task" id="{{idx}}" cdkDrag></app-task>
+                     }
+                  }
+               </section>
             </div>
-        </div>
-    </section>
-    
-    <section class="board-wrapper">
-        <div class="board-section">
+         </div>
+      </section>
+      
+      <section class="board-wrapper">
+         <div class="board-section">
             <div class="headline-wrapper">
-                <span class="headline">{{ 'Home.Board.Done' | translate }}</span>
-                <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">
+               <span class="headline">{{ 'Home.Board.Done' | translate }}</span>
+               <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">
             </div>
             <div class="board-subsection">
-                <section class="drag-area" id="cdk-drop-list-3" #listDone="cdkDropList" cdkDropList [cdkDropListConnectedTo]="[listTodo, listProgress, listFeedback]"
-                    [cdkDropListData]="done" (cdkDropListDropped)="drop($event)">
-                    @if (tasks!.length > 0) {
-                        @for (task of done; track trackByTaskId(idx, task); let idx = $index) {
-                            <app-task [task]="task" id="{{idx}}" cdkDrag></app-task>
-                        }
-                    } 
-                </section>
+               <section class="drag-area" id="cdk-drop-list-3" #listDone="cdkDropList" cdkDropList
+                        [cdkDropListConnectedTo]="[listTodo, listProgress, listFeedback]"
+                        [cdkDropListData]="done" (cdkDropListDropped)="drop($event)">
+                  <ng-container *ngIf="done.length === 0">
+                     <ng-container *ngTemplateOutlet="placeholder"></ng-container>
+                  </ng-container>
+                  @if (tasks.length > 0) {
+                     @for (task of done; track trackByTaskId( idx, task ); let idx = $index) {
+                        <app-task [task]="task" id="{{idx}}" cdkDrag></app-task>
+                     }
+                  }
+               </section>
             </div>
-        </div>
-    </section>
+         </div>
+      </section>
+   </div>
 </div>
 
-
-
-
-<!-- <section class="board-wrapper">
-    <div class="board-section">
-        @for (head of headlines; track headlines; let i = $index) {
-        <div class="headline-wrapper">
-            <span class="headline">{{ 'Home.Board.' + head | translate }}</span>
-            <img class="add-icon" src="assets/icons/add_dark.svg" alt="add">
-        </div>
-        <div class="board-subsection">
-            <section class="drag-area" id="{{head}}" cdkDropList [cdkDropListConnectedTo]="filterHeadlines(head)"
-                [cdkDropListData]="head" (cdkDropListDropped)="drop($event)">
-
-                @if (tasks!.length > 0) {
-                    @for (task of tasks; track trackByTaskId; let idx = $index) {
-                        @if (task.posStatus === head) {
-                        <app-task [task]="task" id="drag{{idx}}" cdkDrag></app-task>
-                        }
-                    }
-                } 
-            </section>
-        </div>
-        }
-    </div>
-</section> -->
+<ng-template #placeholder>
+   <div class="placeholder">
+      <span>{{ 'Home.Board.EmptyState' | translate }}</span>
+   </div>
+</ng-template>

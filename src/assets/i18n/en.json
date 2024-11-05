@@ -61,7 +61,8 @@
       "Feedback": "Await Feedback",
       "Done": "Done",
       "More": "more",
-      "Placeholder": "drag and drop task here"
+      "Placeholder": "drag and drop task here",
+      "EmptyState": "Nothing to do here"
     },
     "Contacts": {
       "AddContact": "Add new contact",

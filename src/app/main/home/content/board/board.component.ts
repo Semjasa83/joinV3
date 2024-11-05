@@ -11,8 +11,8 @@ import { ButtonComponent } from "../../../utility/button/button.component";
 import { TaskComponent } from "./task/task.component";
 import { AddTaskDialogComponent } from "../add-task/add-task-dialog/add-task-dialog.component";
 import { ContactsService } from "../../../../services/contacts/contacts.service";
-import { NgOptimizedImage } from "@angular/common";
-import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem, CdkDropListGroup } from "@angular/cdk/drag-drop";
+import { NgIf, NgTemplateOutlet} from "@angular/common";
+import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 
 @Component({
   selector: "app-board",
@@ -26,8 +26,9 @@ import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem, CdkDro
     ButtonComponent,
     TaskComponent,
     AddTaskDialogComponent,
-    NgOptimizedImage,
-    DragDropModule
+    DragDropModule,
+    NgIf,
+    NgTemplateOutlet
   ],
   templateUrl: "./board.component.html",
   styleUrl: "./board.component.scss",
@@ -39,7 +40,6 @@ export class BoardComponent implements OnInit, OnDestroy {
   public showAddTask: boolean = false;
 
   // @HostListener('window:resize', ['$event'])
-  // public headlines: string[] = ["Todo", "Progress", "Feedback", "Done"];
   public done: Task[] = [];
   public feedback: Task[] = [];
   public progress: Task[] = [];
@@ -52,9 +52,8 @@ export class BoardComponent implements OnInit, OnDestroy {
   ) {}
 
   public async ngOnInit() {
-    await this.loadTasks(); // Load tasks from Backend
-    this.categorizeTasks(); // Categorize tasks into different arrays
-    this.checkArrays(); // Debugging
+    await this.loadTasks();
+    this.categorizeTasks();
     // this.startPolling(); // Start polling the Board intervals from Backend
   }
 
@@ -76,7 +75,6 @@ export class BoardComponent implements OnInit, OnDestroy {
       console.error('Error at loading Tasks:', error);
     }
   } 
-
 
   private categorizeTasks(): void {
     this.todo = [];
@@ -115,10 +113,37 @@ export class BoardComponent implements OnInit, OnDestroy {
         event.previousIndex,
         event.currentIndex
       );
+      const task = event.container.data[event.currentIndex];
+      const newPosition = this.getNewPosition(event.container.id);
+      this.updateTaskPosition(task, newPosition);
     }
-    this.checkArrays();
   }
 
+  private updateTaskPosition(task: Task, newPosition: number): void {
+    task.posStatus = newPosition;
+    if (task._id) {
+      this.tasksService.updateTask(task._id, task);
+    }
+  }
+
+  private getNewPosition(containerId: string): number {
+    switch (containerId) {
+      case 'cdk-drop-list-0':
+        return 0;
+      case 'cdk-drop-list-1':
+        return 1;
+      case 'cdk-drop-list-2':
+        return 2;
+      case 'cdk-drop-list-3':
+        return 3;
+      default:
+        return 0;
+    }
+  }
+
+  public trackByTaskId(index: number, task: Task) {
+    return task._id;
+  }
 
   /********** Polling Section ***************/
   // private startPolling(interval: number = 5000): void {
@@ -131,27 +156,6 @@ export class BoardComponent implements OnInit, OnDestroy {
   // private stopPolling(): void {
   //   clearInterval(this.pollingInterval);
   // }
-
-
-
-
-
-
-
-  private checkArrays() {
-    console.log('todo', this.todo[0].posStatus);
-    console.log('done', this.done);
-    console.log('progress', this.progress);
-    console.log('feedback', this.feedback);
-  }
-
-    // public filterHeadlines(head: string) {
-  //     return this.headlines.filter(h => h !== head);
-  // }
-
-    public trackByTaskId(index: number, task: Task) {
-    return task._id;
-  }
 
   // public onResize(event: Event) {
   //   this.handleResize();

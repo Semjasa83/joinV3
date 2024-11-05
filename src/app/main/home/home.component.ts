@@ -21,10 +21,5 @@ import { RouterOutlet } from '@angular/router';
 })
 
 export class HomeComponent {
-  public sidebarToggle: boolean = true;
-
   constructor() { };
-
-  public toggleSidebar() {this.sidebarToggle = !this.sidebarToggle };
-
 }
