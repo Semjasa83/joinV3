@@ -5,17 +5,18 @@ import { Address, Contact, ContactImpl } from '../../../../../interfaces/contact
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonComponent } from '../../../../utility/button/button.component';
 import { ActivatedRoute } from '@angular/router';
-import {NgStyle} from "@angular/common";
+import {NgIf, NgStyle} from "@angular/common";
 
 @Component({
   selector: 'app-edit-contact',
   standalone: true,
-  imports: [
-    TranslateModule,
-    ButtonComponent,
-    ReactiveFormsModule,
-    NgStyle,
-  ],
+    imports: [
+        TranslateModule,
+        ButtonComponent,
+        ReactiveFormsModule,
+        NgStyle,
+        NgIf,
+    ],
   templateUrl: './edit-contact.component.html',
   styleUrl: './edit-contact.component.scss'
 })
@@ -62,15 +63,15 @@ export class EditContactComponent implements OnInit {
     const contact: Address = response.contact
     this.contactData = contact;
     this.addContactForm.patchValue({
-      firstName: contact.firstName || '',
-      lastName: contact.lastName || '',
-      phone: contact.phone || null,
-      email: contact.email || '',
-      street: contact.address.street || '',
-      city: contact.address.city || '',
-      streetNumber: contact.address.streetNumber || null,
-      zip: contact.address.zip || null,
-      country: contact.address.country || null,
+      firstName: contact.firstName ?? '',
+      lastName: contact.lastName ?? '',
+      phone: contact.phone ?? null,
+      email: contact.email ?? '',
+      street: contact.address.street ?? '',
+      city: contact.address.city ?? '',
+      streetNumber: contact.address.streetNumber ?? null,
+      zip: contact.address.zip ?? null,
+      country: contact.address.country ?? null,
     });
   }
 

@@ -30,21 +30,21 @@
     <div class="contact-info-wrapper">
         <span class="contact-info">{{ 'Home.ContactDetail.ContactInformation' | translate }}</span>
         <span class="contact-info-header">{{ 'Home.ContactDetail.Email' | translate }}</span>
-        <span class="contact-email-data">{{ contactData?.email }}</span>
+        <span class="contact-email-data">{{ contactData.email }}</span>
         <span class="contact-info-header">{{ 'Home.ContactDetail.Phone' | translate }}</span>
-        <span class="contact-phone-data">{{ '+49' + contactData?.phone }}</span>
+        <span class="contact-phone-data">{{ '+49' + contactData.phone }}</span>
     </div>
     <div class="contact-info-wrapper">
         <span class="contact-info">{{ 'Home.ContactDetail.Address' | translate }}</span>
         <span class="contact-info-header">{{ 'Home.ContactDetail.Street' | translate }}</span>
-        <span class="contact-address-data">{{ contactData.address?.street }} {{ contactData.address?.streetNumber
-            }}</span>
+        <span class="contact-address-data" *ngIf="contactData.address?.streetNumber">
+           {{ contactData.address.street }} {{ contactData.address.streetNumber }}</span>
         <span class="contact-info-header">{{ 'Home.ContactDetail.City' | translate }}</span>
-        <span class="contact-address-data">{{ contactData.address?.city }}</span>
+        <span class="contact-address-data" *ngIf="contactData.address?.city">{{ contactData.address.city }}</span>
         <span class="contact-info-header">{{ 'Home.ContactDetail.Zip' | translate }}</span>
-        <span class="contact-address-data">{{ contactData.address?.zip }}</span>
+        <span class="contact-address-data" *ngIf="contactData.address?.zip">{{ contactData.address.zip }}</span>
         <span class="contact-info-header">{{ 'Home.ContactDetail.Country' | translate }}</span>
-        <span class="contact-address-data">{{ contactData.address?.country }}</span>
+        <span class="contact-address-data" *ngIf="contactData.address?.country">{{ contactData.address.country }}</span>
     </div>
 </div>
 
